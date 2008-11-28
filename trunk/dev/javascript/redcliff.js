@@ -62,7 +62,7 @@
 	var markers = new Array();
 	var marker_hash = new Hash();
 	var loadEvents = function(url) {
-	    GDownloadUrl(url, function(data){
+	    _IG_FetchContent(url, function(data){
 		    var value = eval(data);
 		    $.each(value, function(index, raw_event){
 			    var event = new Event(raw_event);
@@ -76,7 +76,7 @@
 	};
 	
 	var loadBigEvents = function(url) {
-		GDownloadUrl(url, function(data) {
+		_IG_FetchContent(url, function(data) {
 			var value = eval(data);
 			$.each(value, function(index, raw_big_event){
 				var big_event = new BigEvent(raw_big_event);
@@ -88,7 +88,7 @@
 	}
 	
 	var loadCharacters = function(url) {
-	    GDownloadUrl(url, function(data){
+	    _IG_FetchContent(url, function(data){
 		    var value = eval(data);
 		    $.each(value, function(index, raw_character){
 			    var character = new Character(raw_character);
