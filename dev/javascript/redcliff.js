@@ -62,8 +62,9 @@
 	var markers = new Array();
 	var marker_hash = new Hash();
 	var loadEvents = function(url) {
+	    alert(1);
 	    _IG_FetchContent(url, function(data){
-		    var value = eval(data);
+		    var value = eval('(' + data + ')');
 		    $.each(value, function(index, raw_event){
 			    var event = new Event(raw_event);
 			    var event_marker = new EventMarker(event);
@@ -588,7 +589,10 @@ $(function(){
         var map_node = document.getElementById("map_canvas");
 	rcmap = new RedcliffMap(map_node);       
 	var tab_manager = new TabManager(['events','characters'], 'events');
-	depot = new Depot('../data/events.json','../data/big_events.json','../data/characters.json');
+	depot = new Depot(
+	'http://redcliff.googlecode.com/svn/trunk/dev/data/events.json',
+	'http://redcliff.googlecode.com/svn/trunk/dev/data/big_events.json',
+	'http://redcliff.googlecode.com/svn/trunk/dev/data/characters.json');
 	var character_filter = new CharacterFilter();
     });
 
