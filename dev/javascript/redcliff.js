@@ -62,9 +62,10 @@
 	var markers = new Array();
 	var marker_hash = new Hash();
 	var loadEvents = function(url) {
-	    alert(1);
+	    
 	    _IG_FetchContent(url, function(data){
 		    var value = eval('(' + data + ')');
+		    alert(data);
 		    $.each(value, function(index, raw_event){
 			    var event = new Event(raw_event);
 			    var event_marker = new EventMarker(event);
