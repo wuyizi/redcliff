@@ -4,7 +4,7 @@
              description="三国赤壁的地图"
              author="googlecode"
              author_email="redcliff@gmail.com"
-             height="150">
+             height="800">
   <Require feature="sharedmap"/>
 </ModulePrefs>
 <Content type="html"><![CDATA[
