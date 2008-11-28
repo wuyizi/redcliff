@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="三国赤壁”" 
+             description="三国赤壁的地图"
+             author="googlecode"
+             author_email="redcliff@gmail.com"
+             height="150">
+  <Require feature="sharedmap"/>
+</ModulePrefs>
+<Content type="html"><![CDATA[
+
+<style type="text/css" media="screen">
+
+.slider_indicater {
+	margin-left: 90px;
+	margin-bottom: 10px;
+	color: red;
+}
+.slider_container {
+	margin-top: 15px;
+}
+.minus {
+	background: url(images/minus-trans.png) no-repeat;
+	height: 9px;
+	width: 25px;
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+}
+.slider_bar {
+	background: url(images/bar-trans.png) no-repeat;
+	height: 9px;
+	width: 190px;
+	float: left;
+	margin: 0px 5px;
+	position: relative;
+}
+.add {
+	background: url(images/add-trans.png) no-repeat;
+	height: 25px;
+	width: 23px;
+	float: left;
+	position: relative;
+	top: -5px;
+	cursor: pointer;
+}
+.slider_handle {
+	background: url(images/selector-trans.png) no-repeat;
+	height: 25px;
+	width: 12px;
+	position: absolute;
+	top: -8px;
+}
+
+.event_img {
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 75px;
+	width: 100px;
+}
+
+</style>
+  </head>
+  <body   onunload="GUnload()">
+  <div class="quake-search">
+    <div class="tab-head">
+      <p class="tab-item" id="events_tab">历史事件</p>
+      <p class="tab-item" id="characters_tab">人物</p>
+    </div>
+    <div class="tab-content" id="tabContent">
+       <div id="events_cnt">
+         <h3>历史事件</h3>
+       <div class="slider_container">
+         <div class="minus"></div>
+    	 <div class="slider_bar">
+      	 <div id="slider1_handle" class="slider_handle"></div>
+         </div>
+         <div class="add"></div>
+      </div>
+      <div class="slider_indicater" id="slider_indicater">公元208年</div>
+      <ol id="big_event_list"></ol>
+       </div>
+       <div id="characters_cnt">
+         <h3>人物</h3>
+	  <div id="kingdom_checkbox"><h4>
+       <label><input id="checkbox_shu" type="checkbox" checked>蜀国</label>&nbsp;
+       <label><input id="checkbox_wei" type="checkbox" checked>魏国</label>&nbsp;
+       <label><input id="checkbox_wu" type="checkbox" checked>吴国</label>&nbsp;
+          </h4>
+          </div>
+	  <ol id="character_list"></ol>
+       </div>
+       <div class="copyright-inner">以上信息仅供参考，Google 未作核实。</div>
+    </div>
+       <div id="map_canvas" class="map-div"></div>
+  </div>
+  </body>
+</html>
+
+]]></Content>
+</Module>
