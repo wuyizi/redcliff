@@ -20,13 +20,6 @@ h3 {
   height:520px;
   position:relative;
 }
-.map-div{
-  width:519px;
-  height:518px;
-  float:left;
-  border:solid #666666 1px;
-  border-left:0;
-}
 /*tab-head*/
 .tab-head{
   width:24px;
@@ -54,7 +47,7 @@ html>body .active-tab{
 .tab-content{
   float:left;
   width:260px;
-  height:514px;
+  height:600x;
   overflow:hidden;
   position:relative;
   padding:2px 2px 2px 3px;
