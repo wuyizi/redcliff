@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></link>
+<style type="text/css" media="screen" src="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></style>
 <style type="text/css" media="screen">
 
 .slider_indicater {
