@@ -64,7 +64,7 @@
 	var loadEvents = function(url) {
 	    
 	    _IG_FetchContent(url, function(data){
-		    var value = eval('(' + data + ')');
+		    var value = eval(data);
 		    alert(data);
 		    $.each(value, function(index, raw_event){
 			    var event = new Event(raw_event);
@@ -165,14 +165,14 @@
     };
 
     function Character(raw_character) {
-	this.name = raw_character.n;
-	this.nickname = raw_character.nn;
-	this.title = raw_character.t;
-	this.birth = raw_character.b;
-	this.dead = raw_character.dd;
-	this.description = raw_character.d;
-	this.kingdom = raw_character.k;
-	this.img_url = raw_character.i;
+	this.name = raw_character.name;
+	this.nickname = raw_character.zi;
+	this.title = null;
+	this.birth = raw_character.birth;
+	this.dead = raw_character.death;
+	this.description = raw_character.desc;
+	this.kingdom = raw_character.kindom;
+	this.img_url = raw_character.wiki;
 	this.event_names = new Array();
 	
 	var temp_name = this.name;
@@ -324,19 +324,19 @@
     };  
 
     function Event(raw_event) {
-	this.name = raw_event.n;
-	this.place = raw_event.p;
-	this.time = raw_event.t;
-	this.duration = raw_event.du;
-	this.description = raw_event.d;
-	this.img = raw_event.i;
+	this.name = raw_event.name;
+	this.place = raw_event.place;
+	this.time = raw_event.start;
+	this.end = raw_event.end;
+	this.description = raw_event.desc;
+	this.img = null;
 	this.lat = raw_event.lat;
 	this.lng = raw_event.lng;
-	this.type = raw_event.type;
+	//this.type = raw_event.type;
 	this.characters = new Array();
 
 	var temp_characters = this.characters;
-	$.each(raw_event.c, function(index, character_name){
+	$.each(raw_event.people, function(index, character_name){
 		temp_characters.push(character_name);
 	    });
     };
@@ -367,13 +367,13 @@ EventMarker.prototype = {
 
 function BigEvent(raw_big_event) {
 	var me = this;
-	this.name = raw_big_event.n;
-	this.description = raw_big_event.d;
+	this.name = raw_big_event.name;
+	this.description = raw_big_event.name;
 	this.start = raw_big_event.s;
 	this.end = raw_big_event.e;
 	this.event_names = new Array();
 
-	$.each(raw_big_event.el, function(index, event_name){
+	$.each(raw_big_event.event, function(index, event_name){
 		me.event_names.push(event_name);
 	});
 }
@@ -583,12 +583,18 @@ function SliderBar() {
 
 
 $(function(){
-
-       
+	var redcliff_tile_layer = new GTileLayer(null, 5, 9, {
+		opacity: 1.0,
+		isPng: true,
+		tileUrlTemplate: "http://0.tiles.paint-team.cg.borg.google.com/mt?tiles=2008_11_29_boz&x={X}&y={Y}&zoom={Z}",
+	});
+       	
+	var redcliff_tile_overlay = new GTileLayerOverlay(redcliff_tile_layer);
 	var slider = SliderBar();
 
         var map_node = document.getElementById("map_canvas");
-	rcmap = new RedcliffMap(map_node);       
+	rcmap = new RedcliffMap(map_node);    
+	rcmap.gmap.addOverlay(redcliff_tile_overlay);
 	var tab_manager = new TabManager(['events','characters'], 'events');
 	depot = new Depot(
 	'http://redcliff.googlecode.com/svn/trunk/dev/data/events.json',
