@@ -595,12 +595,14 @@ $(function(){
         var map_node = document.getElementById("map_canvas");
 	rcmap = new RedcliffMap(map_node);    
 	rcmap.gmap.addOverlay(redcliff_tile_overlay);
+	/*
 	var tab_manager = new TabManager(['events','characters'], 'events');
 	depot = new Depot(
 	'http://redcliff.googlecode.com/svn/trunk/dev/data/events.json',
 	'http://redcliff.googlecode.com/svn/trunk/dev/data/big_events.json',
 	'http://redcliff.googlecode.com/svn/trunk/dev/data/characters.json');
 	var character_filter = new CharacterFilter();
+	*/
     });
 
 })();
