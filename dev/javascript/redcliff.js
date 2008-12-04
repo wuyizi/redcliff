@@ -65,7 +65,6 @@
 	    
 	    _IG_FetchContent(url, function(data){
 		    var value = eval(data);
-		    alert(data);
 		    $.each(value, function(index, raw_event){
 			    var event = new Event(raw_event);
 			    var event_marker = new EventMarker(event);
@@ -200,6 +199,7 @@
 	    var node = $('<div class="character-digest-div"></div>');
 	    //var digest =  $('<p>' + character.description.substring(50) + '...</p>');
 	    //var detail = $('<p>' + character.description.substring(50) + '</p>');
+		alert(character);
 	    var digest =  $('<span>' + character.description.substr(0, 50) + '</span>');
 	    var detail = $('<span>' + character.description.substr(0, 50) + '</span>');
 	    var show_detail = $('<span>...</span><a href=#>更多 &raquo;</a>');
