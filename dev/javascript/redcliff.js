@@ -198,9 +198,9 @@
 		
 	var genDigestNode = function() {
 	    var node = $('<div class="character-digest-div"></div>');
-	    //var digest =  $('<p>' + character.description.substring(0,50) + '...</p>');
+	    //var digest =  $('<p>' + character.description.substring(50) + '...</p>');
 	    //var detail = $('<p>' + character.description.substring(50) + '</p>');
-	    var digest =  $('<span>' + character.description.substring(0,50) + '</span>');
+	    var digest =  $('<span>' + character.description.substring(50) + '</span>');
 	    var detail = $('<span>' + character.description.substring(50) + '</span>');
 	    var show_detail = $('<span>...</span><a href=#>更多 &raquo;</a>');
 	    var hide_detail = $('<a href=#>&laquo; 折叠</a>');
