@@ -199,7 +199,7 @@
 	    var node = $('<div class="character-digest-div"></div>');
 	    //var digest =  $('<p>' + character.description.substring(50) + '...</p>');
 	    //var detail = $('<p>' + character.description.substring(50) + '</p>');
-		alert(character);
+		alert(character.description);
 	    var digest =  $('<span>' + character.description.substr(0, 50) + '</span>');
 	    var detail = $('<span>' + character.description.substr(0, 50) + '</span>');
 	    var show_detail = $('<span>...</span><a href=#>更多 &raquo;</a>');
