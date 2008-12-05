@@ -228,7 +228,7 @@
 		this.end = raw_event.end;
 		this.desc = raw_event.desc;
 	};
-	
+
 	function BigEvent(raw_event) {
 		var me = this;
 		this.id = raw_event.id
