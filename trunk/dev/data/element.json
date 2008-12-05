@@ -1,0 +1,9 @@
+[
+{"id" : 1, "type" : "point" , "p1" : "当阳" , "p2" : null, "color" : "red", "event_ids" : [1], "offset" : null},
+{"id" : 2, "type" : "line" , "p1" : "长阪" , "p2" : "汉津" , "color" :　"green" , "event_ids" : [2], "offset" : null},
+{"id" : 3, "type" : "line" , "p1" : "汉津" , "p2" : "夏口" , "color" : "green" , "event_ids" : [3], "offset" : null},
+{"id" : 4, "type" : "point" , "p1" : "江陵" , "p2" : null, "color" : "red", "event_ids" : [4, 5, 7], "offset" : null},
+{"id" : 5, "type" : "point" , "p1" : "公安" , "p2" : null, "color" : "red", "event_ids" : [5, 6], "offset" : null},
+{"id" : 6, "type" : "point" , "p1" : "京口" , "p2" : null, "color" : "red", "event_ids" : [7, 8], "offset" : null},
+{"id" : 7, "type" : "point" , "p1" : "巴丘" , "p2" : null, "color" : "red", "event_ids" : [8], "offset" : null},
+]
