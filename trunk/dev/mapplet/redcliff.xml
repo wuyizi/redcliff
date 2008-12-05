@@ -619,7 +619,13 @@
 								this.gmap = new GMap2();
 								this.gmap.setCenter(new GLatLng(30.917, 110.397), 5);
 								
-								var layer = new GTileLayer(null, 1, 17);
+								
+								
+								var layer = new GTileLayer(null, 1, 17, {
+									isPng: true,
+									tileUrlTemplate: "http://0.tiles.paint-team.cg.borg.google.com/mt?tiles=2008_12_04_boz&x={X}&y={Y}&zoom={Z}",
+									opacity: 1.0,
+								});
 								
 								layer.getTileUrl = function(tile, zoom) {
 								zoom = 17 - zoom;
