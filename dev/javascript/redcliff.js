@@ -521,6 +521,8 @@
 			if (type == "EVENT") {
 				var event = EVENT.getItem(id);
 				var info_div = Utils.constructInfoWindowHtml([event]);
+				alert(latlng);
+				this.gmap.openInfoWindow(new GLatLng(30.917, 110.397), "hello world");
 				this.gmap.openInfoWindow(latlng, "hello world");
 				//this.highLightOverlay(event.element_ids);
 			}
