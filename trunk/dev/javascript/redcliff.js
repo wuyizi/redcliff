@@ -488,7 +488,7 @@
 				div.append(title);
 				div.append(desc);
 			})
-			return div.html()
+			return div.html();
 		},
 	};
 
@@ -636,11 +636,22 @@
 	};
 	var character_filter;
 	$(function(){
+		$('#events_cnt').hide();	
         	var map_node = document.getElementById("map_canvas");
 		G_MAP = new RedcliffMap(map_node);
-		var tab_manager = new TabManager(['events','characters'], 'characters');
+		//var tab_manager = new TabManager(['events','characters'], 'characters');
 	
 		LoadLocation();
 		new CharacterFilter();
+		$('#shift_event').click(function(){
+			$('#characters_cnt').hide();
+			$('#events_cnt').show();
+			return false;
+		});
+		$('#shift_people').click(function(){
+			$('#events_cnt').hide();
+			$('#characters_cnt').show();
+			return false;
+		});
 	    });
 })();
