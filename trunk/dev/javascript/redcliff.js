@@ -427,7 +427,7 @@
 	};  
 	
 	function LoadElement() {
-		GDownloadUrl(URL.element_url, function(data) {
+		_IG_FetchContent(URL.element_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, element) {
 				ELEMENT.setItem(element.id, new Element(element));
@@ -436,7 +436,7 @@
 	};
 	
 	function LoadEvent() {
-		GDownloadUrl(URL.event_url, function(data) {
+		_IG_FetchContent(URL.event_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, event) {
 				EVENT.setItem(event.id, new Event(event));
@@ -448,7 +448,7 @@
 	};
 	
 	function LoadPeople() {
-		GDownloadUrl(URL.people_url, function(data) {
+		_IG_FetchContent(URL.people_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, raw_people) {
 				var people = new People(raw_people)
@@ -460,7 +460,7 @@
 	};
 	
 	function LoadBigEvent() {
-		GDownloadUrl(URL.big_event_url, function(data) {
+		_IG_FetchContent(URL.big_event_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, big_event) {
 				BIG_EVENT.setItem(big_event.id, new BigEvent(big_event));
@@ -469,7 +469,7 @@
 	};
 	
 	function LoadLocation() {
-		GDownloadUrl(URL.location_url, function(data) {
+		_IG_FetchContent(URL.location_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, location) {
 				LOCATION.setItem(location.name, new Location(location));
