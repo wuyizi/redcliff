@@ -206,7 +206,10 @@
 		this.end_y = raw_event.end_y;
 		this.end_m = raw_event.end_m;
 		this.desc = raw_event.desc;
+		alert(raw_event.lat);
 		this.point = new GLatLng(raw_event.lat, raw_event.lng);
+		alert(this.point);
+		
 	};
 	
 	function BigEvent(raw_event) {
@@ -355,7 +358,6 @@
 				var event_link = $('<a href=#>' + event.name + '</a>');
 	
 				event_link.click(function(){
-					alert(event.point);
 					G_MAP.openInfoWindow("EVENT", event_id, event.point);
 				});
 				event_item.append(event_link);
