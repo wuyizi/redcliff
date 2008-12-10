@@ -16,14 +16,21 @@ h3 {
   color:#000;
   background-color:#fff;
   margin:auto;
-  width:820px;
-  height:520px;
+  width:850px;
+  height:530px;
   position:relative;
+}
+.map-div{
+  width:519px;
+  height:528px;
+  float:left;
+  border:solid #666666 1px;
+  border-left:0;
 }
 /*tab-head*/
 .tab-head{
   width:24px;
-  height:520px;
+  height:530px;
   float:left;
   border-right:solid #666666 1px;
 }
@@ -46,9 +53,8 @@ html>body .active-tab{
 /*tab content*/
 .tab-content{
   float:left;
-  width:260px;
-  height:600px;
-  overflow:hidden;
+  width:290px;
+  height:524px;
   position:relative;
   padding:2px 2px 2px 3px;
   border-top:solid #666666 1px;
@@ -140,13 +146,9 @@ html>body .active-tab{
 .other-item{
   margin:3px 1px;
 }
-#big_event_list,
-#character_list {
-  border-top: #c5d7ef solid 1px;
-}
-.big-event-item,
-.character-item {
+.big-event-item {
   border-bottom: #c5d7ef solid 1px;
+  margin: 5px 5px 5px 5px;
   padding: 0.5em 0;
 }
 .big-event-title {
@@ -164,14 +166,42 @@ html>body .active-tab{
   width: 2em;
   float: left;
 }
+#character_list {
+ height:465px;
+ margin-bottom: 10px;
+ margin-top:5px;
+ margin-left: 5px;
+ margin-right: 5px;
+ padding-right: 10px;
+ overflow:auto;
+}
+#big_event_list {
+ height:440px;
+ margin-bottom: 10px;
+ margin-top:5px;
+ margin-left: 5px;
+ margin-right: 5px;
+ padding-right: 10px;
+ overflow:auto;
+}
+.content_title {
+font-size: 14px;
+text-align:center;
+margin: 5px 0px 5px 5px;
+color:#0000FF;
+font-weight:bold;
+}
 .character-item{
-  width:260px;
+  width:250px;
   /* height:75px; */
   overflow:visible;
+  padding: 0.5em 0;
+  margin: 5px 0px 5px 0px;
   vertical-align:text-top;
+  border-bottom: #c5d7ef solid 1px;
 }
 .character-img-div{
-  width:75px;
+  width:65px;
   height:70px;	
   vertical-align:top;
   float: left;
