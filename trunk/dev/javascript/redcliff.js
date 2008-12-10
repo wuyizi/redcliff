@@ -58,7 +58,7 @@
 	var CURRENT_ELEMENT = new Array();
 	var HIGH_LIGHT_ELEMENT = new Array();
 	var CURRENT_OVERLAY_ID = "";
-	var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/'
+	var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
 
 	var URL = {
 		location_url: BASE + 'data/location.json',
@@ -131,12 +131,12 @@
 		
 		var getArrowGroundOverlay = function(arrow_url, sw, ne) {
 			var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
-			var arrow = new GGroundOverlay(BASE ＋ 'images/arrow/'  + arrow_url + '.png', bound);
+			var arrow = new GGroundOverlay(BASE + 'images/arrow/'  + arrow_url + '.png', bound);
 			return arrow;
 		}
 		
 		var getMarker = function(icon_url, point, id) {
-			var image = BASE ＋ 'images/icon/' + icon_url + '.png';
+			var image = BASE + 'images/icon/' + icon_url + '.png';
 			var icon = new GIcon(G_DEFAULT_ICON, image);
 			if (icon_url.length == 2)
 				icon.iconSize = new GSize(54,32);
