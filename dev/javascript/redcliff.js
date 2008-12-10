@@ -388,7 +388,7 @@
 		var genNode = function() {
 			var node = $('<div class="character-item"><tr></tr></div>');
 			var img_node = $('<td class="character-img-div"></td>');
-			img_node.append('<img width=60 heigth=70 src="' BASE + 'images/people/' + me.pic +'.png"></img>');
+			img_node.append('<img width=60 heigth=70 src="' + BASE + 'images/people/' + me.pic +'.png"></img>');
 			var intro_node = $('<td class="character-intro-div"></td>');
 			var link_node = $('<p class="character-title"><a href="#">' + me.name + '&nbsp;字' + 
 					me.nick + '</a></p>');
