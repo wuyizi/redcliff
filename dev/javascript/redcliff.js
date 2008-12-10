@@ -520,7 +520,7 @@
 			if (type == "EVENT") {
 				var event = EVENT.getItem(id);
 				var info_div = Utils.constructInfoWindowHtml([event]);
-				this.gmap.openInfoWindow(latlng, info_div);
+				this.gmap.openInfoWindow(latlng, "hello world");
 				//this.highLightOverlay(event.element_ids);
 			}
 			if (type == "ELEMENT") {
@@ -637,9 +637,7 @@
 	var character_filter;
 	$(function(){
 		$('#events_cnt').hide();	
-        	var map_node = document.getElementById("map_canvas");
-		G_MAP = new RedcliffMap(map_node);
-		//var tab_manager = new TabManager(['events','characters'], 'characters');
+		G_MAP = new RedcliffMap();
 	
 		LoadLocation();
 		new CharacterFilter();
