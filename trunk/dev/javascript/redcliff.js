@@ -206,9 +206,7 @@
 		this.end_y = raw_event.end_y;
 		this.end_m = raw_event.end_m;
 		this.desc = raw_event.desc;
-		alert(raw_event.lat);
 		this.point = new GLatLng(raw_event.lat, raw_event.lng);
-		alert(this.point);
 		
 	};
 	
