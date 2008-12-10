@@ -355,7 +355,7 @@
 				var event_link = $('<a href=#>' + event.name + '</a>');
 	
 				event_link.click(function(){
-					alert(event.point;
+					alert(event.point);
 					G_MAP.openInfoWindow("EVENT", event_id, event.point);
 				});
 				event_item.append(event_link);
