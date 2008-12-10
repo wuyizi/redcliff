@@ -8,7 +8,7 @@
   <Require feature="sharedmap"/>
 </ModulePrefs>
 <Content type="html"><![CDATA[
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?abc=12345"></link>
 <div class="tab-content" id="tabContent">
 	<div id="events_cnt" >
 		<div class="content_title">历史事件<a href="" id="shift_people">人物</a> </div>
