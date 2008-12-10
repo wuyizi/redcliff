@@ -496,8 +496,6 @@
 		var me = this;
 		this.gmap = new GMap2(node);
         	this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
-		this.gmap.addControl(new GLargeMapControl());
-		this.gmap.addControl(new GMapTypeControl());
 		/*
 		var layer = new GTileLayer(new GCopyrightCollection(""), 1, 17);
 		
