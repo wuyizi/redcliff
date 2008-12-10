@@ -494,25 +494,18 @@
 
 	function RedcliffMap(node) {
 		var me = this;
-		this.gmap = new GMap2(node);
+		this.gmap = new GMap2();
         	this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
-		/*
-		var layer = new GTileLayer(new GCopyrightCollection(""), 1, 17);
 		
-		layer.getTileUrl = function(tile, zoom) {
-			zoom = 17 - zoom;
-			var prefix = "http://0.tiles.paint-team.cg.borg.google.com/mt?tiles=2008_12_09_boz";
-			var url = prefix + '&x=' + tile.x + '&y=' + tile.y + '&zoom=' + zoom;
-			return url;	
-		}
-		layer.isPng = function() { return true; }
-		layer.getOpacity = function() { return 1.0; }
-		this.gmap.addOverlay(new GTileLayerOverlay(layer));
-		
-		GEvent.addListener(this.gmap, 'infowindowclose', function() {
-			me.deHighLightOverlay();
-		})
-		*/
+		var tileLayerOverlay = new GTileLayerOverlay(
+  			new GTileLayer(null, null, null, {
+    				tileUrlTemplate: 'http://0.tileservers-sanguo.tilefe.geo-cn.bg.borg.google.com/mt?v=cnsg1.0&hl=zh-CN&x={X}&y={Y}&z={Z}&s=G', 
+    				isPng:true,
+    				opacity:1.0
+  			})
+		);
+
+		this.gmap.addOverlay(tileLayerOverlay); 
 	};
 	
 
