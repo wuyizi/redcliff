@@ -51,30 +51,26 @@
 	var EVENT = new Hash();
 	var BIG_EVENT = new Hash();
 	var PEOPLE = new Hash();
-	
+	var PEOPLE_ARRAY = new Array();
 	var CURRENT_EVENT_HASH = new Hash();
 	var CURRENT_ELEMENT_HASH = new Hash();
 	var CURRENT_EVENT = Array();
 	var CURRENT_ELEMENT = new Array();
 	var HIGH_LIGHT_ELEMENT = new Array();
 	var CURRENT_OVERLAY_ID = "";
-	var BASE_URL = 'http://redcliff.googlecode.com/svn/trunk/dev/'
+	var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/'
+
 	var URL = {
-		location_url: BASE_URL + 'data/location.json',
-		element_url: BASE_URL + 'data/element.json',
-		event_url: BASE_URL + 'data/event.json',
-		big_event_url: BASE_URL + 'data/big_event.json',
-		people_url: BASE_URL + 'data/people.json',
+		location_url: BASE + 'data/location.json',
+		element_url: BASE + 'data/element.json',
+		event_url: BASE + 'data/event.json',
+		big_event_url: BASE + 'data/big_event.json',
+		people_url: BASE +'data/people.json',
 	};
 
 	var G_MAP;
 	
-	var C_POLYLINE_WEIGHT = 3;
- 	var C_POLYLINE_WEIGHT_HIGHLIGHT = 6;
-	var C_POLYLINE_OPACITY = 0.5;
-	var C_POLYLINE_OPACITY_HIGHLIGHT = 1.0;
-	var C_ROTATION_DEGREE = 15 * Math.PI/180;
-	var C_ARROW_LENGTH = 10;	
+	var C_POLYLINE_WEIGHT = 10
 	
 	function TabManager(in_tabs, active_tab) {
 		var tabs = new Array();
@@ -111,7 +107,7 @@
 		var me = this;
 		this.location = raw_location;
 		this.name = location.name;
-		this.point = new GLatLng(raw_location.lng, raw_location.lat);
+		this.point = new GLatLng(raw_location.lat, raw_location.lng);
 	};
 	
 	
@@ -121,87 +117,68 @@
 		this.element = raw_element;
 		this.type = raw_element.type;
 		
-		var computeArrowPolygon = function(start, end) {
-			var projection = G_NORMAL_MAP.getProjection();
-			var point_start = projection.fromLatLngToPixel(start, 7);
-			var point_end = projection.fromLatLngToPixel(end, 7);
-			
-			
-			var delta_x = (point_start.x - point_end.x);
-			var delta_y = (point_start.y - point_end.y);
-			var p_length = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
-			var rate = C_ARROW_LENGTH / p_length;
-			
-			var arrow_start = new GPoint(point_end.x - delta_x * rate, point_end.y - delta_y * rate); 
-			var arrow_end = point_end;
-			
-			var delta_x = arrow_end.x - arrow_start.x;
-			var delta_y = arrow_end.y - arrow_start.y;
-			
-			var offset = new GPoint();
-			offset.x = delta_x * Math.cos(C_ROTATION_DEGREE) - delta_y * Math.sin(C_ROTATION_DEGREE);
-			offset.y = delta_x * Math.sin(C_ROTATION_DEGREE) + delta_y * Math.cos(C_ROTATION_DEGREE);
-			var arrow_b = new GPoint();
-			arrow_b.x = arrow_start.x + offset.x;
-			arrow_b.y = arrow_start.y + offset.y;
-			
-			offset.x = delta_x * Math.cos(-C_ROTATION_DEGREE) - delta_y * Math.sin(-C_ROTATION_DEGREE);
-			offset.y = delta_x * Math.sin(-C_ROTATION_DEGREE) + delta_y * Math.cos(-C_ROTATION_DEGREE);
-			var arrow_c = new GPoint();
-			arrow_c.x = arrow_start.x + offset.x;
-			arrow_c.y = arrow_start.y + offset.y;
-			
-			var arrow_a = arrow_start;
-			var arrow_a_latlng = projection.fromPixelToLatLng(arrow_a, 7);
-			var arrow_b_latlng = projection.fromPixelToLatLng(arrow_b, 7);
-			var arrow_c_latlng = projection.fromPixelToLatLng(arrow_c, 7);
-			var polygon = new GPolygon([arrow_a_latlng, arrow_b_latlng, arrow_c_latlng, arrow_a_latlng], "#0000ff", 1, 1, "#0000ff", 1);
-			return polygon;
+		var getHiddenPolylineOverlay = function(points, weigth, id) {
+			var latlngs = new Array();
+			$.each(points, function(index, point){
+				latlngs.push(new GLatLng(point.lat, point.lng));
+			});
+			var polyline = new GPolygon(latlngs, "#000000", 10, 0.0);
+			GEvent.addListener(polyline, 'click', function(latlng) {
+				G_MAP.openInfoWindow("ELEMENT", id, latlng);
+			});
+			return polyline;
+		};
+		
+		var getArrowGroundOverlay = function(arrow_url, sw, ne) {
+			var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
+			var arrow = new GGroundOverlay(BASE ＋ 'images/arrow/'  + arrow_url + '.png', bound);
+			return arrow;
 		}
 		
-		if (this.type == 'point') {
-			this.point = LOCATION.getItem(raw_element.p1).point;		
-			this.icon_url = raw_element.icon_url;
-			this.overlay = new GMarker(this.point);
-			this.highlight_overlay = this.overlay;
-			GEvent.addListener(this.overlay, 'click', function() {
-				G_MAP.openInfoWindow("ELEMENT", me.id, me.point);
+		var getMarker = function(icon_url, point, id) {
+			var image = BASE ＋ 'images/icon/' + icon_url + '.png';
+			var icon = new GIcon(G_DEFAULT_ICON, image);
+			if (icon_url.length == 2)
+				icon.iconSize = new GSize(54,32);
+			else
+				icon.iconSize = new GSize(32,32);
+			var marker = new GMarker(point, {icon:icon});
+			GEvent.addListener(marker, 'click', function() {
+				G_MAP.openInfoWindow("ELEMENT", id, point);
 			});
+			return marker;
+		}
+		if (this.type == 'point') {
+			this.point = new GLatLng(raw_element.lat, raw_element.lng);
+			this.marker = getMarker(raw_element.pic, this.point, this.id);
 		} else {
-			this.start = LOCATION.getItem(raw_element.p1).point;
-			this.end = LOCATION.getItem(raw_element.p2).point;
-			this.linecolor = raw_element.color;
-			this.offset = raw_element.offset;
-			this.overlay = new GPolyline([this.start, this.end], this.color, C_POLYLINE_WEIGHT, C_POLYLINE_OPACITY);
-			this.arrow = computeArrowPolygon(this.start, this.end);
-			this.highlight_overlay = new GPolyline([this.start, this.end], "#FF0000", C_POLYLINE_WEIGHT_HIGHLIGHT, C_POLYLINE_OPACITY_HIGHLIGHT);
-			GEvent.addListener(this.overlay, 'click', function(latlng) {
-				G_MAP.openInfoWindow("ELEMENT", me.id, latlng);
-			});	
-			GEvent.addListener(this.highlight_overlay, 'click', function(latlng) {
-				G_MAP.openInfoWindow("ELEMENT", me.id, latlng);
-			});			
+			this.hidden_polyline = getHiddenPolylineOverlay(raw_element.hot_points, C_POLYLINE_WEIGHT, this.id);
+			this.arrow = getArrowGroundOverlay(raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
+			
 		} 
 		this.events = raw_element.event_ids;
 	};
 	
 	Element.prototype = {
 		drawOnMap: function() {
-			this.current_overlay = this.overlay;
 			if (this.type == 'line') {
+				G_MAP.addOverlay(this.hidden_polyline);
 				G_MAP.addOverlay(this.arrow);
+			} else {
+				G_MAP.addOverlay(this.marker);
 			}
-			G_MAP.addOverlay(this.overlay);
 		},
 		
 		removeFromMap: function() {
 			if (this.type == 'line') {
+				G_MAP.removeOverlay(this.hidden_polyline);
 				G_MAP.removeOverlay(this.arrow);
+			} else {
+				G_MAP.removeOverlay(this.marker);
 			}
-			G_MAP.removeOverlay(this.current_overlay);
-			this.current_overlay = null;
 		},
 		
+		/*
 		highLight: function() {
 			G_MAP.removeOverlay(this.current_overlay);
 			G_MAP.addOverlay(this.highlight_overlay);
@@ -216,32 +193,37 @@
 		
 		adjustZoomLevel: function() {
 		},
+		*/
 	};
 	
 	function Event(raw_event) {
 		this.id = raw_event.id;
 		this.name = raw_event.name;
 		this.element_ids = raw_event.element_ids;
-		this.place = raw_event.place;
 		this.people = raw_event.people;
-		this.start = raw_event.start;
-		this.end = raw_event.end;
+		this.start_y = raw_event.start_y;
+		this.start_m = raw_event.start_m;
+		this.end_y = raw_event.end_y;
+		this.end_m = raw_event.end_m;
 		this.desc = raw_event.desc;
+		this.point = new GLatLng(raw_event.lat, raw_event.lng);
 	};
-
+	
 	function BigEvent(raw_event) {
 		var me = this;
 		this.id = raw_event.id
 		this.name = raw_event.name;
 		this.element_ids = raw_event.element_ids;
 		this.event_ids = raw_event.event_ids;
-		this.start = raw_event.start;
-		this.end = raw_event.end;
+		this.start_y = raw_event.start_y;
+		this.start_m = raw_event.start_m;
+		this.end_y = raw_event.end_y;
+		this.end_m = raw_event.end_m;
 		this.desc = raw_event.desc;
 		var is_details_shown = false;
 		var genNode = function() {
-			var node = $('<div></div>');
-			node.append(me.start + '&nbsp;');
+			var node = $('<li class="big-event-item"></li>');
+			node.append(me.start_y + '年' + me.start_m + '月&nbsp;');
 			var link = $('<a href=#>' + me.name + '</a>');
 			var event_list = genEventListNode();
 		
@@ -250,8 +232,8 @@
 			details.append('<br>');
 			details.append($('<p>' + me.desc + '</p>'));
 			var img = $('<div></div>');
-			img.append($('<img class="event_img" src="images/pic1.jpg"></img>'));
-			img.append($('<img class="event_img" src="images/pic2.jpg"></img>'));
+			img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
+			img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
 			details.append(img);
 			details.append(event_list);
 			details.append('<br>');
@@ -278,14 +260,13 @@
 				var event = EVENT.getItem(event_id);
 				var event_item = $('<div></div>');
 		   
-				event_item.append(event.start + '&nbsp;');
+				event_item.append(event.start_y + '年&nbsp;' + event.start_m + '月');
 				//event_item.append(event.place + '&nbsp;');
 
 				var event_link = $('<a href=#>' + event.name + '</a>');
 	
 				event_link.click(function(){
-					var latlng = LOCATION.getItem(event.place[0]).point;
-					G_MAP.openInfoWindow("EVENT", event_id, latlng);
+					G_MAP.openInfoWindow("EVENT", event_id, event.point);
 				});
 				event_item.append(event_link);
 				node.append(event_item);
@@ -328,6 +309,8 @@
 		this.wiki = raw_people.wiki;
 		this.event_ids = raw_people.event_ids;
 		this.element_ids = raw_people.element_ids;
+		this.pic = raw_people.pic;
+	
 
 		var genDigestNode = function() {
 			var node = $('<div class="character-digest-div"></div>');
@@ -366,15 +349,13 @@
 			$.each(me.event_ids, function(index, event_id){
 				var event = EVENT.getItem(event_id);
 				var event_item = $('<div></div>');
-		   
-				event_item.append(event.start + '&nbsp;');
+				event_item.append(event.start_y + '年&nbsp;' + event.start_m + '月');
 				//event_item.append(event.place + '&nbsp;');
 
 				var event_link = $('<a href=#>' + event.name + '</a>');
 	
 				event_link.click(function(){
-					var latlng = LOCATION.getItem(event.place[0]).point;
-					G_MAP.openInfoWindow("EVENT", event_id, latlng);
+					G_MAP.openInfoWindow("EVENT", event_id, event.point);
 				});
 				event_item.append(event_link);
 				event_list.append(event_item);
@@ -405,9 +386,9 @@
 	
 
 		var genNode = function() {
-			var node = $('<tr class="character-item"></tr>');
+			var node = $('<div class="character-item"><tr></tr></div>');
 			var img_node = $('<td class="character-img-div"></td>');
-			img_node.append('<img width=70 heigth=70 src="img/sunquan.jpg"></img>');
+			img_node.append('<img width=60 heigth=70 src="' BASE + 'images/people/' + me.pic +'.png"></img>');
 			var intro_node = $('<td class="character-intro-div"></td>');
 			var link_node = $('<p class="character-title"><a href="#">' + me.name + '&nbsp;字' + 
 					me.nick + '</a></p>');
@@ -433,20 +414,20 @@
 		showNode: function() {
 			if (this.is_shown)
 			return;
-			this.node.show();
+			this.node.fadeIn();
 			this.is_shown = true;
 		},
       
 		hideNode: function() {
 			if (!this.is_shown)
 			return;
-			this.node.hide();
+			this.node.fadeOut();
 			this.is_shown = false;
 		},
 	};  
 	
 	function LoadElement() {
-		_IG_FetchContent(URL.element_url, function(data) {
+		GDownloadUrl(URL.element_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, element) {
 				ELEMENT.setItem(element.id, new Element(element));
@@ -455,7 +436,7 @@
 	};
 	
 	function LoadEvent() {
-		_IG_FetchContent(URL.event_url, function(data) {
+		GDownloadUrl(URL.event_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, event) {
 				EVENT.setItem(event.id, new Event(event));
@@ -467,17 +448,19 @@
 	};
 	
 	function LoadPeople() {
-		_IG_FetchContent(URL.people_url, function(data) {
+		GDownloadUrl(URL.people_url, function(data) {
 			var json = eval(data);
-			$.each(json, function(index, people) {
-				PEOPLE.setItem(people.name, new People(people));
+			$.each(json, function(index, raw_people) {
+				var people = new People(raw_people)
+				PEOPLE.setItem(people.name, people);
+				PEOPLE_ARRAY.push(people);
 			});
 		});
 		
 	};
 	
 	function LoadBigEvent() {
-		_IG_FetchContent(URL.big_event_url, function(data) {
+		GDownloadUrl(URL.big_event_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, big_event) {
 				BIG_EVENT.setItem(big_event.id, new BigEvent(big_event));
@@ -486,7 +469,7 @@
 	};
 	
 	function LoadLocation() {
-		_IG_FetchContent(URL.location_url, function(data) {
+		GDownloadUrl(URL.location_url, function(data) {
 			var json = eval(data);
 			$.each(json, function(index, location) {
 				LOCATION.setItem(location.name, new Location(location));
@@ -505,22 +488,22 @@
 				div.append(title);
 				div.append(desc);
 			})
-					return div.html()
+			return div.html()
 		},
 	};
 
 	function RedcliffMap(node) {
 		var me = this;
-		this.gmap = new GMap2();
-        	this.gmap.setCenter(new GLatLng(30.917, 110.397), 5);
+		this.gmap = new GMap2(node);
+        	this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
 		this.gmap.addControl(new GLargeMapControl());
 		this.gmap.addControl(new GMapTypeControl());
-		
+		/*
 		var layer = new GTileLayer(new GCopyrightCollection(""), 1, 17);
 		
 		layer.getTileUrl = function(tile, zoom) {
 			zoom = 17 - zoom;
-			var prefix = "http://0.tiles.paint-team.cg.borg.google.com/mt?tiles=2008_12_04_boz";
+			var prefix = "http://0.tiles.paint-team.cg.borg.google.com/mt?tiles=2008_12_09_boz";
 			var url = prefix + '&x=' + tile.x + '&y=' + tile.y + '&zoom=' + zoom;
 			return url;	
 		}
@@ -531,6 +514,7 @@
 		GEvent.addListener(this.gmap, 'infowindowclose', function() {
 			me.deHighLightOverlay();
 		})
+		*/
 	};
 	
 
@@ -546,7 +530,7 @@
 				var event = EVENT.getItem(id);
 				var info_div = Utils.constructInfoWindowHtml([event]);
 				this.gmap.openInfoWindow(latlng, info_div, {maxWidth: 100});
-				this.highLightOverlay(event.element_ids);
+				//this.highLightOverlay(event.element_ids);
 			}
 			if (type == "ELEMENT") {
 				var element = ELEMENT.getItem(id);
@@ -559,7 +543,7 @@
 				});
 				var info_div = Utils.constructInfoWindowHtml(events);
 				this.gmap.openInfoWindow(latlng, info_div, {maxWidth: 100});
-				this.highLightOverlay(id);
+				//this.highLightOverlay(id);
 			}
 		},
 		highLightOverlay: function(element_ids) {
@@ -576,7 +560,7 @@
 			while (HIGH_LIGHT_ELEMENT.length > 0) {
 				var element_id = HIGH_LIGHT_ELEMENT.pop();
 				var element = ELEMENT.getItem(element_id);
-				element.deHighLight();
+				//element.deHighLight();
 			}
 		},
 		
@@ -623,11 +607,49 @@
 		}
 	}
 
+	function CharacterFilter() {
+  		var filter = function() {
+     			var shu_selected = false;
+     			var wei_selected = false;
+     			var wu_selected = false;
+     			if ($('#checkbox_shu').attr('checked'))
+				shu_selected = true;
+     			if ($('#checkbox_wei').attr('checked'))
+				wei_selected = true;
+     			if ($('#checkbox_wu').attr('checked'))
+				wu_selected = true;
+			$.each(PEOPLE_ARRAY, function(index, character){
+        			if (character.kingdom == '蜀') {
+           				if (shu_selected)
+              					character.showNode();
+           				else
+              					character.hideNode();
+        			}   
+        			if (character.kingdom == '魏') {
+           				if (wei_selected)
+              					character.showNode();
+           				else
+              					character.hideNode();
+        			}
+        			if (character.kingdom == '吴') {
+           				if (wu_selected)
+              					character.showNode();
+           				else
+              					character.hideNode();
+        			}
+     			});
+  		};
+  		$('#checkbox_shu').click(filter);
+  		$('#checkbox_wei').click(filter);
+  		$('#checkbox_wu').click(filter);  
+	};
+	var character_filter;
 	$(function(){
         	var map_node = document.getElementById("map_canvas");
 		G_MAP = new RedcliffMap(map_node);
-		var tab_manager = new TabManager(['events','characters'], 'events');
+		var tab_manager = new TabManager(['events','characters'], 'characters');
 	
 		LoadLocation();
+		new CharacterFilter();
 	    });
 })();
