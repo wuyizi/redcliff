@@ -497,7 +497,6 @@
 		var me = this;
 		this.gmap = new GMap2();
         	this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
-		this.gmap.openInfoWindow(new GLatLng(30.917, 110.397), "hello world");
 		var tileLayerOverlay = new GTileLayerOverlay(
   			new GTileLayer(null, null, null, {
     				tileUrlTemplate: 'http://0.tileservers-sanguo.tilefe.geo-cn.bg.borg.google.com/mt?v=cnsg1.0&hl=zh-CN&x={X}&y={Y}&z={Z}&s=G', 
