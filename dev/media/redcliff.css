@@ -57,8 +57,6 @@ html>body .active-tab{
   height:524px;
   position:relative;
   padding:2px 2px 2px 3px;
-  border-top:solid #666666 1px;
-  border-bottom:solid #666666 1px;
   position:relative;
 }
 .search-input{
