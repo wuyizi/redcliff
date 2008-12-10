@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></link>
 <div class="tab-content" id="tabContent">
 	<div id="events_cnt" >
-		<div class="content_title">  历史事件 </div>
+		<div class="content_title">历史事件<a href="" id="shift_people">人物</a> </div>
 		<div class="slider_container">
 			<div class="minus"></div>
 			<div class="slider_bar">
@@ -23,9 +23,7 @@
 		<div id="big_event_list" ></div>
 	</div>
 	<div id="characters_cnt">
-		<div class="content_title">
-			人物
-		</div>
+		<div class="content_title"><a href="" id="shift_event">历史事件</a>人物</div>
 		<div id="kingdom_checkbox">
 			<h4>
 				蜀国<input id="checkbox_shu" type="checkbox" checked>&nbsp;
