@@ -355,6 +355,7 @@
 				var event_link = $('<a href=#>' + event.name + '</a>');
 	
 				event_link.click(function(){
+					alert(0);
 					G_MAP.openInfoWindow("EVENT", event_id, event.point);
 				});
 				event_item.append(event_link);
@@ -518,8 +519,10 @@
 		},
 		openInfoWindow: function(type, id, latlng) {
 			if (type == "EVENT") {
+				alert(1);
 				var event = EVENT.getItem(id);
 				var info_div = Utils.constructInfoWindowHtml([event]);
+				alert(2);
 				this.gmap.openInfoWindow(latlng, "hello world");
 				//this.highLightOverlay(event.element_ids);
 			}
