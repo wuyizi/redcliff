@@ -497,7 +497,7 @@
 		var me = this;
 		this.gmap = new GMap2();
         	this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
-		
+		this.gmap.openInfoWindow(new GLatLng(30.917, 110.397), "hello world");
 		var tileLayerOverlay = new GTileLayerOverlay(
   			new GTileLayer(null, null, null, {
     				tileUrlTemplate: 'http://0.tileservers-sanguo.tilefe.geo-cn.bg.borg.google.com/mt?v=cnsg1.0&hl=zh-CN&x={X}&y={Y}&z={Z}&s=G', 
@@ -519,10 +519,8 @@
 		},
 		openInfoWindow: function(type, id, latlng) {
 			if (type == "EVENT") {
-				alert(1);
 				var event = EVENT.getItem(id);
 				var info_div = Utils.constructInfoWindowHtml([event]);
-				alert(2);
 				this.gmap.openInfoWindow(latlng, "hello world");
 				//this.highLightOverlay(event.element_ids);
 			}
@@ -641,7 +639,6 @@
 	$(function(){
 		$('#events_cnt').hide();	
 		G_MAP = new RedcliffMap();
-	
 		LoadLocation();
 		new CharacterFilter();
 		$('#shift_event').click(function(){
