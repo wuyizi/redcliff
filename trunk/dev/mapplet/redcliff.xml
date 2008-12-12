@@ -12,14 +12,6 @@
 <div class="tab-content" id="tabContent">
   <div id="events_cnt" >
     <div class="content_title">历史事件<a href="" id="shift_people">人物</a> </div>
-    <div class="slider_container">
-      <div class="minus"></div>
-      <div class="slider_bar">
-        <div id="slider1_handle" class="slider_handle"></div>
-      </div>
-      <div class="add"></div>
-    </div>
-    <div class="slider_indicater" id="slider_indicater">公元208年</div>
     <div id="big_event_list" ></div>
   </div>
   <div id="characters_cnt">
