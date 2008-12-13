@@ -43,7 +43,7 @@
 			
 		getLength: function(){
 			return this.length;
-		},
+		}
 	};
 	
 	var LOCATION = new Hash();
@@ -176,7 +176,7 @@
 			} else {
 				G_MAP.removeOverlay(this.marker);
 			}
-		},
+		}
 		
 		/*
 		highLight: function() {
@@ -292,7 +292,7 @@
 			return;
 			this.node.hide();
 			this.is_shown = false;
-		},
+		}
 	};	
 	
 	
@@ -426,7 +426,7 @@
 			return;
 			this.node.fadeOut();
 			this.is_shown = false;
-		},
+		}
 	};  
 	
 	function LoadElement() {
@@ -492,7 +492,7 @@
 				div.append(desc);
 			})
 			return div.html();
-		},
+		}
 	};
 
 	function RedcliffMap(node) {
