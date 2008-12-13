@@ -3,8 +3,7 @@
 <ModulePrefs title="三国赤壁”" 
              description="三国赤壁的地图"
              author="googlecode"
-             author_email="redcliff@gmail.com"
-             height="800">
+             author_email="redcliff@gmail.com">
   <Require feature="sharedmap"/>
 </ModulePrefs>
 <Content type="html"><![CDATA[
