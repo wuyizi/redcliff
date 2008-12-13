@@ -484,15 +484,17 @@
       LoadEvent();
     });
   };
-  
+
   var LOAD_STATES = 0;
   function LoadDone() {
     LOAD_STATES++;
     if (LOAD_STATES == 3) { // shan zhai!
-      _IG_AdjustIFrameHeight();
+      $('#loading').hide();
+      $('#main').show();
+	  _IG_AdjustIFrameHeight();
     }
   };
-  
+
   var Utils = {
     constructInfoWindowHtml : function(events) {
       var div = $('<div></div>');
@@ -646,10 +648,11 @@
       $('#checkbox_wei').click(filter);
       $('#checkbox_wu').click(filter);  
   };
+
   
-  var character_filter;
   $(function(){
-    $('#events_cnt').hide();  
+    //$('#events_cnt').hide();
+	_RC.render();
     G_MAP = new RedcliffMap();
     LoadLocation();
     new CharacterFilter();
@@ -665,6 +668,7 @@
       _IG_AdjustIFrameHeight();
       return false;
     });
+    
   });
 
 })();
