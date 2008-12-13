@@ -223,35 +223,33 @@
     var is_details_shown = false;
     var genNode = function() {
       var node = $('<li class="big-event-item"></li>');
-        
-      node.append($('<div class="events-item-time">' + me.start_y + '年' + me.start_m + '月</div>'));
-      
-      var event_link_div = $('<div class="events-item-link"></div>');
-      var link = $('<a href=#>' + me.name + '</a>');
-      event_link_div.append(link);
-    
+
+      node.append($('<div class="big-event-item-time">' + me.start_y + '年' + me.start_m + '月</div>'));
+
+      var event_link_div = $('<div class="big-event-item-link"></div>');
+      var event_link = $('<a href=#>' + me.name + '</a>');
+      event_link_div.append(event_link);
+
       node.append(event_link_div);
-      
+
       var event_list = genEventListNode();
-      
-      var details = $('<div></div>');
-      details.append('<br>');
+
+      var details = $('<div class="big-event-detail"></div>');
       details.append($('<p>' + me.desc + '</p>'));
       var img = $('<div></div>');
       img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
       img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
       details.append(img);
       details.append(event_list);
-      details.append('<br>');
       node.append(details);
       details.hide();
-      link.click(function(){
+      event_link.click(function(){
         if (is_details_shown) {
-          details.slideUp('slow');
+          details.slideUp('fast', _IG_AdjustIFrameHeight);
           is_details_shown = false;
         }
         else {
-          details.slideDown('slow');
+          details.slideDown('fast', _IG_AdjustIFrameHeight);
           is_details_shown = true;
         }
         G_MAP.updateOverlay('E', me.id);
@@ -264,17 +262,18 @@
       var node = $('<div class="events-div"><div>');
       $.each(me.event_ids, function(index, event_id){
         var event = EVENT.getItem(event_id);
-        var event_item = $('<div></div>');
-       
-        event_item.append(event.start_y + '年&nbsp;' + event.start_m + '月');
+		
+		var event_item = $('<div></div>');
+        event_item.append($('<div class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>'));
         //event_item.append(event.place + '&nbsp;');
-
+        var event_link_div = $('<div class="events-item-link"></div>');
         var event_link = $('<a href=#>' + event.name + '</a>');
-  
+		event_link_div.append(event_link);
+		
         event_link.click(function(){
           G_MAP.openInfoWindow("EVENT", event_id, event.point);
         });
-        event_item.append(event_link);
+        event_item.append(event_link_div);
         node.append(event_item);
       });
       return node;
@@ -367,7 +366,7 @@
       });
       
       show_events.click(function(){
-        event_list.slideDown('fast');
+        event_list.slideDown('fast', _IG_AdjustIFrameHeight);
         hide_events.show();
         show_events.hide();
         G_MAP.updateOverlay('P', me.id);
@@ -375,7 +374,7 @@
       });
 
       hide_events.click(function(){
-        event_list.slideUp('fast');
+        event_list.slideUp('fast', _IG_AdjustIFrameHeight);
         show_events.show();
         hide_events.hide();
         return false;
