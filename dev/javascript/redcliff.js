@@ -1,12 +1,5 @@
 (function(){
 
-  // Debug method for firebug
-  function INFO(text) {
-    if (console) {
-      console.info(text);
-    }
-  };
-
   function Hash(){
     this.length = 0;
     this.items = new Array();
@@ -497,7 +490,6 @@
   function LoadDone() {
     LOAD_STATES++;
     if (LOAD_STATES == 3) { // shan zhai!
-        INFO('load done');
       _IG_AdjustIFrameHeight();
     }
   };
