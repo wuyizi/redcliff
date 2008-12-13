@@ -391,8 +391,10 @@
 			var img_node = $('<td class="character-img-div"></td>');
 			img_node.append('<img width=60 heigth=70 src="' + BASE + 'images/people/' + me.pic +'.png"></img>');
 			var intro_node = $('<td class="character-intro-div"></td>');
-			var link_node = $('<p class="character-title"><a href="#">' + me.name + '&nbsp;字' + 
-					me.nick + '</a></p>');
+			var link_node = $('<p class="character-title"></p>');
+			link_node.append($('<a href="">' + me.name + '</a>'));
+			if (me.nick != null)
+				link_node.append($('<a href="">&nbsp;' + me.nick + '</a>'));
 			link_node.click(function(){
 				G_MAP.updateOverlay('P', me.id);
 				return false;
