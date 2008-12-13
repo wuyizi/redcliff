@@ -1,5 +1,12 @@
 (function(){
 
+  // Debug method for firebug
+  function INFO(text) {
+    if (console) {
+      console.info(text);
+    }
+  };
+
   function Hash(){
     this.length = 0;
     this.items = new Array();
@@ -668,12 +675,5 @@
       return false;
     });
   });
-
-  // Debug method for firebug
-  function INFO(text) {
-    if (console) {
-      console.info(text);
-    }
-  };
 
 })();
