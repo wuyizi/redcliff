@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="三国赤壁”" 
-             description="三国赤壁的地图"
+<ModulePrefs title="赤壁之战" 
+             description="赤壁之战的历史地图"
              author="googlecode"
              author_email="redcliff@gmail.com">
   <Require feature="sharedmap"/>
+  <Require feature="dynamic-height" /> 
 </ModulePrefs>
 <Content type="html"><![CDATA[
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?abc=12345"></link>
+
+<link rel="stylesheet" type="text/css" href="http://redcliff-test.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=30"></link>
+<!-- NOTE: Add '?bpc=<radnom>' to by pass the cache for the css file. -->
+
 <div class="tab-content" id="tabContent">
-  <div id="events_cnt" >
-    <div class="content_title">历史事件<a href="" id="shift_people">人物</a> </div>
+  <div id="events_cnt" style="display:none;">
+    <div class="content_title">历史事件<a href="" id="shift_people">人物</a></div>
     <div id="big_event_list" ></div>
   </div>
   <div id="characters_cnt">
     <div class="content_title"><a href="" id="shift_event">历史事件</a>人物</div>
     <div id="kingdom_checkbox">
-      <h4>
-        刘备军<input id="checkbox_shu" type="checkbox" checked>&nbsp;
-        曹操军<input id="checkbox_wei" type="checkbox" checked>&nbsp;
-        孙权军<input id="checkbox_wu" type="checkbox" checked>&nbsp;
-      </h4>
+      <span>曹操军</span><input id="checkbox_wei" type="checkbox" checked>
+      <span>孙权军</span><input id="checkbox_wu" type="checkbox" checked>
+      <span>刘备军</span><input id="checkbox_shu" type="checkbox" checked>
     </div>
     <div id="character_list"></div>
   </div>
 </div>
 
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js" type="text/javascript"></script>
+<script src="http://redcliff-test.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
+<script src="http://redcliff-test.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
+<script src="http://redcliff-test.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=30" type="text/javascript"></script>
+<!-- NOTE: Add '?bpc=<radnom>' to by pass the cache for the js file. -->
 
 ]]></Content>
 </Module>

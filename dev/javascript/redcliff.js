@@ -3,7 +3,7 @@
   function Hash(){
     this.length = 0;
     this.items = new Array();
-  
+
     for (var i = 0; i < arguments.length; i += 2) {
       if (typeof(arguments[i + 1]) != 'undefined') {
         this.items[arguments[i]] = arguments[i + 1];
@@ -77,28 +77,27 @@
     var current_tab = '';
   
     var shiftTab = function(active_tab) {
-      if (active_tab == current_tab)
-        return;
-        $.each(tabs, function(index, tab){
-          var tab_container = $('#' + tab + '_cnt');
-              var tab_head = $('#' + tab + '_tab');
-              if (tab == active_tab) {
-                tab_container.show();
-                tab_head.removeClass('tab_item');
-                tab_head.addClass('tab-item active-tab');
-              } else {
-                tab_container.hide();
-                tab_head.removeClass('tab-item active-tab');
-                tab_head.addClass('tab-item');
-            } 
-          });
-        };
+      if (active_tab == current_tab) return;
+      $.each(tabs, function(index, tab){
+        var tab_container = $('#' + tab + '_cnt');
+          var tab_head = $('#' + tab + '_tab');
+          if (tab == active_tab) {
+            tab_container.show();
+            tab_head.removeClass('tab_item');
+            tab_head.addClass('tab-item active-tab');
+          } else {
+            tab_container.hide();
+            tab_head.removeClass('tab-item active-tab');
+            tab_head.addClass('tab-item');
+        } 
+      });
+      };
 
     $.each(in_tabs, function(index, tab){
       $('#' + tab + '_tab').click(function(){
-            shiftTab(tab);
+          shiftTab(tab);
       });
-    tabs.push(tab);
+      tabs.push(tab);
     });
     shiftTab(active_tab);
   };
@@ -192,7 +191,7 @@
     },
     
     adjustZoomLevel: function() {
-    },
+    }
     */
   };
   
@@ -224,11 +223,17 @@
     var is_details_shown = false;
     var genNode = function() {
       var node = $('<li class="big-event-item"></li>');
-      node.append(me.start_y + '年' + me.start_m + '月&nbsp;');
+        
+      node.append($('<div class="events-item-time">' + me.start_y + '年' + me.start_m + '月</div>'));
+      
+      var event_link_div = $('<div class="events-item-link"></div>');
       var link = $('<a href=#>' + me.name + '</a>');
-      var event_list = genEventListNode();
+      event_link_div.append(link);
     
-      node.append(link);
+      node.append(event_link_div);
+      
+      var event_list = genEventListNode();
+      
       var details = $('<div></div>');
       details.append('<br>');
       details.append($('<p>' + me.desc + '</p>'));
@@ -277,7 +282,7 @@
     
     this.node = genNode();
     this.is_shown = true;
-  }
+  };
   
   BigEvent.prototype = {
     showNode: function() {
@@ -312,26 +317,25 @@
     this.element_ids = raw_people.element_ids;
     this.pic = raw_people.pic;
   
-
     var genDigestNode = function() {
       var node = $('<div class="character-digest-div"></div>');
-      var digest =  $('<p>' + me.desc.substring(0,50) + '...</p>');
+      var digest =  $('<p class="character-digest-div-short">' + me.desc.substring(0,50) + '...</p>');
       var detail = $('<p>' + me.desc + '</p>');
-      var show_detail = $('<a href=#>详细</a>');
-      var hide_detail = $('<a href=#>隐藏</a>');
+      var show_detail = $('<a href=#>[&nbsp;详细&nbsp;]</a>');
+      var hide_detail = $('<a href=#>[&nbsp;隐藏&nbsp;]</a>');
 
       digest.append(show_detail);
       detail.append(hide_detail);
 
       show_detail.click(function(){
-        digest.hide();
-        detail.slideDown('slow');
+        digest.fadeOut();
+        detail.slideDown();
         return false;
       });
 
       hide_detail.click(function(){
-        digest.show();
-        detail.hide();
+        detail.slideUp();
+        digest.fadeIn();
         return false;
       });
       
@@ -343,27 +347,27 @@
   
     var genEventListNode = function(parent) {
       var node = $('<div class="events-div"><div>');
-      var show_events = $('<a href=#>历史事件</a>');
-      var hide_events = $('<a href=#>隐藏</a>');
-      var event_list = $('<div></div>');
+      var show_events = $('<a class="events-div-show" href=#>历史事件</a>');
+      var hide_events = $('<a class="events-div-hide" href=#>隐藏历史事件</a>');
+      var event_list = $('<div class="events-list"></div>');
     
       $.each(me.event_ids, function(index, event_id){
         var event = EVENT.getItem(event_id);
         var event_item = $('<div></div>');
-        event_item.append(event.start_y + '年&nbsp;' + event.start_m + '月');
+        event_item.append($('<div class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>'));
         //event_item.append(event.place + '&nbsp;');
-
+        var event_link_div = $('<div class="events-item-link"></div>');
         var event_link = $('<a href=#>' + event.name + '</a>');
-  
         event_link.click(function(){
           G_MAP.openInfoWindow("EVENT", event_id, event.point);
         });
-        event_item.append(event_link);
+        event_link_div.append(event_link);
+        event_item.append(event_link_div);
         event_list.append(event_item);
       });
       
       show_events.click(function(){
-        event_list.slideDown('slow');
+        event_list.slideDown('fast');
         hide_events.show();
         show_events.hide();
         G_MAP.updateOverlay('P', me.id);
@@ -371,7 +375,7 @@
       });
 
       hide_events.click(function(){
-        event_list.slideUp('slow');
+        event_list.slideUp('fast');
         show_events.show();
         hide_events.hide();
         return false;
@@ -387,14 +391,11 @@
   
 
     var genNode = function() {
-      var node = $('<div class="character-item"><tr></tr></div>');
-      var img_node = $('<td class="character-img-div"></td>');
-      img_node.append('<img width=60 heigth=70 src="' + BASE + 'images/people/' + me.pic +'.png"></img>');
-      var intro_node = $('<td class="character-intro-div"></td>');
-      var link_node = $('<p class="character-title"></p>');
-      link_node.append($('<a href="">' + me.name + '</a>'));
-      if (me.nick != null)
-        link_node.append($('<a href="">&nbsp;字' + me.nick + '</a>'));
+      var node = $('<div class="character-item"></div>');
+      var img_node = $('<div class="character-img-div"></div>');
+      img_node.append('<img width=60 src="' + BASE + 'images/people/' + me.pic +'.png">');
+      var intro_node = $('<div class="character-intro-div"></div>');
+      var link_node = $('<p class="character-title"><a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : '') + '</p>');
       link_node.click(function(){
         G_MAP.updateOverlay('P', me.id);
         return false;
@@ -427,7 +428,7 @@
       this.node.fadeOut();
       this.is_shown = false;
     }
-  };  
+  };
   
   function LoadElement() {
     _IG_FetchContent(URL.element_url, function(data) {
@@ -435,6 +436,7 @@
       $.each(json, function(index, element) {
         ELEMENT.setItem(element.id, new Element(element));
       });
+      LoadDone();
     })
   };
   
@@ -458,6 +460,7 @@
         PEOPLE.setItem(people.name, people);
         PEOPLE_ARRAY.push(people);
       });
+      LoadDone();
     });
     
   };
@@ -468,6 +471,7 @@
       $.each(json, function(index, big_event) {
         BIG_EVENT.setItem(big_event.id, new BigEvent(big_event));
       });
+      LoadDone();
     });
   };
   
@@ -480,6 +484,15 @@
       LoadElement();
       LoadEvent();
     });
+  };
+  
+  var LOAD_STATES = 0;
+  function LoadDone() {
+    LOAD_STATES++;
+    if (LOAD_STATES == 3) { // shan zhai!
+        INFO('load done');
+      _IG_AdjustIFrameHeight();
+    }
   };
   
   var Utils = {
@@ -501,9 +514,9 @@
           this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
     var tileLayerOverlay = new GTileLayerOverlay(
         new GTileLayer(null, null, null, {
-            tileUrlTemplate: 'http://0.tileservers-sanguo.tilefe.geo-cn.bg.borg.google.com/mt?v=cnsg1.0&hl=zh-CN&x={X}&y={Y}&z={Z}&s=G', 
-            isPng:true,
-            opacity:1.0
+        tileUrlTemplate: 'http://0.tileservers-sanguo.tilefe.geo-cn.bg.borg.google.com/mt?v=cnsg1.0&hl=zh-CN&x={X}&y={Y}&z={Z}&s=G', 
+        isPng:true,
+        opacity:1.0
         })
     );
 
@@ -598,44 +611,44 @@
         CURRENT_EVENT_HASH.setItem(event_id, "");
       });
     }
-  }
+  };
 
   function CharacterFilter() {
       var filter = function() {
-           var shu_selected = false;
-           var wei_selected = false;
-           var wu_selected = false;
-           if ($('#checkbox_shu').attr('checked'))
-        shu_selected = true;
-           if ($('#checkbox_wei').attr('checked'))
-        wei_selected = true;
-           if ($('#checkbox_wu').attr('checked'))
-        wu_selected = true;
+      var shu_selected = false;
+      var wei_selected = false;
+      var wu_selected = false;
+      if ($('#checkbox_shu').attr('checked')) shu_selected = true;
+      if ($('#checkbox_wei').attr('checked')) wei_selected = true;
+      if ($('#checkbox_wu').attr('checked')) wu_selected = true;
       $.each(PEOPLE_ARRAY, function(index, character){
-              if (character.kingdom == '蜀') {
-                   if (shu_selected)
-                        character.showNode();
-                   else
-                        character.hideNode();
-              }   
-              if (character.kingdom == '魏') {
-                   if (wei_selected)
-                        character.showNode();
-                   else
-                        character.hideNode();
-              }
-              if (character.kingdom == '吴') {
-                   if (wu_selected)
-                        character.showNode();
-                   else
-                        character.hideNode();
-              }
-           });
+        if (character.kingdom == '蜀') {
+          if (shu_selected)
+              character.showNode();
+          else
+              character.hideNode();
+        }   
+        if (character.kingdom == '魏') {
+          if (wei_selected)
+              character.showNode();
+          else
+              character.hideNode();
+        }
+        if (character.kingdom == '吴') {
+          if (wu_selected)
+              character.showNode();
+          else
+              character.hideNode();
+        }
+      });
+      _IG_AdjustIFrameHeight();
+      
       };
       $('#checkbox_shu').click(filter);
       $('#checkbox_wei').click(filter);
       $('#checkbox_wu').click(filter);  
   };
+  
   var character_filter;
   $(function(){
     $('#events_cnt').hide();  
@@ -645,12 +658,14 @@
     $('#shift_event').click(function(){
       $('#characters_cnt').hide();
       $('#events_cnt').show();
+      _IG_AdjustIFrameHeight();
       return false;
     });
     $('#shift_people').click(function(){
       $('#events_cnt').hide();
       $('#characters_cnt').show();
+      _IG_AdjustIFrameHeight();
       return false;
     });
-      });
+  });
 })();
