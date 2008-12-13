@@ -12,137 +12,13 @@ div, p, span, a, h3, h4, ol{
 h3 {
   padding: 1em 0 0.5em;
 }
-.quake-search{
-  color:#000;
-  background-color:#fff;
-  margin:auto;
-  width:850px;
-  height:530px;
-  position:relative;
-}
-.map-div{
-  width:519px;
-  height:528px;
-  float:left;
-  border:solid #666666 1px;
-  border-left:0;
-}
-/*tab-head*/
-.tab-head{
-  width:24px;
-  height:530px;
-  float:left;
-  border-right:solid #666666 1px;
-}
-.tab-item{
-  padding:2px 5px;
-  margin:5px 0 0  0;
-  border:solid #666666 1px;
-  border-right:0;
-  background-color:#cfcfcf;
-  cursor:pointer;
-}
-.active-tab{
-  margin-right:-1px;
-  border-right:solid #FFF 1px;
-  background-color:#FFF;
-}
-html>body .active-tab{
-  margin-right:-1px;
-}
 /*tab content*/
 .tab-content{
   float:left;
   width:290px;
-  height:524px;
   position:relative;
   padding:2px 2px 2px 3px;
   position:relative;
-}
-.search-input{
-  width:170px;
-  color:#999999;
-  margin:5px 1px;
-  border:solid #cfcfcf 1px;
-}
-.search-button{
-  width:20px;
-  height:20px;
-  border-width:1px;
-  padding:2px;
-  padding:0 !important;
-  margin-bottom:5px;
-}
-.search-checkbox, .opacity-ctl{
-  margin-left:10px;
-}
-.list-container{
-  height:410px;
-  overflow:auto;
-}
-.select{
-  display:block;
-}
-.highlight{
-  background:#D0D8FF;
-}
-.entity{
-  line-height:140%;
-  cursor:pointer;
-}
-.copyright{
-  clear:both;
-  margin:auto;
-  width:760px;
-  padding-left:35px;
-  color:#666666;
-  font-size:0.9em;
-}
-.copyright-inner{
-  position:absolute;
-  bottom:0;
-  left:0;
-  color:#999999;
-  font-size:0.9em;
-}
-.mymap-container{
-  height:470px;
-  margin:5px 0;
-  overflow-y:auto;
-  overflow-x:hidden;
-}
-.mymap-off, .mymap-on{
-  border-top: 1px solid #CCCCCC;
-  margin: 5px 0px;
-  padding-top: 5px;
-}
-.mymap-off .entity, .mymap-on .entity{
-  text-decoration:underline;
-}
-.mymap-on .entity{
-  font-weight:bold;
-}
-.mymap-desc{
-  color:#666666;
-  padding:3px;
-}
-.mymap-desc a:link, .mymap-desc a:visited, .mymap-desc a:active{
-  color:#999966;
-}
-.mymap-off .links{
-  display:none;
-}
-.mymap-on .links{
-  display:block;
-  position:relative;
-}
-.mymap-save{
-  position:absolute;
-  right:2px;
-  bottom:0;
-}
-.other-item{
-  margin:3px 1px;
 }
 .big-event-item {
   border-bottom: #c5d7ef solid 1px;
@@ -165,7 +41,6 @@ html>body .active-tab{
   float: left;
 }
 #character_list {
- height:465px;
  margin-bottom: 10px;
  margin-top:5px;
  margin-left: 5px;
@@ -174,7 +49,6 @@ html>body .active-tab{
  overflow:auto;
 }
 #big_event_list {
- height:440px;
  margin-bottom: 10px;
  margin-top:5px;
  margin-left: 5px;
@@ -220,50 +94,6 @@ font-weight:bold;
   background: #c5d7ef;
   line-height: 2;
 }
-.even {
-  background: #e9e9e9;
-}
-.slider_indicater {
-	margin-left: 90px;
-	margin-bottom: 10px;
-	color: red;
-}
-.slider_container {
-	margin-top: 15px;
-}
-.minus {
-	background: url(http://redcliff.googlecode.com/svn/trunk/dev/media/images/minus-trans.png) no-repeat;
-	height: 9px;
-	width: 25px;
-	overflow: hidden;
-	float: left;
-	cursor: pointer;
-}
-.slider_bar {
-	background: url(http://redcliff.googlecode.com/svn/trunk/dev/media/images/bar-trans.png) no-repeat;
-	height: 9px;
-	width: 190px;
-	float: left;
-	margin: 0px 5px;
-	position: relative;
-}
-.add {
-	background: url(http://redcliff.googlecode.com/svn/trunk/dev/media/images/add-trans.png) no-repeat;
-	height: 25px;
-	width: 23px;
-	float: left;
-	position: relative;
-	top: -5px;
-	cursor: pointer;
-}
-.slider_handle {
-	background: url(http://redcliff.googlecode.com/svn/trunk/dev/media/images/selector-trans.png) no-repeat;
-	height: 25px;
-	width: 12px;
-	position: absolute;
-	top: -8px;
-}
-
 .event_img {
 	margin-left: 10px;
 	margin-top: 10px;

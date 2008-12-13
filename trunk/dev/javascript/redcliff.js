@@ -394,7 +394,7 @@
 			var link_node = $('<p class="character-title"></p>');
 			link_node.append($('<a href="">' + me.name + '</a>'));
 			if (me.nick != null)
-				link_node.append($('<a href="">&nbsp;' + me.nick + '</a>'));
+				link_node.append($('<a href="">&nbsp;字' + me.nick + '</a>'));
 			link_node.click(function(){
 				G_MAP.updateOverlay('P', me.id);
 				return false;
