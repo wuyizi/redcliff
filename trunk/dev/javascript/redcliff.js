@@ -668,4 +668,12 @@
       return false;
     });
   });
+
+  // Debug method for firebug
+  function INFO(text) {
+    if (console) {
+      console.info(text);
+    }
+  };
+
 })();
