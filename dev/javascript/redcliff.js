@@ -65,7 +65,7 @@
 		element_url: BASE + 'data/element.json',
 		event_url: BASE + 'data/event.json',
 		big_event_url: BASE + 'data/big_event.json',
-		people_url: BASE +'data/people.json',
+		people_url: BASE +'data/people.json'
 	};
 
 	var G_MAP;
