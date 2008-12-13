@@ -9,20 +9,37 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=30"></link>
-<!-- NOTE: Add '?bpc=<radnom>' to by pass the cache for the css file. -->
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/rc.css"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=40"></link>
+<!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
+
+<!-- TODO(jiangfan) add handlers for the drop-down box -->
+<div class="rc_id dropdown-border" frame_size="1" border_color="#d5ddf3">
+<select class="dropdown-box" id="change_overlay">
+  <option value="100">历史地图</option>
+  <option value="50">半透明层叠</option>
+  <option value="0">现代地图</option>
+</select>
+</div>
 
 <div class="tab-content" id="tabContent">
   <div id="events_cnt" style="display:none;">
-    <div class="content_title">历史事件<a href="" id="shift_people">人物</a></div>
+    <div class="tab-head">
+      <div class="rc_id tab-item" frame_size="2" no_bottom="1" inner_color="#e8ecf9" border_color="#d5ddf3"><div class="tab-active">历史事件</div></div>
+      <div class="rc_id tab-item" frame_size="1" no_bottom="1" inner_color="#fff" border_color="#d5ddf3"><div class="tab-inactive" id="shift_people">主要人物</div></div>
+    </div>
+    <div id="unused_bar" class="rc_id" frame_size="0" no_bottom="1" no_left="1" inner_color="#e8ecf9" outer_color="#fff"></div>
     <div id="big_event_list" ></div>
   </div>
   <div id="characters_cnt">
-    <div class="content_title"><a href="" id="shift_event">历史事件</a>人物</div>
-    <div id="kingdom_checkbox">
-      <span>曹操军</span><input id="checkbox_wei" type="checkbox" checked>
-      <span>孙权军</span><input id="checkbox_wu" type="checkbox" checked>
-      <span>刘备军</span><input id="checkbox_shu" type="checkbox" checked>
+    <div class="tab-head">
+      <div class="rc_id tab-item" frame_size="1" no_bottom="1" inner_color="#fff" border_color="#d5ddf3"><div class="tab-inactive" id="shift_event">历史事件</div></div>
+      <div class="rc_id tab-item" frame_size="2" no_bottom="1" inner_color="#e8ecf9" border_color="#d5ddf3"><div class="tab-active">主要人物</div></div>
+    </div>
+    <div id="kingdom_checkbox" class="rc_id" frame_size="0" no_bottom="1" no_left="1" inner_color="#e8ecf9" outer_color="#fff">
+      <label for="checkbox_wei">曹操军</label><input id="checkbox_wei" type="checkbox" checked>
+      <label for="checkbox_wu">孙权军</label><input id="checkbox_wu" type="checkbox" checked>
+      <label for="checkbox_shu">刘备军</label><input id="checkbox_shu" type="checkbox" checked>
     </div>
     <div id="character_list"></div>
   </div>
@@ -30,8 +47,13 @@
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=30" type="text/javascript"></script>
-<!-- NOTE: Add '?bpc=<radnom>' to by pass the cache for the js file. -->
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/rc.js?bpc=10" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=40" type="text/javascript"></script>
+<!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
+
+<script>
+  _RC.render();
+</script>
 
 ]]></Content>
 </Module>
