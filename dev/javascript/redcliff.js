@@ -335,14 +335,14 @@
       detail.append(hide_detail);
 
       show_detail.click(function(){
-        detail.slideDown();
-        digest.fadeOut();
+        detail.slideDown('fast', _IG_AdjustIFrameHeight);
+        digest.fadeOut('fast');
         return false;
       });
 
       hide_detail.click(function(){
-        detail.slideUp();
-        digest.fadeIn();
+        detail.slideUp('fast', _IG_AdjustIFrameHeight);
+        digest.fadeIn('fast');
         return false;
       });
       
@@ -632,7 +632,7 @@
           else character.hideNode();
         }
       });
-      _IG_AdjustIFrameHeight('300');
+      _IG_AdjustIFrameHeight();
     };
     $('#checkbox_shu').click(filter);
     $('#checkbox_wei').click(filter);
