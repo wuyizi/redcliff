@@ -62,7 +62,7 @@
 
   var URL = {
     location_url: BASE + 'data/location.json',
-    element_url: BASE + 'data/element.json',
+    element_url: BASE + 'data/element.json?random=1',
     event_url: BASE + 'data/event.json',
     big_event_url: BASE + 'data/big_event.json',
     people_url: BASE +'data/people.json'
