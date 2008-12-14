@@ -320,14 +320,17 @@
     this.desc = raw_people.desc;
     this.kingdom = raw_people.kindom;
     this.wiki = raw_people.wiki;
+    this.baike = raw_people.baike;
     this.event_ids = raw_people.event_ids;
     this.element_ids = raw_people.element_ids;
     this.pic = raw_people.pic;
   
     var genDigestNode = function() {
       var node = $('<div class="character-digest-div"></div>');
+      var link_wiki = '<a target="_blank" href="' + me.wiki + '">维基</a>';
+      var link_baike = '<a target="_blank" href="' + me.baike + '">百科</a>';
       var digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
-      var detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + '</div>');
+      var detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
       var show_detail = $('<a href=#>[详细]</a>');
       var hide_detail = $('<a href=#>[隐藏]</a>');
 
