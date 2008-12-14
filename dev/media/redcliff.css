@@ -39,16 +39,17 @@ table,tr,td,th,tbody {
   z-index:140;
   position:absolute;
   top:0px;
+  padding-left:10px;
 }
 .tab-item-active {
   display:inline;
   float:left;
   margin-right:3px;
-  background-color:#F0E9BF;
+  background-color:#F6F3D7;
   border-top: 2px solid #E6DB9D;
   border-left: 2px solid #E6DB9D;
   border-right: 2px solid #E6DB9D;
-  border-bottom: 2px solid #F0E9BF;
+  border-bottom: 2px solid #F6F3D7;
   z-index:150;
 }
 
@@ -88,8 +89,8 @@ table,tr,td,th,tbody {
   top:15px;
 }
 .big-event-item {
-  border-bottom: #F0E9BF solid 1px;
-  border-top: #E6DB9D solid 2px;
+  border-bottom: #F6F3D7 solid 1px;
+  border-top: #E6DB9D solid 1px;
   padding: 1em 0 1em 5px;
 }
 .big-event-title {
@@ -129,12 +130,12 @@ table,tr,td,th,tbody {
   clear:both;
 }
 .character-item{
-  border-bottom: #F0E9BF solid 1px;
-  border-top: #E6DB9D solid 2px;
+  border-bottom: #F6F3D7 solid 1px;
+  border-top: #E6DB9D solid 1px;
   width:100%;
 }
 .character-item:hover{
-  background-color:#EEEEEE;
+  background-color:#F9F7E4;
 }
 .character-img-div{
   width:65px;
@@ -179,11 +180,9 @@ table,tr,td,th,tbody {
   white-space:nowrap;
 }
 #kingdom_checkbox {
-  background: #F0E9BF;
+  background: #F6F3D7;
   line-height: 2;
   clear:both;
-  border-left:2px solid #E6DB9D;
-  border-right:2px solid #E6DB9D;
   border-top:2px solid #E6DB9D;
   padding-left:5px;
 }
@@ -239,11 +238,9 @@ a.events-div-hide{
 
 #unused_bar {
   /* TODO */
-  background: #F0E9BF;
+  background: #F6F3D7;
   height: 0.7em;
   clear:both;
-  border-left:2px solid #E6DB9D;
-  border-right:2px solid #E6DB9D;
   border-top:2px solid #E6DB9D;
   padding-left:5px;
 }
