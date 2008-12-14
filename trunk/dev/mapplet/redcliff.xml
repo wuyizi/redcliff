@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=63"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=64"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -55,7 +55,7 @@
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=64" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=65" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 ]]></Content>
