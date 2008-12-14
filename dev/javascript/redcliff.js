@@ -58,14 +58,20 @@
   var CURRENT_ELEMENT = new Array();
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
-  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
+  var BASE = 'http://redcliff-test.googlecode.com/svn/trunk/dev/';
 
   var URL = {
     location_url: BASE + 'data/location.json',
-    element_url: BASE + 'data/element.json?random=1',
+    element_url: BASE + 'data/element.json?bpc=1',
     event_url: BASE + 'data/event.json',
     big_event_url: BASE + 'data/big_event.json',
     people_url: BASE +'data/people.json'
+  };
+
+  var FLAGS = {
+    '蜀': 'G',
+    '魏': 'B',
+    '吴': 'R'
   };
 
   var G_MAP;
@@ -226,22 +232,22 @@
       var node = $('<div class="big-event-item"></div>');
 
       var table = $('<table><tbody><tr></tr></tbody></table>');
-	  var row = table.children().children();
+      var row = table.children().children();
       var time_cell = $('<td class="big-event-item-time">' + me.start_y + '年&nbsp;' + me.start_m + '月</div>');
       var link_cell = $('<td class="big-event-item-link"></td>');
-	  row.append(time_cell);
-	  row.append(link_cell);
-	  node.append(table);
+      row.append(time_cell);
+      row.append(link_cell);
+      node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');
       event_link.click(function(){
         if (is_details_shown) {
           details.hide();
-		  _IG_AdjustIFrameHeight();
+          _IG_AdjustIFrameHeight();
           is_details_shown = false;
         } else {
           details.show();
-		  _IG_AdjustIFrameHeight();
+          _IG_AdjustIFrameHeight();
           is_details_shown = true;
         }
         G_MAP.updateOverlay('E', me.id);
@@ -258,7 +264,7 @@
       var event_list = $('<table class="events-div"></table>');
       genEventList(event_list, me.event_ids);
       details.append(event_list);
-	  
+      
       node.append(details);
 
       $('#big_event_list').append(node);
@@ -270,10 +276,10 @@
   };
 
   var genEventList = function(table, event_ids) {
-	var tbody = table.append('<tbody></tbody>').children();
+    var tbody = table.append('<tbody></tbody>').children();
     $.each(event_ids, function(index, event_id){
       var event = EVENT.getItem(event_id);
-	  var row = $('<tr></tr>');
+      var row = $('<tr></tr>');
       genEventItem(row, event);
       tbody.append(row);
     });
@@ -283,11 +289,11 @@
     var time_cell = $('<td class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>');
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
-	event_link.click(function(){
-	  G_MAP.openInfoWindow("EVENT", event.id, event.point);
-	});
+    event_link.click(function(){
+      G_MAP.openInfoWindow("EVENT", event.id, event.point);
+    });
     link_cell.append(event_link);
-	row.append(time_cell);
+    row.append(time_cell);
     row.append(link_cell);
   };
   
@@ -306,7 +312,6 @@
       this.is_shown = false;
     }
   };  
-  
   
   function People(raw_people) {
 
@@ -353,15 +358,15 @@
       node.append(detail);
       return node;
     };
-  
+
     var genEventListNode = function() {
       var node = $('<div class="events-div"></div>');
       var show_events = $('<a class="events-div-show" href=#>历史事件</a>');
       var hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
       var event_list = $('<table class="events-list" style="display:none;"></table>');
-	  
-	  genEventList(event_list, me.event_ids);
-      
+
+      genEventList(event_list, me.event_ids);
+
       show_events.click(function(){
         event_list.slideDown('fast', _IG_AdjustIFrameHeight);
         hide_events.show();
@@ -385,11 +390,15 @@
   
 
     var genNode = function() {
+
+
       var table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
       var img_node = $('<td class="character-img-div"></td>');
       img_node.append('<img width=60 src="' + BASE + 'images/people/' + me.pic +'.png">');
       var intro_node = $('<td class="character-intro-div"></td>');
-      var link_node = $('<div class="character-title"><a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : '') + '</div>');
+      var link_node = $('<div class="character-title"><img src="' + BASE + 'images/icon/' + FLAGS[me.kingdom] + '.png"/>' 
+                      + '<a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : '') 
+                      + '</div>');
       link_node.click(function(){
         G_MAP.updateOverlay('P', me.id);
         return false;
@@ -397,13 +406,13 @@
       intro_node.append(link_node);
       intro_node.append(genDigestNode());
   
-	  var row = table.children().children();
-	  row.append(img_node);
-	  row.append(intro_node);
-	  
-	  var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
-	  event_node.append(genEventListNode());
-	  
+      var row = table.children().children();
+      row.append(img_node);
+      row.append(intro_node);
+      
+      var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
+      event_node.append(genEventListNode());
+      
       $('#character_list').append(table);
       return table;
     };
@@ -491,7 +500,7 @@
     if (LOAD_STATES == 3) { // shan zhai!
       $('#loading').hide();
       $('#main').show();
-	  _IG_AdjustIFrameHeight();
+      _IG_AdjustIFrameHeight();
     }
   };
 
