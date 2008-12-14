@@ -138,9 +138,9 @@
       var image = BASE + 'images/icon/' + icon_url + '.png';
       var icon = new GIcon(G_DEFAULT_ICON, image);
       if (icon_url.length == 2)
-        icon.iconSize = new GSize(54,32);
+        icon.iconSize = new GSize(45,32);
       else
-        icon.iconSize = new GSize(32,32);
+        icon.iconSize = new GSize(25,32);
       var marker = new GMarker(point, {icon:icon});
       GEvent.addListener(marker, 'click', function() {
         G_MAP.openInfoWindow("ELEMENT", id, point);
