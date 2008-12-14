@@ -221,66 +221,74 @@
     this.end_m = raw_event.end_m;
     this.desc = raw_event.desc;
     var is_details_shown = false;
+
     var genNode = function() {
-      var node = $('<li class="big-event-item"></li>');
+      var node = $('<div class="big-event-item"></div>');
 
-      node.append($('<div class="big-event-item-time">' + me.start_y + '年' + me.start_m + '月</div>'));
+      var table = $('<table><tbody><tr></tr></tbody></table>');
+	  var row = table.children().children();
+      var time_cell = $('<td class="big-event-item-time">' + me.start_y + '年&nbsp;' + me.start_m + '月</div>');
+      var link_cell = $('<td class="big-event-item-link"></td>');
+	  row.append(time_cell);
+	  row.append(link_cell);
+	  node.append(table);
 
-      var event_link_div = $('<div class="big-event-item-link"></div>');
       var event_link = $('<a href=#>' + me.name + '</a>');
-      event_link_div.append(event_link);
+      event_link.click(function(){
+        if (is_details_shown) {
+          details.hide();
+		  _IG_AdjustIFrameHeight();
+          is_details_shown = false;
+        } else {
+          details.show();
+		  _IG_AdjustIFrameHeight();
+          is_details_shown = true;
+        }
+        G_MAP.updateOverlay('E', me.id);
+      });
+      link_cell.append(event_link);
 
-      node.append(event_link_div);
-
-      var event_list = genEventListNode();
-
-      var details = $('<div class="big-event-detail"></div>');
+      var details = $('<div class="big-event-detail" style="display:none;"></div>');
       details.append($('<p>' + me.desc + '</p>'));
       var img = $('<div></div>');
       img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
       img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
       details.append(img);
+
+      var event_list = $('<table class="events-div"></table>');
+      genEventList(event_list, me.event_ids);
       details.append(event_list);
+	  
       node.append(details);
-      details.hide();
-      event_link.click(function(){
-        if (is_details_shown) {
-          details.slideUp('fast', _IG_AdjustIFrameHeight);
-          is_details_shown = false;
-        }
-        else {
-          details.slideDown('fast', _IG_AdjustIFrameHeight);
-          is_details_shown = true;
-        }
-        G_MAP.updateOverlay('E', me.id);
-      });
+
       $('#big_event_list').append(node);
       return node;
     };
-    
-    var genEventListNode = function() {
-      var node = $('<div class="events-div"><div>');
-      $.each(me.event_ids, function(index, event_id){
-        var event = EVENT.getItem(event_id);
-		
-		var event_item = $('<div></div>');
-        event_item.append($('<div class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>'));
-        //event_item.append(event.place + '&nbsp;');
-        var event_link_div = $('<div class="events-item-link"></div>');
-        var event_link = $('<a href=#>' + event.name + '</a>');
-		event_link_div.append(event_link);
-		
-        event_link.click(function(){
-          G_MAP.openInfoWindow("EVENT", event_id, event.point);
-        });
-        event_item.append(event_link_div);
-        node.append(event_item);
-      });
-      return node;
-    };
-    
+   
     this.node = genNode();
     this.is_shown = true;
+  };
+
+  var genEventList = function(table, event_ids) {
+	var tbody = table.append('<tbody></tbody>').children();
+    $.each(event_ids, function(index, event_id){
+      var event = EVENT.getItem(event_id);
+	  var row = $('<tr></tr>');
+      genEventItem(row, event);
+      tbody.append(row);
+    });
+  };
+ 
+  var genEventItem = function(row, event) {
+    var time_cell = $('<td class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>');
+    var link_cell = $('<td class="events-item-link"></td>');
+    var event_link = $('<a href=#>' + event.name + '</a>');
+	event_link.click(function(){
+	  G_MAP.openInfoWindow("EVENT", event.id, event.point);
+	});
+    link_cell.append(event_link);
+	row.append(time_cell);
+    row.append(link_cell);
   };
   
   BigEvent.prototype = {
@@ -318,17 +326,17 @@
   
     var genDigestNode = function() {
       var node = $('<div class="character-digest-div"></div>');
-      var digest =  $('<p class="character-digest-div-short">' + me.desc.substring(0,50) + '...</p>');
-      var detail = $('<p>' + me.desc + '</p>');
-      var show_detail = $('<a href=#>[&nbsp;详细&nbsp;]</a>');
-      var hide_detail = $('<a href=#>[&nbsp;隐藏&nbsp;]</a>');
+      var digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
+      var detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + '</div>');
+      var show_detail = $('<a href=#>[详细]</a>');
+      var hide_detail = $('<a href=#>[隐藏]</a>');
 
       digest.append(show_detail);
       detail.append(hide_detail);
 
       show_detail.click(function(){
-        digest.fadeOut();
         detail.slideDown();
+        digest.fadeOut();
         return false;
       });
 
@@ -340,30 +348,16 @@
       
       node.append(digest);
       node.append(detail);
-      detail.hide();
       return node;
     };
   
-    var genEventListNode = function(parent) {
-      var node = $('<div class="events-div"><div>');
+    var genEventListNode = function() {
+      var node = $('<div class="events-div"></div>');
       var show_events = $('<a class="events-div-show" href=#>历史事件</a>');
-      var hide_events = $('<a class="events-div-hide" href=#>隐藏历史事件</a>');
-      var event_list = $('<div class="events-list"></div>');
-    
-      $.each(me.event_ids, function(index, event_id){
-        var event = EVENT.getItem(event_id);
-        var event_item = $('<div></div>');
-        event_item.append($('<div class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>'));
-        //event_item.append(event.place + '&nbsp;');
-        var event_link_div = $('<div class="events-item-link"></div>');
-        var event_link = $('<a href=#>' + event.name + '</a>');
-        event_link.click(function(){
-          G_MAP.openInfoWindow("EVENT", event_id, event.point);
-        });
-        event_link_div.append(event_link);
-        event_item.append(event_link_div);
-        event_list.append(event_item);
-      });
+      var hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
+      var event_list = $('<table class="events-list" style="display:none;"></table>');
+	  
+	  genEventList(event_list, me.event_ids);
       
       show_events.click(function(){
         event_list.slideDown('fast', _IG_AdjustIFrameHeight);
@@ -383,29 +377,32 @@
       node.append(show_events);
       node.append(hide_events);
       node.append(event_list);
-      hide_events.hide();
-      event_list.hide();
       return node;
     };
   
 
     var genNode = function() {
-      var node = $('<div class="character-item"></div>');
-      var img_node = $('<div class="character-img-div"></div>');
+      var table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
+      var img_node = $('<td class="character-img-div"></td>');
       img_node.append('<img width=60 src="' + BASE + 'images/people/' + me.pic +'.png">');
-      var intro_node = $('<div class="character-intro-div"></div>');
-      var link_node = $('<p class="character-title"><a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : '') + '</p>');
+      var intro_node = $('<td class="character-intro-div"></td>');
+      var link_node = $('<div class="character-title"><a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : '') + '</div>');
       link_node.click(function(){
         G_MAP.updateOverlay('P', me.id);
         return false;
       });
       intro_node.append(link_node);
       intro_node.append(genDigestNode());
-      node.append(img_node);
-      node.append(intro_node);
-      intro_node.append(genEventListNode());
-      $('#character_list').append(node);
-      return node;
+  
+	  var row = table.children().children();
+	  row.append(img_node);
+	  row.append(intro_node);
+	  
+	  var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
+	  event_node.append(genEventListNode());
+	  
+      $('#character_list').append(table);
+      return table;
     };
 
     this.node = genNode();
@@ -417,14 +414,14 @@
     showNode: function() {
       if (this.is_shown)
       return;
-      this.node.fadeIn();
+      this.node.show();
       this.is_shown = true;
     },
       
     hideNode: function() {
       if (!this.is_shown)
       return;
-      this.node.fadeOut();
+      this.node.hide();
       this.is_shown = false;
     }
   };
@@ -514,9 +511,9 @@
           this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
     var tileLayerOverlay = new GTileLayerOverlay(
         new GTileLayer(null, null, null, {
-        tileUrlTemplate: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}', 
-        isPng:true,
-        opacity:1.0
+          tileUrlTemplate: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}',
+          isPng:true,
+          opacity:1.0
         })
     );
 
@@ -614,7 +611,7 @@
   };
 
   function CharacterFilter() {
-      var filter = function() {
+    var filter = function() {
       var shu_selected = false;
       var wei_selected = false;
       var wu_selected = false;
@@ -623,36 +620,27 @@
       if ($('#checkbox_wu').attr('checked')) wu_selected = true;
       $.each(PEOPLE_ARRAY, function(index, character){
         if (character.kingdom == '蜀') {
-          if (shu_selected)
-              character.showNode();
-          else
-              character.hideNode();
+          if (shu_selected) character.showNode();
+          else character.hideNode();
         }   
         if (character.kingdom == '魏') {
-          if (wei_selected)
-              character.showNode();
-          else
-              character.hideNode();
+          if (wei_selected) character.showNode();
+          else character.hideNode();
         }
         if (character.kingdom == '吴') {
-          if (wu_selected)
-              character.showNode();
-          else
-              character.hideNode();
+          if (wu_selected) character.showNode();
+          else character.hideNode();
         }
       });
-      _IG_AdjustIFrameHeight();
-      
-      };
-      $('#checkbox_shu').click(filter);
-      $('#checkbox_wei').click(filter);
-      $('#checkbox_wu').click(filter);  
+      _IG_AdjustIFrameHeight('300');
+    };
+    $('#checkbox_shu').click(filter);
+    $('#checkbox_wei').click(filter);
+    $('#checkbox_wu').click(filter);  
   };
 
   
   $(function(){
-    //$('#events_cnt').hide();
-	_RC.render();
     G_MAP = new RedcliffMap();
     LoadLocation();
     new CharacterFilter();
@@ -668,7 +656,5 @@
       _IG_AdjustIFrameHeight();
       return false;
     });
-    
   });
-
 })();
