@@ -27,34 +27,53 @@ table,tr,td,th,tbody {
 
 .dropdown-border {
   position:absolute;
-  right:2px;
-  top:0px;
+  right:0px;
+  top:15px;
   z-index:200;
 }
 .dropdown-box {
-  border:0px;
-  margin-right:4px;
+  border: 1px solid #d5ddf3;
+  font-size:12px;
 }
 .tab-head {
-  clear:both;
+  z-index:140;
+  position:absolute;
+  top:0px;
 }
-.tab-item {
+.tab-item-active {
   display:inline;
   float:left;
   margin-right:3px;
+  background-color:#e8ecf9;
+  border-top: 2px solid #d5ddf3;
+  border-left: 2px solid #d5ddf3;
+  border-right: 2px solid #d5ddf3;
+  border-bottom: 2px solid #e8ecf9;
+  z-index:150;
 }
+
+.tab-item-inactive {
+  display:inline;
+  float:left;
+  margin-right:3px;
+  border-top: 1px solid #d5ddf3;
+  border-left: 1px solid #d5ddf3;
+  border-right: 1px solid #d5ddf3;
+  z-index:150;
+}
+
 .tab-active {
   font-weight:bold;
   font-size:13px;
   color:#000;
-  line-height:1.5;
+  line-height:1.6;
   width:5em;
   text-align:center;
 }
 .tab-inactive {
   font-size:13px;
   color:#6784c7;
-  line-height:1.5;
+  line-height:1.6;
   cursor:pointer;
   width:5em;
   text-align:center;
@@ -64,9 +83,9 @@ table,tr,td,th,tbody {
   text-decoration:underline;
 }
 .tab-content{
-  /*padding:2px 2px 2px 3px;*/
+  padding-top:22px;
   position:relative;
-  top:7px;
+  top:15px;
 }
 .big-event-item {
   border-bottom: #e8ecf9 solid 1px;
@@ -75,14 +94,15 @@ table,tr,td,th,tbody {
 }
 .big-event-title {
   padding-left: 18px;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-image: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/plus.gif');
+  background: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/plus.gif') no-repeat left center;
   cursor: pointer;
 }
 .expanded .big-event-title {
-  background-image: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/minus.gif');
+  background-image: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/minus.gif') no-repeat left center;
+  padding-left: 18px;
+  cursor: pointer;
 }
+
 .big-event-item-time {
   float:left;
   font-size:12px;
@@ -116,10 +136,9 @@ table,tr,td,th,tbody {
   font-weight:bold;
 }
 .character-item{
-  padding: 8px 0px 10px 0px;
-  vertical-align:text-top;
   border-bottom: #e8ecf9 solid 1px;
   border-top: #d5ddf3 solid 2px;
+  width:100%;
 }
 .character-item:hover{
   background-color:#EEEEEE;
@@ -128,13 +147,13 @@ table,tr,td,th,tbody {
   width:65px;
   height:5.3em;
   vertical-align:top;
-  float: left;
+  padding:10px 10px 0px 0px;
+  /*float: left;*/
 }
 .character-intro-div{
-  margin-left: 75px;
-}
-.character-intro-div:hover{
-  background-color:#EE0;
+  /*margin-left: 75px;*/
+  vertical-align:top;
+  padding:10px 0px 0px 0px;
 }
 .character-title{
   font-size:14px;
@@ -153,8 +172,14 @@ table,tr,td,th,tbody {
 }
 .character-digest-div-short {
   position:absolute;
+  font-family:simsun;
+  line-height:1.2;
 }
-.character-digest-div p a{
+.character-digest-div-long {
+  font-family:simsun;
+  line-height:1.2;
+}
+.character-digest-div div a{
   padding-left:2px;
   color:#6784c7;
   text-decoration:none;
@@ -165,6 +190,8 @@ table,tr,td,th,tbody {
   line-height: 2;
   clear:both;
   border-left:2px solid #d5ddf3;
+  border-right:2px solid #d5ddf3;
+  border-top:2px solid #d5ddf3;
   padding-left:5px;
 }
 #kingdom_checkbox label{
@@ -173,11 +200,12 @@ table,tr,td,th,tbody {
 #kingdom_checkbox input{
   vertical-align:middle;
 }
+
 .events-div {
-  clear:both;
-  margin-top:3px;
+  padding:5px 0px;
   font-size:12px;
 }
+
 a.events-div-show{
   color:#6784c7;
   text-decoration:none;
@@ -198,9 +226,11 @@ a.events-div-hide{
 .events-item-time{
   float:left;
   width:100px;
+  font-size:12px;
 }
 .events-item-link{
   margin-left:100px;
+  font-size:12px;
 }
 
 .event_img {
@@ -220,5 +250,7 @@ a.events-div-hide{
   height: 0.7em;
   clear:both;
   border-left:2px solid #d5ddf3;
+  border-right:2px solid #d5ddf3;
+  border-top:2px solid #d5ddf3;
   padding-left:5px;
 }
