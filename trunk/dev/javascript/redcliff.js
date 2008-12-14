@@ -514,7 +514,7 @@
           this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
     var tileLayerOverlay = new GTileLayerOverlay(
         new GTileLayer(null, null, null, {
-        tileUrlTemplate: 'http://0.tileservers-sanguo.tilefe.geo-cn.bg.borg.google.com/mt?v=cnsg1.0&hl=zh-CN&x={X}&y={Y}&z={Z}&s=G', 
+        tileUrlTemplate: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}', 
         isPng:true,
         opacity:1.0
         })
