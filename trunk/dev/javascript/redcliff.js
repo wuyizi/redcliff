@@ -339,7 +339,7 @@
     node.append(this.detail);
     parent_node.append(node);
   };
-   
+
   genDigestNode.prototype = {
     showDetial: function() {
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
@@ -351,6 +351,45 @@
     }
   };
   
+  function genEventListNode(parent_node, event_ids, people_id) {
+    var node = $('<div class="events-div"></div>');
+    this.show_events = $('<a class="events-div-show" href=#>历史事件</a>');
+    this.hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
+    this.event_list = $('<table class="events-list" style="display:none;"></table>');
+
+    genEventList(this.event_list, event_ids);
+
+    this.show_events.click(function(){
+      me.showEvents();
+      G_MAP.updateOverlay('P', people_id);
+      return false;
+    });
+
+    this.hide_events.click(function(){
+      me.hideEvents();
+      return false;
+    });
+
+    node.append(this.show_events);
+    node.append(this.hide_events);
+    node.append(this.event_list);
+    perent_node.append(node);
+
+  };
+  
+  genEventListNode.prototype = {
+    showEvents: function() {
+      this.event_list.slideDown('fast', _IG_AdjustIFrameHeight);
+      this.hide_events.show();
+      this.show_events.hide();
+    },
+    hideEvents: function() {
+      this.event_list.slideUp('fast', _IG_AdjustIFrameHeight);
+      this.show_events.show();
+      this.hide_events.hide();
+    }
+  }
+
   function People(raw_people) {
 
     var me = this;
