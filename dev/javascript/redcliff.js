@@ -511,7 +511,7 @@
     constructInfoWindowHtml : function(events) {
       var html = '<div class="infowindow_div">';
       $.each(events, function(index, event){
-	html += '<div class="infowindow_item_div"><a href="">' + event.name + '</a>' +
+	html += '<div class="infowindow_item_div"><a href="http://www.g.cn">' + event.name + '</a>' +
 	'<p>' + event.desc + '</p></div>';
       });
       html += '</div>';
@@ -556,8 +556,7 @@
       alert(latlng);
       if (type == "EVENT") {
         var event = EVENT.getItem(id);
-        //var info_div = Utils.constructInfoWindowHtml([event]);
-	var info_div = '<div><p><a href="http://www.google.com">刘备</a></p></div>';
+        var info_div = Utils.constructInfoWindowHtml([event]);
         this.gmap.openInfoWindowHtml(latlng, info_div);
         //this.highLightOverlay(event.element_ids);
       }
