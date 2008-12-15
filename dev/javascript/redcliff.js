@@ -407,7 +407,7 @@
   };
 
   function PeopleNode(parent_node, people) {
-    this.poeple_id = people.id;
+    this.people_id = people.id;
     var me = this;
     this.digest = null;
     this.event = null;
