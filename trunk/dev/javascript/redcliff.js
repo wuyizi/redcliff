@@ -209,12 +209,9 @@
     this.name = raw_event.name;
     this.element_ids = raw_event.element_ids;
     this.people = raw_event.people;
-    this.start_y = raw_event.start_y;
-    this.start_m = raw_event.start_m;
-    this.end_y = raw_event.end_y;
-    this.end_m = raw_event.end_m;
+    this.time = raw_event.time;
     this.desc = raw_event.desc;
-    this.point = new GLatLng(raw_event.lat, raw_event.lng);
+    this.point = new GLatLng(raw_event.popup.lat, raw_event.popup.lng);
   };
   
   function BigEvent(raw_event) {
@@ -223,12 +220,9 @@
     this.name = raw_event.name;
     this.element_ids = raw_event.element_ids;
     this.event_ids = raw_event.event_ids;
-    this.start_y = raw_event.start_y;
-    this.start_m = raw_event.start_m;
-    this.end_y = raw_event.end_y;
-    this.end_m = raw_event.end_m;
+    this.time = raw_event.time;
     this.desc = raw_event.desc;
-	this.pic = raw_event.pic;
+    this.pic = raw_event.pic;
     this.is_details_shown = false;
     this.details = null;
     var genNode = function() {
@@ -236,7 +230,7 @@
 
       var table = $('<table><tbody><tr></tr></tbody></table>');
       var row = table.children().children();
-      var time_cell = $('<td class="big-event-item-time">' + me.start_y + '年&nbsp;' + me.start_m + '月</div>');
+      var time_cell = $('<td class="big-event-item-time">' + me.time + '</div>');
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
@@ -287,7 +281,7 @@
   };
  
   var genEventItem = function(row, event) {
-    var time_cell = $('<td class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>');
+    var time_cell = $('<td class="events-item-time">' + event.time + '</div>');
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
