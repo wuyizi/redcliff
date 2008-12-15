@@ -87,6 +87,9 @@ table,tr,td,th,tbody {
   border-top: #E6DB9D solid 1px;
   padding: 1em 0 1em 5px;
 }
+.big-event-item:hover{
+  background-color:#F9F7E4;
+}
 .big-event-item table{
   width:100%;
   table-layout:fixed;
