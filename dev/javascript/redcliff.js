@@ -63,11 +63,11 @@
   var CURRENT_PEOPLE = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=1',
-    element_url: BASE + 'data/element.json?bpc=5',
-    event_url: BASE + 'data/event.json?bpc=1',
-    big_event_url: BASE + 'data/big_event.json?bpc=3',
-    people_url: BASE +'data/people.json?bpc=4',
+    location_url: BASE + 'data/location.json',
+    element_url: BASE + 'data/element.json?bpc=4',
+    event_url: BASE + 'data/event.json',
+    big_event_url: BASE + 'data/big_event.json?bpc=2',
+    people_url: BASE +'data/people.json?bpc=3',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
@@ -213,7 +213,6 @@
     this.start_m = raw_event.start_m;
     this.end_y = raw_event.end_y;
     this.end_m = raw_event.end_m;
-    this.time = raw_event.time;
     this.desc = raw_event.desc;
     this.point = new GLatLng(raw_event.lat, raw_event.lng);
   };
@@ -228,7 +227,6 @@
     this.start_m = raw_event.start_m;
     this.end_y = raw_event.end_y;
     this.end_m = raw_event.end_m;
-	this.time = raw_event.time;
     this.desc = raw_event.desc;
 	this.pic = raw_event.pic;
     this.is_details_shown = false;
@@ -238,7 +236,7 @@
 
       var table = $('<table><tbody><tr></tr></tbody></table>');
       var row = table.children().children();
-      var time_cell = $('<td class="big-event-item-time">' + me.time + '</div>');
+      var time_cell = $('<td class="big-event-item-time">' + me.start_y + '年&nbsp;' + me.start_m + '月</div>');
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
@@ -289,7 +287,7 @@
   };
  
   var genEventItem = function(row, event) {
-    var time_cell = $('<td class="events-item-time">' + event.time + '</div>');
+    var time_cell = $('<td class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>');
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
@@ -426,7 +424,7 @@
     parent_node.append(this.table);
   };
 
-  genNode.prototype = {
+  PeopleNode.prototype = {
     extend: function() {
       this.event.showEvents();
       this.digest.showDetail();
@@ -446,7 +444,6 @@
 
 
   function People(raw_people) {
-
     var me = this;
     this.id = raw_people.name;
     this.name = raw_people.name;
