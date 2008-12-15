@@ -63,7 +63,7 @@
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE_NODE = null;
   var CURRENT_PEOPLE_EVENT = null;
-  var CURRENT_PEOPLE_DETAIL ＝ null;
+  var CURRENT_PEOPLE_DETAIL = null;
 
   var URL = {
     location_url: BASE + 'data/location.json',
