@@ -513,7 +513,7 @@
 	'<p>' + event.desc + '</p></div>';
       });
       html += '</div>';
-      return html;
+      return $(html);
     }
   };
 
