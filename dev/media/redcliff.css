@@ -3,17 +3,11 @@ body{
   font-size:13px;
   font-family:Arial,sans-serif;
 }
-div, p, span, a, h3, h4, ol{
+div, p, span, h3, h4, ol{
   margin:0;
   padding:0;
   border:0;
   list-style: none;
-}
-a {
-  color:#915E00;
-}
-a:visited {
-  color:#915E00;
 }
 h3 {
   padding: 1em 0 0.5em;
@@ -123,6 +117,9 @@ table,tr,td,th,tbody {
   font-weight:bold;
   width:100%;
 }
+.big-event-item-link a{
+  color:#915E00;
+}
 .big-event-item-pic {
   width:64px;
   text-align:center;
@@ -167,6 +164,7 @@ table,tr,td,th,tbody {
 }
 .character-title a{
   font-weight:bold;
+  color:#915E00;
 }
 .character-title span{
   margin-left:5px;
@@ -241,7 +239,9 @@ a.events-div-hide{
   margin-left:100px;
   font-size:12px;
 }
-
+.events-item-link a {
+  color:#915E00;
+}
 .event_img {
   margin: 10px 0px 10px 10px;
   height: 75px;
