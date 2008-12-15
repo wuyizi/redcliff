@@ -236,7 +236,7 @@
 
       var table = $('<table><tbody><tr></tr></tbody></table>');
       var row = table.children().children();
-      var time_cell = $('<td class="big-event-item-time">' + me.start_y + '年&nbsp;' + me.start_m + '月</div>');
+      var time_cell = $('<td class="big-event-item-time">' + me.time + '</div>');
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
@@ -287,7 +287,7 @@
   };
  
   var genEventItem = function(row, event) {
-    var time_cell = $('<td class="events-item-time">' + event.start_y + '年&nbsp;' + event.start_m + '月</div>');
+    var time_cell = $('<td class="events-item-time">' + event.time + '</div>');
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
