@@ -434,7 +434,7 @@
       row.append(intro_node);
       
       var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
-      this.event = new genEventListNode(event_node, me.event_ids, me,id);
+      this.event = new genEventListNode(event_node, me.event_ids, me.id);
       
       $('#character_list').append(table);
       return table;
