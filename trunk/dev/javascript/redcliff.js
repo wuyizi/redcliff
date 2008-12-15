@@ -360,7 +360,7 @@
       encapsulateActiveEventOrPeople();
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
-      CURRET_PEOPLE_DETIAL = this;
+      CURRET_PEOPLE_DETAIL = this;
     },
     hideDetail: function() {
       this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
