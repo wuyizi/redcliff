@@ -262,7 +262,7 @@
 	  me.showDetails();
         }
         G_MAP.updateOverlay('E', me.id);
-        G_MAP.setCenter(me.center);
+        G_MAP.setCenter(me.center, 8);
       });
       link_cell.append(event_link);
 
@@ -437,6 +437,7 @@
     link_node.click(function(){
       me.extend();
       G_MAP.updateOverlay('P', people.id);
+      G_MAP.setCenter(people.center, 7);
       return false;
     });
     parent_node.append(this.table);
@@ -480,7 +481,7 @@
     this.pic = raw_people.pic;
     this.digest = null;
     this.event = null;
-
+    this.center = new GLatLng(raw_people.center.lat, raw_people.center.lng);
     this.node = new PeopleNode($('#character_list'), this);
     this.is_shown = false;
   };
@@ -656,8 +657,8 @@
       }
     },
     
-    setCenter: function(center) {
-      this.gmap.setCenter(center, 8);
+    setCenter: function(center, level) {
+      this.gmap.setCenter(center, level);
     },
 
     updateOverlay: function(type, id) {
