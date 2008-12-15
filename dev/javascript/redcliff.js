@@ -213,8 +213,6 @@
     this.end_m = raw_event.end_m;
     this.desc = raw_event.desc;
     this.point = new GLatLng(raw_event.lat, raw_event.lng);
-    alert(this.point);
-    
   };
   
   function BigEvent(raw_event) {
