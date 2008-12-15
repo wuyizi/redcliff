@@ -64,11 +64,11 @@
   var CURRENT_PEOPLE = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json',
-    element_url: BASE + 'data/element.json?bpc=4',
-    event_url: BASE + 'data/event.json',
-    big_event_url: BASE + 'data/big_event.json?bpc=2',
-    people_url: BASE +'data/people.json?bpc=3',
+    location_url: BASE + 'data/location.json?bpc=2',
+    element_url: BASE + 'data/element.json?bpc=5',
+    event_url: BASE + 'data/event.json?bpc=3',
+    big_event_url: BASE + 'data/big_event.json?bpc=5',
+    people_url: BASE +'data/people.json?bpc=5',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
