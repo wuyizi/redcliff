@@ -67,7 +67,7 @@
     location_url: BASE + 'data/location.json?bpc=2',
     element_url: BASE + 'data/element.json?bpc=5',
     event_url: BASE + 'data/event.json?bpc=3',
-    big_event_url: BASE + 'data/big_event.json?bpc=5',
+    big_event_url: BASE + 'data/big_event.json?bpc=6',
     people_url: BASE +'data/people.json?bpc=5',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
