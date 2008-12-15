@@ -205,12 +205,14 @@
     */
   };
   
-  var encapsulateActiveEventOrPeople = function() {
+  var encapsulateActiveEventOrPeople = function(people_id) {
     if (CURRENT_BIG_EVENT) {
       var big_event = BIG_EVENTS.getItem(CURRENT_BIG_EVENT);
       big_event.hideDetails();
       CURRENT_BIG_EVENT = null;
     }
+    if (CURRENT_PEOPLE == people_id)
+	return;
     if (CURRENT_PEOPLE) {
       var people = PEOPLE.getItem(CURRENT_PEOPLE);
       people.node.encapsulate();
@@ -350,7 +352,7 @@
 
   PeopleDigestNode.prototype = {
     showDetail: function() {
-      encapsulateActiveEventOrPeople();
+      encapsulateActiveEventOrPeople(this.people_id);
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
       CURRET_PEOPLE = this.people_id;
@@ -390,7 +392,7 @@
   
   PeopleEventListNode.prototype = {
     showEvents: function() {
-      encapsulateActiveEventOrPeople();
+      encapsulateActiveEventOrPeople(this.people_id);
       this.event_list.slideDown('fast', _IG_AdjustIFrameHeight);
       this.hide_events.show();
       this.show_events.hide();
@@ -440,7 +442,7 @@
 
   PeopleNode.prototype = {
     extend: function() {
-      encapsulateActiveEventOrPeople();
+      encapsulateActiveEventOrPeople(this.people_id);
       this.event.showEvents();
       this.digest.showDetail();
       CURRENT_PEOPLE = this.people_id;
