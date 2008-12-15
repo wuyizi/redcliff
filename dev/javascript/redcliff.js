@@ -437,12 +437,19 @@
     this.event = new PeopleEventListNode(event_node, people.event_ids, people.id);
 
     link_node.click(function(){
-      me.extend();
-      G_MAP.updateOverlay('P', people.id);
-      G_MAP.setCenter(people.center, 7);
+      if (!me.is_shown) {
+        me.extend();
+        G_MAP.updateOverlay('P', people.id);
+        G_MAP.setCenter(people.center, 7);
+        me.is_shown = true;
+      } else {
+        me.encapsulate();
+        me.is_shown = false;
+      } 
       return false;
     });
     parent_node.append(this.table);
+    this.is_shown = false;
   };
 
   PeopleNode.prototype = {
