@@ -50,7 +50,7 @@
 {"id" : 48 , "type" : "point" , "event_ids" : [28] , "people" : ["诸葛亮"] , "pic" : "G" , "lat" : 26.224447 , "lng" : 111.618347 },
 {"id" : 49 , "type" : "point" , "event_ids" : [33 , 34 , 40] , "people" : ["周瑜" , "曹仁"] , "pic" : "RB" , "lat" : 30.347872 , "lng" : 112.197304 },
 {"id" : 50 , "type" : "point" , "event_ids" : [34 , 35] , "people" : ["刘备" , "刘琦"] , "pic" : "G" , "lat" : 30.125215 , "lng" : 112.171994 },
-{"id" : 51 , "type" : "point" , "event_ids" : [40 , 39 , 35] , "people" : ["刘备" , "孙权" , "鲁肃"] , "pic" : "RB" , "lat" : 32.167025 , "lng" : 119.427021 },
+{"id" : 51 , "type" : "point" , "event_ids" : [40 , 39 , 35] , "people" : ["刘备" , "孙权" , "鲁肃"] , "pic" : "GR" , "lat" : 32.167025 , "lng" : 119.427021 },
 {"id" : 52 , "type" : "point" , "event_ids" : [39] , "people" : ["周瑜"] , "pic" : "R" , "lat" : 29.402696 , "lng" : 113.108622 },
 {"id" : 53 , "type" : "point" , "event_ids" : [33] , "people" : ["程普"] , "pic" : "R" , "lat" : 30.352429 , "lng" : 114.144923 },
 {"id" : 54 , "type" : "point" , "event_ids" : [36] , "people" : ["蒋干" , "周瑜"] , "pic" : "RB" , "lat" : 30.347872 , "lng" : 112.197304 },
