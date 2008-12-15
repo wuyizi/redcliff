@@ -206,7 +206,7 @@
   };
   
   var encapsulateActiveEventOrPeople = function(people_id) {
-    alert(people_id, CURRENT_BIG_EVENT, CURRENT_PEOPLE);
+    //alert(people_id, CURRENT_BIG_EVENT, CURRENT_PEOPLE);
     if (CURRENT_BIG_EVENT) {
       var big_event = BIG_EVENT.getItem(CURRENT_BIG_EVENT);
       big_event.hideDetails();
