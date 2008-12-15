@@ -519,13 +519,20 @@
 
   var Utils = {
     constructInfoWindowHtml : function(events) {
-      var html = '<div class="infowindow_div">';
-      $.each(events, function(index, event){
-	html += '<div class="infowindow_item_div"><a href="http://www.g.cn">' + event.name + '</a>' +
-	'<p>' + event.desc + '</p></div>';
+      var html = ['<div style="width:300px; font-size:12px;">'];
+      $.each(events, function(i, event){
+		html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
+          html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
+          html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
+          html.push('<div style="text-align:right; color:#AAA;">搜索主要人物：');
+            $.each(event.people, function(j, person) {
+              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&q=' + person + '">' + person + '</a>');
+            });
+		  html.push('</div>');
+        html.push('</div>');
       });
-      html += '</div>';
-      return html;
+      html.push('</div>');
+      return html.join('');
     }
   };
 
