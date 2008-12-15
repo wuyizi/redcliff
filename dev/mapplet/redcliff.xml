@@ -49,7 +49,7 @@
     </div>
   </div>
   <div class="clear_button_div">
-    <input class="clear_button" type=button value="清除地图上的箭头"></input>
+    <input id="clear_button" class="clear_button_input" type=button value="清除地图上的箭头"></input>
   </div>
 </div>
 

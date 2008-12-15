@@ -671,11 +671,8 @@
       this.gmap.panTo(center);
     },
 
-    updateOverlay: function(type, id) {
-      if (type + '_' + id == CURRENT_OVERLAY_ID)
-        return;
+    clearOverlays: function() {
       this.gmap.closeInfoWindow();
-      CURRENT_OVERLAY_ID = type + '_' + id;
       while (CURRENT_ELEMENT.length > 0) {
         var element_id = CURRENT_ELEMENT.pop();
         var elem = ELEMENT.getItem(element_id);
@@ -687,6 +684,14 @@
         var event_id = CURRENT_EVENT.pop();
         CURRENT_EVENT_HASH.removeItem(element_id);
       }
+      CURRENT_OVERLAY_ID = "";
+    },
+
+    updateOverlay: function(type, id) {
+      if (type + '_' + id == CURRENT_OVERLAY_ID)
+        return;
+      CURRENT_OVERLAY_ID = type + '_' + id;
+      this.clearOverlays();
       
       var element_ids;
       var event_ids;
@@ -768,5 +773,8 @@
       _IG_AdjustIFrameHeight();
       return false;
     });
+    $('#clear_button').click(function(){
+      G_MAP.clearOverlays();
+    })
   });
 })();
