@@ -62,8 +62,6 @@
   
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
-  var CURRENT_PEOPLE_EVENT = null;
-  var CURRENT_PEOPLE_DETAIL = null;
 
   var URL = {
     location_url: BASE + 'data/location.json',
@@ -209,20 +207,14 @@
   
   var encapsulateActiveEventOrPeople = function() {
     if (CURRENT_BIG_EVENT) {
-      CURRENT_BIG_EVENT.hideDetails();
+      var big_event = BIG_EVENTS.getItem(CURRENT_BIG_EVENT);
+      big_event.hideDetails();
       CURRENT_BIG_EVENT = null;
     }
     if (CURRENT_PEOPLE) {
-      CURRENT_PEOPLE.encapsulate();
+      var people = PEOPLE.getItem(CURRENT_PEOPLE);
+      people.node.encapsulate();
       CURRENT_PEOPLE = null;
-    }
-    if (CURRENT_PEOPLE_EVENT) {
-      CURRENT_PEOPLE_EVENT.hideEvents();
-      CURRENT_PEOPLE_EVENT = null;
-    }
-    if (CURRENT_PEOPLE_DETAIL) {
-      CURRENT_PEOPLE_DETAIL.hideDetail();
-      CURRENT_PEOPLE_DETAIL = null;
     }
   }
 
@@ -295,7 +287,7 @@
       this.details.show();
       _IG_AdjustIFrameHeight();
       this.is_details_shown = true;	
-      CURRENT_BIG_EVENT = this;
+      CURRENT_BIG_EVENT = this.id;
     },
 
     hideDetails: function() {
@@ -327,7 +319,8 @@
     row.append(link_cell);
   };
 
-  function PeopleDigestNode(parent_node, desc, wiki, baike) {
+  function PeopleDigestNode(parent_node, desc, wiki, baike, people_id) {
+    this.people_id = people_id;
     var me = this;
     var node = $('<div class="character-digest-div"></div>');
     var link_wiki = '<a target="_blank" href="' + wiki + '">维基</a>';
@@ -360,7 +353,7 @@
       encapsulateActiveEventOrPeople();
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
-      CURRET_PEOPLE_DETAIL = this;
+      CURRET_PEOPLE = this.people_id;
     },
     hideDetail: function() {
       this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
@@ -369,6 +362,7 @@
   };
   
   function PeopleEventListNode(parent_node, event_ids, people_id) {
+    this.people_id = people_id;
     var me = this;
     var node = $('<div class="events-div"></div>');
     this.show_events = $('<a class="events-div-show" href=#>历史事件</a>');
@@ -400,7 +394,7 @@
       this.event_list.slideDown('fast', _IG_AdjustIFrameHeight);
       this.hide_events.show();
       this.show_events.hide();
-      CURRENT_PEOPLE_EVENT = this;
+      CURRENT_PEOPLE = this.people_id;
     },
     hideEvents: function() {
       this.event_list.slideUp('fast', _IG_AdjustIFrameHeight);
@@ -410,6 +404,7 @@
   };
 
   function PeopleNode(parent_node, people) {
+    this.poeple_id = people.id;
     var me = this;
     this.digest = null;
     this.event = null;
@@ -448,7 +443,7 @@
       encapsulateActiveEventOrPeople();
       this.event.showEvents();
       this.digest.showDetail();
-      CURRENT_PEOPLE = this;
+      CURRENT_PEOPLE = this.people_id;
     },
     encapsulate: function() {
       this.event.hideEvents();
