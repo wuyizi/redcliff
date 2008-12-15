@@ -335,8 +335,9 @@
       return false;
     });
       
-    parent_node.append(this.digest);
-    parent_node.append(this.detail);
+    node.append(this.digest);
+    node.append(this.detail);
+    parent_node.append(node);
   };
    
   genDigestNode.prototype = {
