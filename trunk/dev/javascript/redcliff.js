@@ -355,7 +355,7 @@
       encapsulateActiveEventOrPeople(this.people_id);
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
-      CURRET_PEOPLE = this.people_id;
+      CURRENT_PEOPLE = this.people_id;
     },
     hideDetail: function() {
       this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
