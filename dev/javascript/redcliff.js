@@ -58,7 +58,7 @@
   var CURRENT_ELEMENT = new Array();
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
-  var BASE = 'http://redcliff-test.googlecode.com/svn/trunk/dev/';
+  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
 
   var URL = {
     location_url: BASE + 'data/location.json',
