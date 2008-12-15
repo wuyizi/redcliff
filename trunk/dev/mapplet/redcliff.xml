@@ -48,6 +48,9 @@
     <div id="character_list"></div>
     </div>
   </div>
+  <div class="clear_button_div">
+    <input class="clear_button" type=button value="清除地图上的箭头"></input>
+  </div>
 </div>
 
 <div style="height:2em;"></div>
