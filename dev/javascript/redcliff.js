@@ -592,6 +592,7 @@
 		  html.push('</div>');
         html.push('</div>');
       });
+      html.push('<input type=button value="下一个事件" id="next_event"></input>');
       html.push('</div>');
       return html.join('');
     }
