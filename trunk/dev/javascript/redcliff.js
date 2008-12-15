@@ -658,7 +658,7 @@
     
     setCenter: function(center) {
       alert(center);
-      this.gmap.setCenter(center, 8 G_PHYSICAL_MAP);
+      this.gmap.setCenter(center, 8, G_PHYSICAL_MAP);
     },
 
     updateOverlay: function(type, id) {
