@@ -507,8 +507,12 @@
 
   var Utils = {
     constructInfoWindowHtml : function(events) {
-      var html = '<div class="infowindow_div">' + '<a href="">' + event.name + '</a>' +
+      var html = '<div class="infowindow_div">' + 
+      $.each(events, function(index, event){
+	html += '<div class="infowindow_item_div"><a href="">' + event.name + '</a>' +
 	'<p>' + event.desc + '</p></div>';
+      });
+      html += '</div>';
       return html;
     }
   };
