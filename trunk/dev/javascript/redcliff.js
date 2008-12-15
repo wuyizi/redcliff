@@ -62,10 +62,10 @@
 
   var URL = {
     location_url: BASE + 'data/location.json',
-    element_url: BASE + 'data/element.json?bpc=1',
+    element_url: BASE + 'data/element.json?bpc=2',
     event_url: BASE + 'data/event.json',
     big_event_url: BASE + 'data/big_event.json',
-    people_url: BASE +'data/people.json'
+    people_url: BASE +'data/people.json?bpc=1'
   };
 
   var FLAGS = {
