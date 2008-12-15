@@ -373,7 +373,7 @@
     node.append(this.show_events);
     node.append(this.hide_events);
     node.append(this.event_list);
-    perent_node.append(node);
+    parent_node.append(node);
   };
   
   genEventListNode.prototype = {
