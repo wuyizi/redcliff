@@ -552,6 +552,7 @@
       this.gmap.removeOverlay(overlay);
     },
     openInfoWindow: function(type, id, latlng) {
+      alert(latlng);
       if (type == "EVENT") {
         var event = EVENT.getItem(id);
         var info_div = Utils.constructInfoWindowHtml([event]);
