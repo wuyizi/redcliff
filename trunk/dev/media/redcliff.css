@@ -120,6 +120,9 @@ table,tr,td,th,tbody {
 .big-event-item-link a{
   color:#915E00;
 }
+.big-event-item-link a:visited{
+  color:#915E00;
+}
 .big-event-item-pic {
   width:64px;
   text-align:center;
@@ -164,6 +167,9 @@ table,tr,td,th,tbody {
 }
 .character-title a{
   font-weight:bold;
+  color:#915E00;
+}
+.character-title a:visited{
   color:#915E00;
 }
 .character-title span{
