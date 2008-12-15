@@ -286,7 +286,7 @@
 
   BigEvent.prototype = {
     showDetails: function() {
-      encapsulateActiveEventOrPeople();
+      encapsulateActiveEventOrPeople(null);
       this.details.show();
       _IG_AdjustIFrameHeight();
       this.is_details_shown = true;	
