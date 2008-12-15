@@ -328,35 +328,45 @@
     this.event_ids = raw_people.event_ids;
     this.element_ids = raw_people.element_ids;
     this.pic = raw_people.pic;
-  
-    var genDigestNode = function() {
+    this.digest = null;
+
+    function genDigestNode(parent_node) {
+      var me = this;
       var node = $('<div class="character-digest-div"></div>');
       var link_wiki = '<a target="_blank" href="' + me.wiki + '">维基</a>';
       var link_baike = '<a target="_blank" href="' + me.baike + '">百科</a>';
-      var digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
-      var detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
+      this.digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
+      this.detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
       var show_detail = $('<a href=#>[详细]</a>');
       var hide_detail = $('<a href=#>[隐藏]</a>');
 
-      digest.append(show_detail);
-      detail.append(hide_detail);
+      this.digest.append(show_detail);
+      this.detail.append(hide_detail);
 
       show_detail.click(function(){
-        detail.slideDown('fast', _IG_AdjustIFrameHeight);
-        digest.fadeOut('fast');
+	me.showDetial();
         return false;
       });
 
       hide_detail.click(function(){
-        detail.slideUp('fast', _IG_AdjustIFrameHeight);
-        digest.fadeIn('fast');
+	me.hideDetial();
         return false;
       });
       
-      node.append(digest);
-      node.append(detail);
-      return node;
+      parent_node.append(this.digest);
+      parent_node.append(this.detail);
     };
+   
+    genDigestNode.prototype = {
+       showDetial: function() {
+	 this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
+         this.digest.fadeOut('fast');
+       },
+       hideDetial: function() {
+         this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
+         this.digest.fadeIn('fast');
+       }
+    }
 
     var genEventListNode = function() {
       var node = $('<div class="events-div"></div>');
@@ -387,6 +397,7 @@
       return node;
     };
   
+    
 
     var genNode = function() {
 
@@ -407,7 +418,7 @@
       title_node.append(link_node);
       title_node.append(gicon_node);
       intro_node.append(title_node);
-      intro_node.append(genDigestNode());
+      this.digest = new genDiegestNode(intro_node);
   
       var row = table.children().children();
       row.append(img_node);
