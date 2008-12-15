@@ -290,6 +290,7 @@
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
+      alert(event.point);
       G_MAP.openInfoWindow("EVENT", event.id, event.point);
     });
     link_cell.append(event_link);
