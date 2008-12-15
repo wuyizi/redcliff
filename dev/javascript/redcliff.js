@@ -312,13 +312,13 @@
     }
   };  
 
-  function genDigestNode(parent_node) {
+  function genDigestNode(parent_node, desc, wiki, baike) {
     var me = this;
     var node = $('<div class="character-digest-div"></div>');
-    var link_wiki = '<a target="_blank" href="' + me.wiki + '">维基</a>';
-    var link_baike = '<a target="_blank" href="' + me.baike + '">百科</a>';
-    this.digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
-    this.detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
+    var link_wiki = '<a target="_blank" href="' + wiki + '">维基</a>';
+    var link_baike = '<a target="_blank" href="' + baike + '">百科</a>';
+    this.digest =  $('<div class="character-digest-div-short">' + desc.substring(0,65) + '...</div>');
+    this.detail = $('<div class="character-digest-div-long" style="display:none;">' + desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
     var show_detail = $('<a href=#>[详细]</a>');
     var hide_detail = $('<a href=#>[隐藏]</a>');
 
@@ -417,7 +417,7 @@
       title_node.append(link_node);
       title_node.append(gicon_node);
       intro_node.append(title_node);
-      this.digest = new genDigestNode(intro_node);
+      this.digest = new genDigestNode(intro_node, me.desc, me.wiki, me.baike);
   
       var row = table.children().children();
       row.append(img_node);
