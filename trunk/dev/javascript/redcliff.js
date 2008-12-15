@@ -65,7 +65,8 @@
     element_url: BASE + 'data/element.json?bpc=2',
     event_url: BASE + 'data/event.json',
     big_event_url: BASE + 'data/big_event.json',
-    people_url: BASE +'data/people.json?bpc=1'
+    people_url: BASE +'data/people.json?bpc=1',
+    tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
   var FLAGS = {
@@ -520,20 +521,30 @@
   function RedcliffMap(node) {
     var me = this;
     this.gmap = new GMap2();
-          this.gmap.setCenter(new GLatLng(30.917, 110.397), 6);
-    var tileLayerOverlay = new GTileLayerOverlay(
-        new GTileLayer(null, null, null, {
-          tileUrlTemplate: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}',
-          isPng:true,
-          opacity:1.0
-        })
+    this.gmap.setCenter(new GLatLng(30.917, 110.397), 6, G_PHYSICAL_MAP);
+    this.tileLayerOverlay = new GTileLayerOverlay(
+      new GTileLayer(null, null, null, {
+        tileUrlTemplate: URL.tile_url,
+        isPng:true,
+        opacity:1.0
+      })
     );
-
-    this.gmap.addOverlay(tileLayerOverlay); 
+    this.gmap.addOverlay(this.tileLayerOverlay); 
   };
   
 
   RedcliffMap.prototype = {
+    changeTiles: function(opacity_val) {
+      this.gmap.removeOverlay(this.tileLayerOverlay);
+      this.tileLayerOverlay = new GTileLayerOverlay(
+        new GTileLayer(null, null, null, {
+          tileUrlTemplate: URL.tile_url,
+          isPng:true,
+          opacity:opacity_val
+        })
+      );
+      this.gmap.addOverlay(this.tileLayerOverlay);
+    },
     addOverlay: function(overlay) {
       this.gmap.addOverlay(overlay);
     },
@@ -651,11 +662,19 @@
     $('#checkbox_wu').click(filter);  
   };
 
-  
+  // Add the handler for changing the tile option using the drop down.
+  function TilesSelect() {
+    var change_tiles = function() {
+      G_MAP.changeTiles($('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value);
+    };
+    $('#select_tiles').change(change_tiles);
+  };
+ 
   $(function(){
     G_MAP = new RedcliffMap();
     LoadLocation();
     new CharacterFilter();
+    new TilesSelect();
     $('#shift_event').click(function(){
       $('#characters_cnt').hide();
       $('#events_cnt').show();
