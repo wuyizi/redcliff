@@ -213,6 +213,7 @@
     this.end_m = raw_event.end_m;
     this.desc = raw_event.desc;
     this.point = new GLatLng(raw_event.lat, raw_event.lng);
+    alert(this.point);
     
   };
   
@@ -291,7 +292,6 @@
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
-      alert(event.point);
       G_MAP.openInfoWindow("EVENT", event.id, event.point);
     });
     link_cell.append(event_link);
@@ -553,7 +553,6 @@
       this.gmap.removeOverlay(overlay);
     },
     openInfoWindow: function(type, id, latlng) {
-      alert(latlng);
       if (type == "EVENT") {
         var event = EVENT.getItem(id);
         var info_div = Utils.constructInfoWindowHtml([event]);
