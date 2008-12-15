@@ -352,6 +352,7 @@
   };
   
   function genEventListNode(parent_node, event_ids, people_id) {
+    var me = this;
     var node = $('<div class="events-div"></div>');
     this.show_events = $('<a class="events-div-show" href=#>历史事件</a>');
     this.hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
