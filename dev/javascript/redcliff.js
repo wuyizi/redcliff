@@ -658,7 +658,7 @@
     
     setCenter: function(center) {
       this.gmap.setCenter(center, 8);
-    }
+    },
 
     updateOverlay: function(type, id) {
       if (type + '_' + id == CURRENT_OVERLAY_ID)
