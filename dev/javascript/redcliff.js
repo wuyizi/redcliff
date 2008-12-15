@@ -421,7 +421,7 @@
     title_node.append(link_node);
     title_node.append(gicon_node);
     intro_node.append(title_node);
-    this.digest = new PeopleDigestNode(intro_node, people.desc, people.wiki, people.baike);
+    this.digest = new PeopleDigestNode(intro_node, people.desc, people.wiki, people.baike, people.id);
 
     var row = this.table.children().children();
     row.append(img_node);
