@@ -398,14 +398,18 @@
       var img_node = $('<td class="character-img-div"></td>');
       img_node.append('<img width=60 src="' + BASE + 'images/people/' + me.pic +'.png">');
       var intro_node = $('<td class="character-intro-div"></td>');
-      var link_node = $('<div class="character-title"><img src="' + BASE + 'images/icon/' + FLAGS[me.kingdom] + '.png"/>' 
-                      + '<a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : '') 
-                      + '</div>');
+      var title_node = $('<div class="character-title"></div>');
+      var link_node = $('<a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : ''));
       link_node.click(function(){
         G_MAP.updateOverlay('P', me.id);
         return false;
       });
-      intro_node.append(link_node);
+      var gicon_node = $('<a target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(me.name) + '"><img src="http://www.google.cn/favicon.ico"></a>');
+      var flag_node = $('<img src="' + BASE + 'images/icon/' + FLAGS[me.kingdom] + '.png"/>');
+      title_node.append(flag_node);
+      title_node.append(link_node);
+      title_node.append(gicon_node);
+      intro_node.append(title_node);
       intro_node.append(genDigestNode());
   
       var row = table.children().children();
