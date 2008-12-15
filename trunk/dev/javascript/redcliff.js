@@ -555,7 +555,7 @@
       if (type == "EVENT") {
         var event = EVENT.getItem(id);
         //var info_div = Utils.constructInfoWindowHtml([event]);
-	var info_div = '<div>刘备</div>';
+	var info_div = '<div><p>刘备</p></div>';
         this.gmap.openInfoWindowHtml(latlng, info_div);
         //this.highLightOverlay(event.element_ids);
       }
