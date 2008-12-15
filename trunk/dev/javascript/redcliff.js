@@ -213,6 +213,7 @@
     this.start_m = raw_event.start_m;
     this.end_y = raw_event.end_y;
     this.end_m = raw_event.end_m;
+    this.time = raw_event.time;
     this.desc = raw_event.desc;
     this.point = new GLatLng(raw_event.lat, raw_event.lng);
   };
@@ -227,6 +228,7 @@
     this.start_m = raw_event.start_m;
     this.end_y = raw_event.end_y;
     this.end_m = raw_event.end_m;
+	this.time = raw_event.time;
     this.desc = raw_event.desc;
 	this.pic = raw_event.pic;
     this.is_details_shown = false;
