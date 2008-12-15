@@ -557,7 +557,7 @@
       if (type == "EVENT") {
         var event = EVENT.getItem(id);
         var info_div = Utils.constructInfoWindowHtml([event]);
-        this.gmap.openInfoWindowHtml(latlng, info_div);
+        this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
         //this.highLightOverlay(event.element_ids);
       }
       if (type == "ELEMENT") {
@@ -570,7 +570,7 @@
           }
         });
         var info_div = Utils.constructInfoWindowHtml(events);
-        this.gmap.openInfoWindow(latlng, info_div, {maxWidth: 100});
+        this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
         //this.highLightOverlay(id);
       }
     },
