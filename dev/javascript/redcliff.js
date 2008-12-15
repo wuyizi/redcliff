@@ -268,10 +268,12 @@
 
       me.details = $('<div class="big-event-detail" style="display:none;"></div>');
       me.details.append($('<p>' + me.desc + '</p>'));
+      /*
       var img = $('<div></div>');
       img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
       img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
       me.details.append(img);
+      */
 
       var event_list = $('<table class="events-div"></table>');
       genEventList(event_list, me.event_ids);
