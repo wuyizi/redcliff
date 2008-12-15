@@ -417,7 +417,7 @@
       title_node.append(link_node);
       title_node.append(gicon_node);
       intro_node.append(title_node);
-      this.digest = new genDiegestNode(intro_node);
+      this.digest = new genDigestNode(intro_node);
   
       var row = table.children().children();
       row.append(img_node);
