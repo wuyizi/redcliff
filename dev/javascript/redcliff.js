@@ -204,6 +204,17 @@
     */
   };
   
+  var encapsulateActiveEventOrPeople = function() {
+    if (CURRENT_BIG_EVENT) {
+      CURRENT_BIG_EVENT.hideDetails();
+      CURRENT_BIG_EVENT = null;
+    }
+    if (CURRENT_PEOPLE) {
+      CURRENT_PEOPLE.encapsulate();
+      CURRENT_PEOPLE = null;
+    }
+  }
+
   function Event(raw_event) {
     this.id = raw_event.id;
     this.name = raw_event.name;
@@ -242,10 +253,7 @@
         if (me.is_details_shown) {
           me.hideDetails();
         } else {
-	  if (CURRENT_BIG_EVENT)
-	    CURRENT_BIG_EVENT.hideDetails();
 	  me.showDetails();
-	  CURRENT_BIG_EVENT = me;
         }
         G_MAP.updateOverlay('E', me.id);
       });
@@ -270,6 +278,22 @@
     this.is_shown = true;
   };
 
+  BigEvent.prototype = {
+    showDetails: function() {
+      encapsulateActiveEventOrPeople();
+      this.details.show();
+      _IG_AdjustIFrameHeight();
+      this.is_details_shown = true;	
+      CURRENT_BIG_EVENT = this;
+    },
+
+    hideDetails: function() {
+      this.details.hide();
+      _IG_AdjustIFrameHeight();
+      this.is_details_shown = false;
+    }
+  };  
+
   var genEventList = function(table, event_ids) {
     var tbody = table.append('<tbody></tbody>').children();
     $.each(event_ids, function(index, event_id){
@@ -291,20 +315,6 @@
     row.append(time_cell);
     row.append(link_cell);
   };
-  
-  BigEvent.prototype = {
-    showDetails: function() {
-      this.details.show();
-      _IG_AdjustIFrameHeight();
-      this.is_details_shown = true;	
-    },
-
-    hideDetails: function() {
-      this.details.hide();
-      _IG_AdjustIFrameHeight();
-      this.is_details_shown = false;
-    }
-  };  
 
   function PeopleDigestNode(parent_node, desc, wiki, baike) {
     var me = this;
@@ -420,8 +430,10 @@
 
   PeopleNode.prototype = {
     extend: function() {
+      encapsulateActiveEventOrPeople();
       this.event.showEvents();
       this.digest.showDetail();
+      CURRENT_PEOPLE = this;
     },
     encapsulate: function() {
       this.event.hideEvents();
