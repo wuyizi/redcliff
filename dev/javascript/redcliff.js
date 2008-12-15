@@ -64,7 +64,7 @@
     location_url: BASE + 'data/location.json',
     element_url: BASE + 'data/element.json?bpc=4',
     event_url: BASE + 'data/event.json',
-    big_event_url: BASE + 'data/big_event.json',
+    big_event_url: BASE + 'data/big_event.json?bpc=2',
     people_url: BASE +'data/people.json?bpc=3',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
@@ -226,6 +226,7 @@
     this.end_y = raw_event.end_y;
     this.end_m = raw_event.end_m;
     this.desc = raw_event.desc;
+	this.pic = raw_event.pic;
     var is_details_shown = false;
 
     var genNode = function() {
@@ -237,6 +238,7 @@
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
+	  row.append('<td class="big-event-item-pic"><img src="' + BASE + 'images/icon/' + me.pic + '.png"></td>');
       node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');

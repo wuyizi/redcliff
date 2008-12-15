@@ -93,6 +93,13 @@ table,tr,td,th,tbody {
   border-top: #E6DB9D solid 1px;
   padding: 1em 0 1em 5px;
 }
+.big-event-item table{
+  width:100%;
+  table-layout:fixed;
+}
+.big-event-item table tbody tr {
+  vertical-align:middle;
+}
 .big-event-title {
   padding-left: 18px;
   background: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/plus.gif') no-repeat left center;
@@ -105,14 +112,20 @@ table,tr,td,th,tbody {
 }
 
 .big-event-item-time {
-  float:left;
   font-size:12px;
   width:100px;
+  white-space:nowrap;
+  vertical-align:middle;
 }
 .big-event-item-link{
   margin-left:100px;
-  font-size:12px; /* TODO: use shorter name for big event and set the size to 13px */
+  font-size:14px;
   font-weight:bold;
+  width:100%;
+}
+.big-event-item-pic {
+  width:64px;
+  text-align:center;
 }
 .big-event-detail {
   margin:10px 0px;
