@@ -59,6 +59,8 @@
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
+  var CURRENT_BIG_EVENT = null;
+  var CURRENT_PEOPLE = null;
 
   var URL = {
     location_url: BASE + 'data/location.json',
@@ -227,7 +229,7 @@
     this.end_m = raw_event.end_m;
     this.desc = raw_event.desc;
 	this.pic = raw_event.pic;
-    var is_details_shown = false;
+    this.is_details_shown = false;
 
     var genNode = function() {
       var node = $('<div class="big-event-item"></div>');
@@ -243,31 +245,27 @@
 
       var event_link = $('<a href=#>' + me.name + '</a>');
       event_link.click(function(){
-        if (is_details_shown) {
-          details.hide();
-          _IG_AdjustIFrameHeight();
-          is_details_shown = false;
+        if (me.is_details_shown) {
+          me.hideDetials();
         } else {
-          details.show();
-          _IG_AdjustIFrameHeight();
-          is_details_shown = true;
+	  me.showDetials();
         }
         G_MAP.updateOverlay('E', me.id);
       });
       link_cell.append(event_link);
 
-      var details = $('<div class="big-event-detail" style="display:none;"></div>');
-      details.append($('<p>' + me.desc + '</p>'));
+      this.details = $('<div class="big-event-detail" style="display:none;"></div>');
+      this.details.append($('<p>' + me.desc + '</p>'));
       var img = $('<div></div>');
       img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
       img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
-      details.append(img);
+      this.details.append(img);
 
       var event_list = $('<table class="events-div"></table>');
       genEventList(event_list, me.event_ids);
-      details.append(event_list);
+      this.details.append(event_list);
       
-      node.append(details);
+      node.append(this.details);
 
       $('#big_event_list').append(node);
       return node;
@@ -300,18 +298,16 @@
   };
   
   BigEvent.prototype = {
-    showNode: function() {
-      if (this.is_shown)
-      return;
-      this.node.show();
-      this.is_shown = true;
+    showDetials: function() {
+      this.details.show();
+      _IG_AdjustIFrameHeight();
+      this.is_details_shown = true;	
     },
 
-    hideNode: function() {
-      if (!this.is_shown)
-      return;
-      this.node.hide();
-      this.is_shown = false;
+    hideDetials: function() {
+      this.details.hide();
+      _IG_AdjustIFrameHeight();
+      this.is_details_shown = false;
     }
   };  
   
@@ -476,7 +472,6 @@
       });
       LoadDone();
     });
-    
   };
   
   function LoadBigEvent() {
