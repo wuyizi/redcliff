@@ -248,7 +248,9 @@
         if (me.is_details_shown) {
           me.hideDetials();
         } else {
+	  CURRENT_BIG_EVENT.hideDetials();
 	  me.showDetials();
+	  CURRENT_BIG_EVENT = me;
         }
         G_MAP.updateOverlay('E', me.id);
       });
@@ -264,9 +266,7 @@
       var event_list = $('<table class="events-div"></table>');
       genEventList(event_list, me.event_ids);
       me.details.append(event_list);
-      
       node.append(me.details);
-
       $('#big_event_list').append(node);
       return node;
     };
