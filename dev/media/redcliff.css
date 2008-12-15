@@ -272,3 +272,13 @@ a.events-div-hide{
   border-top:2px solid #E6DB9D;
   padding-left:5px;
 }
+
+.clear_button_div {
+  font-size:12px;
+  text-align:right;
+}
+.clear_button_div span {
+  cursor:pointer;
+  text-decoration:underline;
+  color:915E00;
+}
