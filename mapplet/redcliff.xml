@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="赤壁之战" 
+             description="赤壁之战的历史地图"
+             author="googlecode"
+             author_email="redcliff@gmail.com">
+  <Require feature="sharedmap"/>
+  <Require feature="dynamic-height" /> 
+</ModulePrefs>
+<Content type="html"><![CDATA[
+
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/media/redcliff.css?bpc=90"></link>
+<!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
+
+<!-- Show this gif when loading -->
+<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://redcliff.googlecode.com/svn/trunk/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
+
+<!-- Hide first when loading -->
+<div id="main" style="z-index:10;display:none;">  
+
+  <div class="dropdown-border">
+    <select class="dropdown-box" id="select_tiles">
+      <option value="1.0">历史地图</option>
+      <option value="0.5">半透明层叠</option>
+      <option value="0.0">现代地图</option>
+    </select>
+  </div>
+
+  <div class="tab-content" id="tabContent">
+    <div id="events_cnt" style="display:none;">
+    <div class="tab-head">
+      <div class="rc_id tab-item-active"><div class="tab-active">历史事件</div></div>
+      <div class="rc_id tab-item-inactive"><div class="tab-inactive" id="shift_people">主要人物</div></div>
+    </div>
+    <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
+    <div id="big_event_list" ></div>
+    </div>
+    <div id="characters_cnt">
+    <div class="tab-head">
+      <div class="rc_id tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
+      <div class="rc_id tab-item-active"><div class="tab-active">主要人物</div></div>
+    </div>
+    <div id="kingdom_checkbox">
+      <label for="checkbox_wei">曹操军</label><input id="checkbox_wei" type="checkbox" checked>
+      <label for="checkbox_wu">孙权军</label><input id="checkbox_wu" type="checkbox" checked>
+      <label for="checkbox_shu">刘备军</label><input id="checkbox_shu" type="checkbox" checked>
+    </div>
+    <div id="character_list"></div>
+    </div>
+  </div>
+  <div class="clear_button_div">
+    <span id="clear_button">清除地图上的箭头</span>
+  </div>
+</div>
+
+<div style="height:2em;"></div>
+
+<script src="http://redcliff.googlecode.com/svn/trunk/javascript/jquery.js" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/javascript/jquery.ui.js" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/javascript/redcliff.js?bpc=90" type="text/javascript"></script>
+<!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
+
+]]></Content>
+</Module>
