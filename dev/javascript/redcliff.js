@@ -241,6 +241,7 @@
     this.pic = raw_event.pic;
     this.is_details_shown = false;
     this.details = null;
+    this.center = new GLatLng(raw_event.center.lat, raw_event.center.lng);
     var genNode = function() {
       var node = $('<div class="big-event-item"></div>');
 
@@ -261,6 +262,7 @@
 	  me.showDetails();
         }
         G_MAP.updateOverlay('E', me.id);
+        G_MAP.setCenter(this.center);
       });
       link_cell.append(event_link);
 
@@ -654,6 +656,10 @@
       }
     },
     
+    setCenter: function(center) {
+      this.gmap.setCenter(center, 8);
+    }
+
     updateOverlay: function(type, id) {
       if (type + '_' + id == CURRENT_OVERLAY_ID)
         return;
