@@ -1,8 +1,8 @@
 [
 {"id" : 0 , "type" : "point" , "event_ids" : [0 , 2] , "people" : ["刘备" , "诸葛亮"] , "pic" : "G" , "lat" : 32.009524 , "lng" : 111.939524 },
 {"id" : 1 , "type" : "point" , "event_ids" : [1] , "people" : ["刘备"] , "pic" : "G" , "lat" : 31.979779 , "lng" : 112.128404 },
-{"id" : 2 , "type" : "point" , "event_ids" : [3] , "people" : ["曹操"] , "pic" : "B" , "lat" : 36.285801 , "lng" : 114.382693 },
-{"id" : 3 , "type" : "line" , "event_ids" : [5] , "people" : ["曹操"] , "arrow" : "B_yx_xy" , "arrow_points" : [{"lat" : 36.115129 , "lng" : 114.326413} , {"lat" : 32.629808 , "lng" : 112.562508}] , "thickness" : 0.12 , "hot_points" : [{"lat" : 36.094 , "lng" : 114.309} , {"lat" : 35.213 , "lng" : 114.093} , {"lat" : 34.258 , "lng" : 113.725} , {"lat" : 33.479 , "lng" : 113.280} , {"lat" : 32.663 , "lng" : 112.631}]},
+{"id" : 2 , "type" : "point" , "event_ids" : [3] , "people" : ["曹操"] , "pic" : "B" , "lat" : 36.285801 , "lng" : 114.382693 },	
+{"id" : 3 , "type" : "line" , "event_ids" : [5] , "people" : ["曹操"] , "arrow" : "B_yx_xy" , "arrow_points" : [{"lat" : 36.115129 , "lng" : 114.326413} , {"lat" :32.640746 , "lng" : 112.407843}] , "thickness" : 0.12 , "hot_points" : [{"lat" : 36.093 , "lng" : 114.304} , {"lat" : 35.219 , "lng" : 114.069} , {"lat" : 34.113 , "lng" : 113.563} , {"lat" : 33.149 , "lng" : 112.932} , {"lat" : 32.667 , "lng" : 112.431}]},
 {"id" : 4 , "type" : "point" , "event_ids" : [5] , "people" : ["刘琮"] , "pic" : "B" , "lat" : 32.544756 , "lng" : 112.348409 },
 {"id" : 5 , "type" : "point" , "event_ids" : [12] , "people" : ["刘备" , "关羽" , "张飞" , "赵云" , "诸葛亮"] , "pic" : "G" , "lat" : 32.096487 , "lng" : 112.103627 },
 {"id" : 6 , "type" : "line" , "event_ids" : [6] , "people" : ["关羽"] , "arrow" : "G_fc_hj" , "arrow_points" : [{"lat" : 32.098389 , "lng" : 112.712323} , {"lat" : 30.742948 , "lng" : 112.132291}] , "thickness" : 0.04 , "hot_points" : [{"lat" : 32.067 , "lng" : 112.178} , {"lat" : 31.933 , "lng" : 112.305} , {"lat" : 31.695 , "lng" : 112.455} , {"lat" : 31.373 , "lng" : 112.571} , {"lat" : 31.058 , "lng" : 112.635} , {"lat" : 30.773 , "lng" : 112.659}]},
