@@ -510,7 +510,7 @@
       var div = $('<div></div>');
       $.each(events, function(index, event) {
         var title = $('<a href="">' + event.name + '</a>');
-        var desc = $('<p>' + event.desc + '<br /></p>');
+        var desc = $('<p>' + event.desc + '</p>');
         div.append(title);
         div.append(desc);
       })
