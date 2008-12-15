@@ -206,7 +206,7 @@
   };
   
   var encapsulateActiveEventOrPeople = function(people_id) {
-    alert(people_id + CURRENT_BIG_EVENT + CURRENT_PEOPLE);
+    alert(CURRENT_BIG_EVENT + CURRENT_PEOPLE);
     if (CURRENT_BIG_EVENT) {
       var big_event = BIG_EVENT.getItem(CURRENT_BIG_EVENT);
       big_event.hideDetails();
@@ -289,7 +289,7 @@
       encapsulateActiveEventOrPeople(null);
       this.details.show();
       _IG_AdjustIFrameHeight();
-      this.is_details_shown = true;	
+      this.is_details_shown = true;
       CURRENT_BIG_EVENT = this.id;
     },
 
