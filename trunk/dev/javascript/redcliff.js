@@ -374,7 +374,6 @@
     node.append(this.hide_events);
     node.append(this.event_list);
     perent_node.append(node);
-
   };
   
   genEventListNode.prototype = {
@@ -407,37 +406,8 @@
     this.element_ids = raw_people.element_ids;
     this.pic = raw_people.pic;
     this.digest = null;
+    this.event = null;
 
-    var genEventListNode = function() {
-      var node = $('<div class="events-div"></div>');
-      var show_events = $('<a class="events-div-show" href=#>历史事件</a>');
-      var hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
-      var event_list = $('<table class="events-list" style="display:none;"></table>');
-
-      genEventList(event_list, me.event_ids);
-
-      show_events.click(function(){
-        event_list.slideDown('fast', _IG_AdjustIFrameHeight);
-        hide_events.show();
-        show_events.hide();
-        G_MAP.updateOverlay('P', me.id);
-        return false;
-      });
-
-      hide_events.click(function(){
-        event_list.slideUp('fast', _IG_AdjustIFrameHeight);
-        show_events.show();
-        hide_events.hide();
-        return false;
-      });
-
-      node.append(show_events);
-      node.append(hide_events);
-      node.append(event_list);
-      return node;
-    };
-  
-    
 
     var genNode = function() {
 
@@ -464,7 +434,7 @@
       row.append(intro_node);
       
       var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
-      event_node.append(genEventListNode());
+      this.event = new genEventListNode(event_node, me.event_ids, me,id);
       
       $('#character_list').append(table);
       return table;
