@@ -290,7 +290,6 @@
       _IG_AdjustIFrameHeight();
       this.is_details_shown = true;
       CURRENT_BIG_EVENT = this.id;
-      alert(CURRENT_BIG_EVENT);
     },
 
     hideDetails: function() {
