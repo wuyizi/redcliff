@@ -18,7 +18,7 @@
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">  
 
-  <div class="rc_id dropdown-border" frame_size="1" border_color="#d5ddf3">
+  <div class="dropdown-border">
     <select class="dropdown-box" id="select_tiles">
       <option value="1.0">历史地图</option>
       <option value="0.5">半透明层叠</option>
