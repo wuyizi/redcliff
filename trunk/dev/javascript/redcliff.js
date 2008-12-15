@@ -380,7 +380,7 @@
     this.show_events.click(function(){
       me.showEvents();
       G_MAP.updateOverlay('P', people_id);
-      G_MAP.setCenter(center, 8);
+      G_MAP.setCenter(center, 7);
       return false;
     });
 
