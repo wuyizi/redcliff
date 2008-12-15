@@ -557,7 +557,7 @@
         var event = EVENT.getItem(id);
         var info_div = Utils.constructInfoWindowHtml([event]);
 	alert(info_div);
-        this.gmap.openInfoWindow(latlng, "hello world");
+        this.gmap.openInfoWindow(latlng, info_div);
         //this.highLightOverlay(event.element_ids);
       }
       if (type == "ELEMENT") {
