@@ -206,15 +206,14 @@
   };
   
   var encapsulateActiveEventOrPeople = function(people_id) {
-    alert(CURRENT_BIG_EVENT + CURRENT_PEOPLE);
-    if (CURRENT_BIG_EVENT) {
+    if (CURRENT_BIG_EVENT != null) {
       var big_event = BIG_EVENT.getItem(CURRENT_BIG_EVENT);
       big_event.hideDetails();
       CURRENT_BIG_EVENT = null;
     }
-    if (CURRENT_PEOPLE && people_id && CURRENT_PEOPLE == people_id)
+    if (CURRENT_PEOPLE != null && people_id && CURRENT_PEOPLE == people_id)
 	return;
-    if (CURRENT_PEOPLE) {
+    if (CURRENT_PEOPLE != null) {
       var people = PEOPLE.getItem(CURRENT_PEOPLE);
       people.node.encapsulate();
       CURRENT_PEOPLE = null;
