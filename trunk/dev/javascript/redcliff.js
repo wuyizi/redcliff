@@ -314,7 +314,7 @@
     }
   };  
 
-  function genDigestNode(parent_node, desc, wiki, baike) {
+  function PeopleDigestNode(parent_node, desc, wiki, baike) {
     var me = this;
     var node = $('<div class="character-digest-div"></div>');
     var link_wiki = '<a target="_blank" href="' + wiki + '">维基</a>';
@@ -342,7 +342,7 @@
     parent_node.append(node);
   };
 
-  genDigestNode.prototype = {
+  PeopleDigestNode.prototype = {
     showDetial: function() {
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
@@ -353,7 +353,7 @@
     }
   };
   
-  function genEventListNode(parent_node, event_ids, people_id) {
+  function PeopleEventListNode(parent_node, event_ids, people_id) {
     var me = this;
     var node = $('<div class="events-div"></div>');
     this.show_events = $('<a class="events-div-show" href=#>历史事件</a>');
@@ -379,7 +379,7 @@
     parent_node.append(node);
   };
   
-  genEventListNode.prototype = {
+  PeopleEventListNode.prototype = {
     showEvents: function() {
       this.event_list.slideDown('fast', _IG_AdjustIFrameHeight);
       this.hide_events.show();
@@ -390,7 +390,60 @@
       this.show_events.show();
       this.hide_events.hide();
     }
-  }
+  };
+
+  function PeopleNode(parent_node, people) {
+    var me = this;
+    this.digest = null;
+    this.event = null;
+    this.table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
+    var img_node = $('<td class="character-img-div"></td>');
+    img_node.append('<img width=60 src="' + BASE + 'images/people/' + people.pic +'.png">');
+    var intro_node = $('<td class="character-intro-div"></td>');
+    var title_node = $('<div class="character-title"></div>');
+    var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
+
+    var gicon_node = $('<a target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(people.name) + '"><img src="http://www.google.cn/favicon.ico"></a>');
+    var flag_node = $('<img src="' + BASE + 'images/icon/' + FLAGS[people.kingdom] + '.png"/>');
+    title_node.append(flag_node);
+    title_node.append(link_node);
+    title_node.append(gicon_node);
+    intro_node.append(title_node);
+    this.digest = new PeopleDigestNode(intro_node, people.desc, people.wiki, people.baike);
+
+    var row = this.table.children().children();
+    row.append(img_node);
+    row.append(intro_node);
+
+    var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
+    this.event = new PeopleEventListNode(event_node, people.event_ids, people.id);
+
+    link_node.click(function(){
+      me.extend();
+      G_MAP.updateOverlay('P', people.id);
+      return false;
+    });
+    parent_node.append(this.table);
+  };
+
+  genNode.prototype = {
+    extend: function() {
+      this.event.showEvents();
+      this.digest.showDetail();
+    },
+    encapsulate: function() {
+      this.event.hideEvents();
+      this.digest.hideDetail();
+    },
+    hide: function() {
+      this.encapsulate();
+      this.table.hide();
+    },
+    show: function() {
+      this.table.show();
+    }
+  };
+
 
   function People(raw_people) {
 
@@ -411,54 +464,20 @@
     this.digest = null;
     this.event = null;
 
-
-    var genNode = function() {
-
-      var table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
-      var img_node = $('<td class="character-img-div"></td>');
-      img_node.append('<img width=60 src="' + BASE + 'images/people/' + me.pic +'.png">');
-      var intro_node = $('<td class="character-intro-div"></td>');
-      var title_node = $('<div class="character-title"></div>');
-      var link_node = $('<a href="#">' + me.name + '</a>' + (me.nick ? '<span>字' + me.nick + '</span>' : ''));
-      link_node.click(function(){
-        G_MAP.updateOverlay('P', me.id);
-        return false;
-      });
-      var gicon_node = $('<a target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(me.name) + '"><img src="http://www.google.cn/favicon.ico"></a>');
-      var flag_node = $('<img src="' + BASE + 'images/icon/' + FLAGS[me.kingdom] + '.png"/>');
-      title_node.append(flag_node);
-      title_node.append(link_node);
-      title_node.append(gicon_node);
-      intro_node.append(title_node);
-      this.digest = new genDigestNode(intro_node, me.desc, me.wiki, me.baike);
-  
-      var row = table.children().children();
-      row.append(img_node);
-      row.append(intro_node);
-      
-      var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
-      this.event = new genEventListNode(event_node, me.event_ids, me.id);
-      
-      $('#character_list').append(table);
-      return table;
-    };
-
-    this.node = genNode();
-    this.is_shown = true;
+    this.node = new PeopleNode($('#character_list'), this);
+    this.is_shown = false;
   };
-    
 
   People.prototype = {
     showNode: function() {
       if (this.is_shown)
-      return;
+        return;
       this.node.show();
       this.is_shown = true;
     },
-      
     hideNode: function() {
       if (!this.is_shown)
-      return;
+        return;
       this.node.hide();
       this.is_shown = false;
     }
