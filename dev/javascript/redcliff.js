@@ -248,7 +248,8 @@
         if (me.is_details_shown) {
           me.hideDetials();
         } else {
-	  CURRENT_BIG_EVENT.hideDetials();
+	  if (CURRENT_BIG_EVENT)
+	    CURRENT_BIG_EVENT.hideDetials();
 	  me.showDetials();
 	  CURRENT_BIG_EVENT = me;
         }
