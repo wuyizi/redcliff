@@ -311,6 +311,44 @@
       this.is_details_shown = false;
     }
   };  
+
+  function genDigestNode(parent_node) {
+    var me = this;
+    var node = $('<div class="character-digest-div"></div>');
+    var link_wiki = '<a target="_blank" href="' + me.wiki + '">维基</a>';
+    var link_baike = '<a target="_blank" href="' + me.baike + '">百科</a>';
+    this.digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
+    this.detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
+    var show_detail = $('<a href=#>[详细]</a>');
+    var hide_detail = $('<a href=#>[隐藏]</a>');
+
+    this.digest.append(show_detail);
+    this.detail.append(hide_detail);
+
+    show_detail.click(function(){
+      me.showDetial();
+      return false;
+    });
+
+    hide_detail.click(function(){
+      me.hideDetial();
+      return false;
+    });
+      
+    parent_node.append(this.digest);
+    parent_node.append(this.detail);
+  };
+   
+  genDigestNode.prototype = {
+    showDetial: function() {
+      this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
+      this.digest.fadeOut('fast');
+    },
+    hideDetial: function() {
+      this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
+      this.digest.fadeIn('fast');
+    }
+  };
   
   function People(raw_people) {
 
@@ -329,44 +367,6 @@
     this.element_ids = raw_people.element_ids;
     this.pic = raw_people.pic;
     this.digest = null;
-
-    function genDigestNode(parent_node) {
-      var me = this;
-      var node = $('<div class="character-digest-div"></div>');
-      var link_wiki = '<a target="_blank" href="' + me.wiki + '">维基</a>';
-      var link_baike = '<a target="_blank" href="' + me.baike + '">百科</a>';
-      this.digest =  $('<div class="character-digest-div-short">' + me.desc.substring(0,65) + '...</div>');
-      this.detail = $('<div class="character-digest-div-long" style="display:none;">' + me.desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
-      var show_detail = $('<a href=#>[详细]</a>');
-      var hide_detail = $('<a href=#>[隐藏]</a>');
-
-      this.digest.append(show_detail);
-      this.detail.append(hide_detail);
-
-      show_detail.click(function(){
-	me.showDetial();
-        return false;
-      });
-
-      hide_detail.click(function(){
-	me.hideDetial();
-        return false;
-      });
-      
-      parent_node.append(this.digest);
-      parent_node.append(this.detail);
-    };
-   
-    genDigestNode.prototype = {
-       showDetial: function() {
-	 this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
-         this.digest.fadeOut('fast');
-       },
-       hideDetial: function() {
-         this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
-         this.digest.fadeIn('fast');
-       }
-    }
 
     var genEventListNode = function() {
       var node = $('<div class="events-div"></div>');
@@ -400,7 +400,6 @@
     
 
     var genNode = function() {
-
 
       var table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
       var img_node = $('<td class="character-img-div"></td>');
