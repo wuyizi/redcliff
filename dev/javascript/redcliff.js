@@ -367,7 +367,7 @@
     }
   };
   
-  function PeopleEventListNode(parent_node, event_ids, people_id) {
+  function PeopleEventListNode(parent_node, event_ids, people_id, center) {
     this.people_id = people_id;
     var me = this;
     var node = $('<div class="events-div"></div>');
@@ -380,6 +380,7 @@
     this.show_events.click(function(){
       me.showEvents();
       G_MAP.updateOverlay('P', people_id);
+      G_MAP.setCenter(center, 8);
       return false;
     });
 
@@ -434,7 +435,7 @@
     row.append(intro_node);
 
     var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
-    this.event = new PeopleEventListNode(event_node, people.event_ids, people.id);
+    this.event = new PeopleEventListNode(event_node, people.event_ids, people.id, people.center);
 
     link_node.click(function(){
       if (!me.is_shown) {
