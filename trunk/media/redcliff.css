@@ -99,11 +99,11 @@ table,tr,td,th,tbody {
 }
 .big-event-title {
   padding-left: 18px;
-  background: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/plus.gif') no-repeat left center;
+  background: url(../images/plus.gif) no-repeat left center;
   cursor: pointer;
 }
 .expanded .big-event-title {
-  background-image: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/minus.gif') no-repeat left center;
+  background-image: url(../images/minus.gif) no-repeat left center;
   padding-left: 18px;
   cursor: pointer;
 }
