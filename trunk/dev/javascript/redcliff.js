@@ -246,11 +246,11 @@
       var event_link = $('<a href=#>' + me.name + '</a>');
       event_link.click(function(){
         if (me.is_details_shown) {
-          me.hideDetials();
+          me.hideDetails();
         } else {
 	  if (CURRENT_BIG_EVENT)
-	    CURRENT_BIG_EVENT.hideDetials();
-	  me.showDetials();
+	    CURRENT_BIG_EVENT.hideDetails();
+	  me.showDetails();
 	  CURRENT_BIG_EVENT = me;
         }
         G_MAP.updateOverlay('E', me.id);
@@ -299,13 +299,13 @@
   };
   
   BigEvent.prototype = {
-    showDetials: function() {
+    showDetails: function() {
       this.details.show();
       _IG_AdjustIFrameHeight();
       this.is_details_shown = true;	
     },
 
-    hideDetials: function() {
+    hideDetails: function() {
       this.details.hide();
       _IG_AdjustIFrameHeight();
       this.is_details_shown = false;
@@ -326,12 +326,12 @@
     this.detail.append(hide_detail);
 
     show_detail.click(function(){
-      me.showDetial();
+      me.showDetail();
       return false;
     });
 
     hide_detail.click(function(){
-      me.hideDetial();
+      me.hideDetail();
       return false;
     });
       
@@ -341,11 +341,11 @@
   };
 
   PeopleDigestNode.prototype = {
-    showDetial: function() {
+    showDetail: function() {
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
     },
-    hideDetial: function() {
+    hideDetail: function() {
       this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeIn('fast');
     }
