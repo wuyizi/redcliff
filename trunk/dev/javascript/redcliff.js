@@ -262,7 +262,7 @@
 	  me.showDetails();
         }
         G_MAP.updateOverlay('E', me.id);
-        G_MAP.setCenter(this.center);
+        G_MAP.setCenter(me.center);
       });
       link_cell.append(event_link);
 
@@ -657,8 +657,7 @@
     },
     
     setCenter: function(center) {
-      alert(center);
-      this.gmap.setCenter(center, 8, G_PHYSICAL_MAP);
+      this.gmap.setCenter(center, 8);
     },
 
     updateOverlay: function(type, id) {
