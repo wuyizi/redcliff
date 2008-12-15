@@ -59,8 +59,11 @@
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
+  
   var CURRENT_BIG_EVENT = null;
-  var CURRENT_PEOPLE = null;
+  var CURRENT_PEOPLE_NODE = null;
+  var CURRENT_PEOPLE_EVENT = null;
+  var CURRENT_PEOPLE_DETAIL ＝ null;
 
   var URL = {
     location_url: BASE + 'data/location.json',
@@ -213,6 +216,14 @@
       CURRENT_PEOPLE.encapsulate();
       CURRENT_PEOPLE = null;
     }
+    if (CURRENT_PEOPLE_EVENT) {
+      CURRENT_PEOPLE_EVENT.hideEvents();
+      CURRENT_PEOPLE_EVENT = null;
+    }
+    if (CURRENT_PEOPLE_DETAIL) {
+      CURRENT_PEOPLE_DETAIL.hideDetail();
+      CURRENT_PEOPLE_DETAIL = null;
+    }
   }
 
   function Event(raw_event) {
@@ -346,8 +357,10 @@
 
   PeopleDigestNode.prototype = {
     showDetail: function() {
+      encapsulateActiveEventOrPeople();
       this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
       this.digest.fadeOut('fast');
+      CURRET_PEOPLE_DETIAL = this;
     },
     hideDetail: function() {
       this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
@@ -383,9 +396,11 @@
   
   PeopleEventListNode.prototype = {
     showEvents: function() {
+      encapsulateActiveEventOrPeople();
       this.event_list.slideDown('fast', _IG_AdjustIFrameHeight);
       this.hide_events.show();
       this.show_events.hide();
+      CURRENT_PEOPLE_EVENT = this;
     },
     hideEvents: function() {
       this.event_list.slideUp('fast', _IG_AdjustIFrameHeight);
