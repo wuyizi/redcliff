@@ -598,7 +598,7 @@
   function RedcliffMap(node) {
     var me = this;
     this.gmap = new GMap2();
-    this.gmap.setCenter(new GLatLng(30.917, 110.397), 6, G_PHYSICAL_MAP);
+    this.gmap.setCenter(new GLatLng(29.833, 113.618), 7, G_PHYSICAL_MAP);
     this.tileLayerOverlay = new GTileLayerOverlay(
       new GTileLayer(null, null, null, {
         tileUrlTemplate: URL.tile_url,
@@ -668,7 +668,7 @@
     },
     
     setCenter: function(center, level) {
-      this.gmap.setCenter(center, level);
+      this.gmap.panTo(center);
     },
 
     updateOverlay: function(type, id) {
