@@ -84,35 +84,7 @@
   
   var C_POLYLINE_WEIGHT = 10
   
-  function TabManager(in_tabs, active_tab) {
-    var tabs = new Array();
-    var current_tab = '';
-  
-    var shiftTab = function(active_tab) {
-      if (active_tab == current_tab) return;
-      $.each(tabs, function(index, tab){
-        var tab_container = $('#' + tab + '_cnt');
-          var tab_head = $('#' + tab + '_tab');
-          if (tab == active_tab) {
-            tab_container.show();
-            tab_head.removeClass('tab_item');
-            tab_head.addClass('tab-item active-tab');
-          } else {
-            tab_container.hide();
-            tab_head.removeClass('tab-item active-tab');
-            tab_head.addClass('tab-item');
-        } 
-      });
-      };
 
-    $.each(in_tabs, function(index, tab){
-      $('#' + tab + '_tab').click(function(){
-          shiftTab(tab);
-      });
-      tabs.push(tab);
-    });
-    shiftTab(active_tab);
-  };
   
   function Location(raw_location) {
     var me = this;
@@ -796,11 +768,40 @@
   };
   
   
+  function TabManager(in_tabs, active_tab) {
+    var tabs = new Array();
+    var current_tab = '';
+    var shiftTab = function(active_tab) {
+      if (active_tab == current_tab) return;
+      $.each([active_tab, current_tab], function(index, tab){
+        var tab_container = $('#' + tab + '_cnt');
+        var tab_item = $('#' + tab + '_tab');
+        if (tab == active_tab) {
+          tab_container.show();
+          tab_item.removeClass('tab-item-inactive');
+          tab_item.addClass('tab-item-active');
+        } else {
+          tab_container.hide();
+          tab_item.removeClass('tab-item-active');
+          tab_item.addClass('tab-item-inactive');
+        }
+      });
+	  current_tab = active_tab;
+    };
+
+    $.each(in_tabs, function(index, tab){
+      tabs.push(tab);
+    });
+    shiftTab(active_tab);
+  };
+  
   $(function(){
     G_MAP = new RedcliffMap();
     LoadLocation();
     new TilesSelect();
 	
+	new TabManager(['events', 'characters', 'vote'], 'characters');
+	/*
 	CURRENT_TAB = $('#characters_cnt');
     
     $('#shift_event').click(function(){
@@ -812,7 +813,6 @@
     });
     
     $('#shift_people').click(function(){
-	alert(1);
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#characters_cnt');
 	  CURRENT_TAB.show();
@@ -820,14 +820,12 @@
       return false;
     });
     $('#shift_vote').click(function(){
-      alert(1);
-	  console.log(CURRENT_TAB);
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#vote_cnt');
 	  CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
-    });
+    });*/
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
     })
