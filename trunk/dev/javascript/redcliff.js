@@ -427,7 +427,7 @@
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
     var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + BASE + 'images/search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\' + BASE + 'images/icon/' + FLAGS[people.kingdom] + '.gif + '\')"></div>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + BASE + 'images/icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     title_node.append(flag_node);
     title_node.append(link_node);
