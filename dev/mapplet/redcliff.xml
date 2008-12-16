@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=97"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=98"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -49,8 +49,8 @@
     </div>
   </div>
   <div class="bottom-button-div">
-    <span id="clear_button">清除地图上的箭头</span>
-	<span id="share_button"></span>
+    <a href='#' id="clear_button">清除地图上的箭头</a>
+	<a href='#' id="share_button"></a>
   </div>
   
 </div>
@@ -60,7 +60,7 @@
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
 <script src="http://www.google.cn/s2/sharing/js?hl=zh_CN" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=97" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=98" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 ]]></Content>
