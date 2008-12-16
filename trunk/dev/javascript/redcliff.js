@@ -321,6 +321,7 @@
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
       G_MAP.openInfoWindow("EVENT", event.id, event.point);
+      return false;
     });
     link_cell.append(event_link);
     row.append(time_cell);
@@ -611,7 +612,6 @@
 		  html.push('</div>');
         html.push('</div>');
       });
-      html.push('<input type=button value="下一个事件" id="next_event"></input>');
       html.push('</div>');
       return html.join('');
     }
@@ -655,9 +655,6 @@
         var event = EVENT.getItem(id);
         var info_div = Utils.constructInfoWindowHtml([event]);
         this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
-	$('#next_event').click(function(){
-		alert("next");
-	});
         //this.highLightOverlay(event.element_ids);
       }
       if (type == "ELEMENT") {
