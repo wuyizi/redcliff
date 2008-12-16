@@ -50,13 +50,13 @@
       <div id="character_list"></div>
     </div>
 
-    <div id="vote_cnt">
+    <div id="vote_cnt" style="display:none;">
       <div class="tab-head">
         <div class="tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
         <div class="tab-item-inactive"><div class="tab-inactive" id="shift_people">主要人物</div></div>
         <div class="tab-item-active"><div class="tab-active">投票</div></div>
       </div>
-      <iframe width="100%" height="auto" src="http://redcliffvote.appspot.com/"></iframe>
+      <iframe border=0 width="100%" height="300px" src="http://redcliffvote.appspot.com/"></iframe>
     </div>
     
   </div>
