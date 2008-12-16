@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=102"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=104"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -50,7 +50,7 @@
   </div>
   <div class="bottom-button-div">
     <a href='#' id="clear_button">清除地图上的箭头</a>
-	<a href='#' id="share_button"></a>
+	<span id="share_button"></span>
   </div>
   
 </div>
