@@ -635,15 +635,22 @@
 
   RedcliffMap.prototype = {
     changeTiles: function(opacity_val) {
-      this.gmap.removeOverlay(this.tileLayerOverlay);
-      this.tileLayerOverlay = new GTileLayerOverlay(
-        new GTileLayer(null, null, null, {
-          tileUrlTemplate: URL.tile_url,
-          isPng:true,
-          opacity:opacity_val
-        })
-      );
-      this.gmap.addOverlay(this.tileLayerOverlay);
+      // IE6 does not support opacity, so we remove the layer if opacity is 0
+      if (this.tileLayerOverlay != null) {
+        this.gmap.removeOverlay(this.tileLayerOverlay);
+      }
+      if (opacity_val < 0.01) {
+        this.tileLayerOverlay = null;
+      } else {
+        this.tileLayerOverlay = new GTileLayerOverlay(
+          new GTileLayer(null, null, null, {
+            tileUrlTemplate: URL.tile_url,
+            isPng:true,
+            opacity:opacity_val
+          })
+        );
+        this.gmap.addOverlay(this.tileLayerOverlay);
+      }
     },
     addOverlay: function(overlay) {
       this.gmap.addOverlay(overlay);
