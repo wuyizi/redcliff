@@ -497,7 +497,7 @@
     this.event = null;
     this.center = new GLatLng(raw_people.center.lat, raw_people.center.lng);
     this.node = new PeopleNode($('#character_list'), this);
-    this.is_shown = false;
+    this.is_shown = true;
   };
 
   People.prototype = {
@@ -747,14 +747,11 @@
       var shu_selected = false;
       var wei_selected = false;
       var wu_selected = false;
-      alert($('#checkbox_shu').attr('checked'));
       if ($('#checkbox_shu').attr('checked')) shu_selected = true;
       if ($('#checkbox_wei').attr('checked')) wei_selected = true;
       if ($('#checkbox_wu').attr('checked')) wu_selected = true;
-      alert(shu_selected);
       $.each(PEOPLE_ARRAY, function(index, character){
         if (character.kingdom == '蜀') {
-          alert(character.name);
           if (shu_selected) character.showNode();
           else character.hideNode();
         }   
