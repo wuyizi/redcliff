@@ -147,7 +147,7 @@
     }
     
     var getMarker = function(icon_url, point, id) {
-      var image = BASE + 'images/icon/' + icon_url + '.png';
+      var image = BASE + 'images/icon/' + icon_url + '.gif';
       var icon = new GIcon(G_DEFAULT_ICON, image);
       if (icon_url.length == 2)
         icon.iconSize = new GSize(45,32);
@@ -255,7 +255,7 @@
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
-      row.append('<td class="big-event-item-pic"><img src="' + BASE + 'images/icon/' + me.pic + '.png"></td>');
+      row.append('<td class="big-event-item-pic"><img src="' + BASE + 'images/icon/' + me.pic + '.gif"></td>');
       node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');
@@ -429,7 +429,7 @@
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
     var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + BASE + 'images/search_icon.gif"></a>');
-    var flag_node = $('<img src="' + BASE + 'images/icon/' + FLAGS[people.kingdom] + '.png"/>');
+    var flag_node = $('<img src="' + BASE + 'images/icon/' + FLAGS[people.kingdom] + '.gif"/>');
     title_node.append(flag_node);
     title_node.append(link_node);
     title_node.append(gicon_node);
