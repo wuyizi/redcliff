@@ -584,9 +584,9 @@
       $.each(events, function(i, event){
 		html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
           html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
-		  html.push('<div><span style="color:#AAAAAA;" title="' + event.time_ad + '">' + event.time + '</span></div>');
+		  html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + '>)</div>');
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
-          html.push('<div style="text-align:right; color:#AAA;">搜索主要人物：');
+          html.push('<div style="text-align:right; color:#AAA;">搜索主要人物: ');
             $.each(event.people, function(j, person) {
               html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&q=' + person + '">' + person + '</a>');
             });
