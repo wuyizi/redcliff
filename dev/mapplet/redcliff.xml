@@ -58,7 +58,7 @@
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=94" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=95" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 <script>
@@ -84,7 +84,7 @@
     new google.share.SharingWidget("share-widget",g);
   };
   function unescapeHtml(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<';case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
-  function LoadS2(){var b=document.createElement('script');b.src='http://www.google.cn/s2/sharing/js?hl=zh_CN&jscallback=shareCallback';document.body.appendChild(b);};
+  function loadS2(){var b=document.createElement('script');b.src='http://www.google.cn/s2/sharing/js?hl=zh_CN&jscallback=shareCallback';document.body.appendChild(b);};
 </script>
 
 ]]></Content>
