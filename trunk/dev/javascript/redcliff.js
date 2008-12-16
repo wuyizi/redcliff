@@ -62,6 +62,8 @@
   
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
+  
+  var CURRENT_TAB = null;
 
   var URL = {
     location_url: BASE + 'data/location.json?bpc=3',
@@ -801,24 +803,27 @@
     G_MAP = new RedcliffMap();
     LoadLocation();
     new TilesSelect();
+	
+	CURRENT_TAB = $('#shift_people');
+	
     $('#shift_event').click(function(){
-      $('#characters_cnt').hide();
-	  $('#vote_cnt').hide();
-      $('#events_cnt').show();
+      CURRENT_TAB.hide();
+      CURRENT_TAB = $('#events_cnt');
+	  CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
     });
     $('#shift_people').click(function(){
-      $('#events_cnt').hide();
-	  $('#vote_cnt').hide();
-      $('#characters_cnt').show();
+      CURRENT_TAB.hide();
+      CURRENT_TAB = $('#characters_cnt');
+	  CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
     });
 	$('#shift_vote').click(function(){
-      $('#events_cnt').hide();
-      $('#characters_cnt').hide();
-	  $('#vote_cnt').show();
+      CURRENT_TAB.hide();
+      CURRENT_TAB = $('#vote_cnt');
+	  CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
     });
