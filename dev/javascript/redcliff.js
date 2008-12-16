@@ -767,7 +767,6 @@
     $('#select_tiles').change(change_tiles);
   };
   
-  
   function TabManager(in_tabs, active_tab) {
     var tabs = new Array();
     var current_tab = '';
@@ -807,31 +806,7 @@
     new TilesSelect();
     
     new TabManager(['events', 'characters', 'vote'], 'characters');
-    /*
-    CURRENT_TAB = $('#characters_cnt');
-    
-    $('#shift_event').click(function(){
-      CURRENT_TAB.hide();
-      CURRENT_TAB = $('#events_cnt');
-      CURRENT_TAB.show();
-      _IG_AdjustIFrameHeight();
-      return false;
-    });
-    
-    $('#shift_people').click(function(){
-      CURRENT_TAB.hide();
-      CURRENT_TAB = $('#characters_cnt');
-      CURRENT_TAB.show();
-      _IG_AdjustIFrameHeight();
-      return false;
-    });
-    $('#shift_vote').click(function(){
-      CURRENT_TAB.hide();
-      CURRENT_TAB = $('#vote_cnt');
-      CURRENT_TAB.show();
-      _IG_AdjustIFrameHeight();
-      return false;
-    });*/
+
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
     })
