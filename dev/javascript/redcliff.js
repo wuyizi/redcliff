@@ -331,14 +331,12 @@
     row.append(link_cell);
   };
 
-  function PeopleDigestNode(parent_node, desc, wiki, baike, people_id) {
+  function PeopleDigestNode(parent_node, desc, people_id) {
     this.people_id = people_id;
     var me = this;
     var node = $('<div class="character-digest-div"></div>');
-    var link_wiki = '<a target="_blank" href="' + wiki + '">维基</a>';
-    var link_baike = '<a target="_blank" href="' + baike + '">百科</a>';
     this.digest =  $('<div class="character-digest-div-short">' + desc.substring(0,65) + '...</div>');
-    this.detail = $('<div class="character-digest-div-long" style="display:none;">' + desc + ' ' + link_wiki + ' ' + link_baike + ' </div>');
+    this.detail = $('<div class="character-digest-div-long" style="display:none;">' + desc + '</div>');
     var show_detail = $('<a href=#>[详细]</a>');
     var hide_detail = $('<a href=#>[隐藏]</a>');
 
@@ -434,7 +432,7 @@
     title_node.append(link_node);
     title_node.append(gicon_node);
     intro_node.append(title_node);
-    this.digest = new PeopleDigestNode(intro_node, people.desc, people.wiki, people.baike, people.id);
+    this.digest = new PeopleDigestNode(intro_node, people.desc, people.id);
 
     var row = this.table.children().children();
     row.append(img_node);
@@ -490,8 +488,6 @@
     this.birthplace = raw_people.birthplace;
     this.desc = raw_people.desc;
     this.kingdom = raw_people.kindom;
-    this.wiki = raw_people.wiki;
-    this.baike = raw_people.baike;
     this.event_ids = raw_people.event_ids;
     this.element_ids = raw_people.element_ids;
     this.pic = raw_people.pic;
