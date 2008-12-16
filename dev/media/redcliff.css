@@ -19,15 +19,13 @@ table,tr,td,th,tbody {
   border-collapse:collapse;
 }
 
-.dropdown-border {
-  position:absolute;
-  right:0px;
-  top:15px;
-  z-index:200;
+.dropdown-box span {
+  color:#AAA;
+  font-size:13px;
 }
-.dropdown-box {
+.dropdown-box select{
   border: 1px solid #E6DB9D;
-  font-size:12px;
+  font-size:13px;
 }
 .tab-head {
   z-index:140;
