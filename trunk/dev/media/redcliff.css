@@ -278,14 +278,12 @@ a.events-div-hide{
   margin-top:20px;
   clear:both;
 }
-.bottom-button-div span {
-  cursor:pointer;
-  text-decoration:underline;
+.bottom-button-div a {
   color:BC944F;
 }
-.bottom-button-div span#clear_button {
+.bottom-button-div a#clear_button {
   float:right;
 }
-.bottom-button-div span#share_button {
+.bottom-button-div a#share_button {
   float:left;
 }
