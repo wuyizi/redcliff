@@ -273,13 +273,19 @@ a.events-div-hide{
   padding-left:5px;
 }
 
-.clear_button_div {
+.bottom-button-div {
   font-size:12px;
-  text-align:right;
   margin-top:20px;
+  clear:both;
 }
-.clear_button_div span {
+.bottom-button-div span {
   cursor:pointer;
   text-decoration:underline;
   color:BC944F;
+}
+.bottom-button-div span#clear_button {
+  float:right;
+}
+.bottom-button-div span#share_button {
+  float:left;
 }
