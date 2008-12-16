@@ -807,7 +807,6 @@
 	CURRENT_TAB = $('#characters_cnt');
 	
     $('#shift_event').click(function(){
-      console.log(CURRENT_TAB);
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#events_cnt');
 	  CURRENT_TAB.show();
@@ -815,7 +814,6 @@
       return false;
     });
     $('#shift_people').click(function(){
-      console.log(CURRENT_TAB);
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#characters_cnt');
 	  CURRENT_TAB.show();

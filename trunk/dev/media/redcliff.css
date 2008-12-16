@@ -19,6 +19,12 @@ table,tr,td,th,tbody {
   border-collapse:collapse;
 }
 
+#main {
+  padding-top:10px;
+}
+.dropdown-box {
+  text-align:right;
+}
 .dropdown-box span {
   color:#AAA;
   font-size:13px;
@@ -78,7 +84,7 @@ table,tr,td,th,tbody {
 .tab-content{
   padding-top:22px;
   position:relative;
-  top:15px;
+  top:5px;
 }
 .big-event-item {
   border-bottom: #F6F3D7 solid 1px;
