@@ -36,7 +36,7 @@ table,tr,td,th,tbody {
 .tab-head {
   z-index:140;
   position:absolute;
-  top:0px;
+  top:35px;
   padding-left:10px;
 }
 .tab-item {
@@ -70,9 +70,8 @@ table,tr,td,th,tbody {
   text-decoration:underline;
 }
 .tab-content{
-  padding-top:22px;
+  padding-top:27px;
   position:relative;
-  top:5px;
 }
 .big-event-item {
   border-bottom: #F6F3D7 solid 1px;

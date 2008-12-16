@@ -186,7 +186,7 @@
       CURRENT_BIG_EVENT = null;
     }
     if (CURRENT_PEOPLE != null && people_id && CURRENT_PEOPLE == people_id)
-	return;
+    return;
     if (CURRENT_PEOPLE != null) {
       var people = PEOPLE.getItem(CURRENT_PEOPLE);
       people.node.encapsulate();
@@ -212,7 +212,7 @@
     this.element_ids = raw_event.element_ids;
     this.event_ids = raw_event.event_ids;
     this.time = raw_event.time;
-	this.time_ad = raw_event.ad;
+    this.time_ad = raw_event.ad;
     this.desc = raw_event.desc;
     this.pic = raw_event.pic;
     this.is_details_shown = false;
@@ -235,7 +235,7 @@
         if (me.is_details_shown) {
           me.hideDetails();
         } else {
-	  me.showDetails();
+      me.showDetails();
         }
         G_MAP.updateOverlay('E', me.id);
         G_MAP.setCenter(me.center, 8);
@@ -545,27 +545,27 @@
   function LoadDone() {
     LOAD_STATES++;
     if (LOAD_STATES == 3) { // shan zhai!
-	  makeShareButton();
+      makeShareButton();
       $('#loading').hide();
       $('#main').show();
-	  
+      
       _IG_AdjustIFrameHeight();
     }
   };
 
   function _un(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<'; case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
   function makeShareButton() {
-	if (!google || !google.share || !google.share.SharingWidget) return;
+    if (!google || !google.share || !google.share.SharingWidget) return;
     var g = {
       'linkText': '将此地图分享给朋友',
-	  'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
+      'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
       'title': '谷歌赤壁之战地图',
       'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
       'subject_template': _un('{FROM}邀请您来看看谷歌赤壁之战地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
       'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的大混战时代',
       'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
-	};
+    };
     new google.share.SharingWidget("share_button", g);
   };
   
@@ -573,15 +573,15 @@
     constructInfoWindowHtml : function(events) {
       var html = ['<div style="width:300px; font-size:12px;">'];
       $.each(events, function(i, event){
-		html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
+        html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
           html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
-		  html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
+          html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
           html.push('<div style="text-align:right; color:#AAA;">搜索: ');
             $.each(event.people, function(j, person) {
               html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&q=' + person + '">' + person + '</a>');
             });
-		  html.push('</div>');
+          html.push('</div>');
         html.push('</div>');
       });
       html.push('</div>');
@@ -786,12 +786,18 @@
           tab_item.addClass('tab-item-inactive');
         }
       });
-	  current_tab = active_tab;
+      current_tab = active_tab;
     };
 
     $.each(in_tabs, function(index, tab){
+      $('#' + tab + '_tab').click(function(){
+        shiftTab(tab);
+        _IG_AdjustIFrameHeight();
+        return false;
+      });
       tabs.push(tab);
     });
+
     shiftTab(active_tab);
   };
   
@@ -799,15 +805,15 @@
     G_MAP = new RedcliffMap();
     LoadLocation();
     new TilesSelect();
-	
-	new TabManager(['events', 'characters', 'vote'], 'characters');
-	/*
-	CURRENT_TAB = $('#characters_cnt');
+    
+    new TabManager(['events', 'characters', 'vote'], 'characters');
+    /*
+    CURRENT_TAB = $('#characters_cnt');
     
     $('#shift_event').click(function(){
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#events_cnt');
-	  CURRENT_TAB.show();
+      CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
     });
@@ -815,14 +821,14 @@
     $('#shift_people').click(function(){
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#characters_cnt');
-	  CURRENT_TAB.show();
+      CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
     });
     $('#shift_vote').click(function(){
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#vote_cnt');
-	  CURRENT_TAB.show();
+      CURRENT_TAB.show();
       _IG_AdjustIFrameHeight();
       return false;
     });*/
