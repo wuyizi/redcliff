@@ -233,14 +233,14 @@ a.events-div-show{
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url(../images/triangle-r.png) no-repeat center left;
+  background:url(../images/triangle-r.gif) no-repeat center left;
 }
 a.events-div-hide{
   color:#BC944F;
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url(../images/triangle-d.png) no-repeat center left;
+  background:url(../images/triangle-d.gif) no-repeat center left;
 }
 .events-list {
   
@@ -285,4 +285,6 @@ a.events-div-hide{
 }
 .bottom-button-div a#share_button {
   float:left;
+  padding-right:16px;
+  background:url(../images/pop.gif) no-repeat center right;
 }
