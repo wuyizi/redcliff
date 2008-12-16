@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=104"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=105"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -28,29 +28,41 @@
 
   <div class="tab-content" id="tabContent">
     <div id="events_cnt" style="display:none;">
-    <div class="tab-head">
-      <div class="rc_id tab-item-active"><div class="tab-active">历史事件</div></div>
-      <div class="rc_id tab-item-inactive"><div class="tab-inactive" id="shift_people">主要人物</div></div>
-    </div>
-    <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
-    <div id="big_event_list" ></div>
+      <div class="tab-head">
+        <div class="tab-item-active"><div class="tab-active">历史事件</div></div>
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_people">主要人物</div></div>
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_vote">投票</div></div>
+      </div>
+      <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
+      <div id="big_event_list" ></div>
     </div>
     <div id="characters_cnt">
-    <div class="tab-head">
-      <div class="rc_id tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
-      <div class="rc_id tab-item-active"><div class="tab-active">主要人物</div></div>
+      <div class="tab-head">
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
+        <div class="tab-item-active"><div class="tab-active">主要人物</div></div>
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_vote">投票</div></div>
+      </div>
+      <div id="kingdom_checkbox">
+        <label for="checkbox_wei">曹操军</label><input id="checkbox_wei" type="checkbox" checked>
+        <label for="checkbox_wu">孙权军</label><input id="checkbox_wu" type="checkbox" checked>
+        <label for="checkbox_shu">刘备军</label><input id="checkbox_shu" type="checkbox" checked>
+      </div>
+      <div id="character_list"></div>
     </div>
-    <div id="kingdom_checkbox">
-      <label for="checkbox_wei">曹操军</label><input id="checkbox_wei" type="checkbox" checked>
-      <label for="checkbox_wu">孙权军</label><input id="checkbox_wu" type="checkbox" checked>
-      <label for="checkbox_shu">刘备军</label><input id="checkbox_shu" type="checkbox" checked>
+
+    <div id="vote_cnt">
+      <div class="tab-head">
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_people">主要人物</div></div>
+        <div class="tab-item-active"><div class="tab-active">投票</div></div>
+      </div>
+      <iframe width="100%" height="auto" src="http://redcliffvote.appspot.com/"></iframe>
     </div>
-    <div id="character_list"></div>
-    </div>
+    
   </div>
   <div class="bottom-button-div">
     <a href='#' id="clear_button">清除地图上的箭头</a>
-	<span id="share_button"></span>
+    <span id="share_button"></span>
   </div>
   
 </div>
@@ -60,7 +72,7 @@
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
 <script src="http://www.google.cn/s2/sharing/js?hl=zh_CN" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=103" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=105" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 ]]></Content>

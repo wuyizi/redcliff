@@ -804,13 +804,22 @@
     new TilesSelect();
     $('#shift_event').click(function(){
       $('#characters_cnt').hide();
+	  $('#vote_cnt').hide();
       $('#events_cnt').show();
       _IG_AdjustIFrameHeight();
       return false;
     });
     $('#shift_people').click(function(){
       $('#events_cnt').hide();
+	  $('#vote_cnt').hide();
       $('#characters_cnt').show();
+      _IG_AdjustIFrameHeight();
+      return false;
+    });
+	$('#shift_vote').click(function(){
+      $('#events_cnt').hide();
+      $('#characters_cnt').hide();
+	  $('#vote_cnt').show();
       _IG_AdjustIFrameHeight();
       return false;
     });
