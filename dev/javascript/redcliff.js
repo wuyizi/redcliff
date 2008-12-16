@@ -572,7 +572,6 @@
   function LoadDone() {
     LOAD_STATES++;
     if (LOAD_STATES == 3) { // shan zhai!
-	  console.info("load done");
 	  makeShareButton();
       $('#loading').hide();
       $('#main').show();
@@ -658,7 +657,7 @@
         this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
 	$('#next_event').click(function(){
 		alert("next");
-	})
+	});
         //this.highLightOverlay(event.element_ids);
       }
       if (type == "ELEMENT") {
