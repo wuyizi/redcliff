@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=107"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=113"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -32,7 +32,7 @@
       <div class="tab-head">
         <div class="tab-item-active"><div class="tab-active">历史事件</div></div>
         <div class="tab-item-inactive"><div class="tab-inactive" id="shift_people">人物介绍</div></div>
-        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_vote">投票</div></div>
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_vote">人物投票</div></div>
       </div>
       <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
       <div id="big_event_list" ></div>
@@ -41,7 +41,7 @@
       <div class="tab-head">
         <div class="tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
         <div class="tab-item-active"><div class="tab-active">人物介绍</div></div>
-        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_vote">投票</div></div>
+        <div class="tab-item-inactive"><div class="tab-inactive" id="shift_vote">人物投票</div></div>
       </div>
       <div id="kingdom_checkbox">
         <label for="checkbox_wei">曹操军</label><input id="checkbox_wei" type="checkbox" checked>
@@ -55,10 +55,10 @@
       <div class="tab-head">
         <div class="tab-item-inactive"><div class="tab-inactive" id="shift_event">历史事件</div></div>
         <div class="tab-item-inactive"><div class="tab-inactive" id="shift_people">人物介绍</div></div>
-        <div class="tab-item-active"><div class="tab-active">投票</div></div>
+        <div class="tab-item-active"><div class="tab-active">人物投票</div></div>
       </div>
       <div id="unused_bar"></div>
-      <!--<iframe class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>-->
+      <iframe class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>
     </div>
 
   </div>
@@ -74,7 +74,7 @@
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
 <script src="http://www.google.cn/s2/sharing/js?hl=zh_CN" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=112" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=113" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 ]]></Content>
