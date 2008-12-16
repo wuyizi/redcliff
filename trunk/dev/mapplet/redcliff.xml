@@ -63,6 +63,8 @@
 
 <script>
   // Functions for S2 button
+  function unescapeHtml(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<';case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
+  function loadS2(){var b=document.createElement('script');b.src='http://www.google.cn/s2/sharing/js?hl=zh_CN&jscallback=shareCallback';document.body.appendChild(b);};
   var shareCallback=function(){
     var g={};
     g.url='http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml';
@@ -78,13 +80,11 @@
     g.nopreview=true;
     g.noaddto=true;
     g.noThumbnail=true;
-    g.title=un(g.title);
-    g.subject_template=un(g.subject_template);
-    g.comments_template=un(g.comments_template);
+    g.title=unescapeHtml(g.title);
+    g.subject_template=unescapeHtml(g.subject_template);
+    g.comments_template=unescapeHtml(g.comments_template);
     new google.share.SharingWidget("share-widget",g);
   };
-  function unescapeHtml(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<';case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
-  function loadS2(){var b=document.createElement('script');b.src='http://www.google.cn/s2/sharing/js?hl=zh_CN&jscallback=shareCallback';document.body.appendChild(b);};
 </script>
 
 ]]></Content>
