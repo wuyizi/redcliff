@@ -277,14 +277,15 @@ a.events-div-hide{
   margin-top:20px;
   clear:both;
 }
-.bottom-button-div a {
-  color:BC944F;
-}
 .bottom-button-div a#clear_button {
   float:right;
+  color:BC944F;
 }
-.bottom-button-div a#share_button {
+.bottom-button-div span#share_button {
   float:left;
-  padding-right:16px;
+}
+.bottom-button-div span#share_button a{
+  color:BC944F;
+  padding:0px 18px 1px 0px;
   background:url(../images/pop.gif) no-repeat center right;
 }
