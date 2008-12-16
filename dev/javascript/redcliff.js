@@ -265,6 +265,7 @@
         }
         G_MAP.updateOverlay('E', me.id);
         G_MAP.setCenter(me.center, 8);
+        return false;
       });
       link_cell.append(event_link);
 
