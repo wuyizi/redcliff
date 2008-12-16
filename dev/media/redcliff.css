@@ -184,12 +184,12 @@ table,tr,td,th,tbody {
   font-size:12px;
 }
 .character-title-img {
-  float: right;
+  float:right;
   width:25;
-  height:20px;
-  margin-top:-2px;
-  margin-right:10px;
-  background:0 -6px no-repeat;
+  height:22px;
+  margin-top:-3px;
+  margin-right:8px;
+  background:0 -5px no-repeat;
 }
 .character-title a img {
   position: relative;
