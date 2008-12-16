@@ -39,45 +39,33 @@ table,tr,td,th,tbody {
   top:0px;
   padding-left:10px;
 }
-.tab-item-active {
+.tab-item {
   display:inline;
   float:left;
   margin-right:3px;
+  font-size:13px;
+  z-index:150;
+  width:5em;
+  line-height:1.6;
+  text-align:center;
+}
+.tab-item-active {
   background-color:#F6F3D7;
   border-top: 2px solid #E6DB9D;
   border-left: 2px solid #E6DB9D;
   border-right: 2px solid #E6DB9D;
   border-bottom: 2px solid #F6F3D7;
-  z-index:150;
+  font-weight:bold;
+  color:#000;
 }
-
 .tab-item-inactive {
-  display:inline;
-  float:left;
-  margin-right:3px;
   border-top: 1px solid #E6DB9D;
   border-left: 1px solid #E6DB9D;
   border-right: 1px solid #E6DB9D;
-  z-index:150;
-}
-
-.tab-active {
-  font-weight:bold;
-  font-size:13px;
-  color:#000;
-  line-height:1.6;
-  width:5em;
-  text-align:center;
-}
-.tab-inactive {
-  font-size:13px;
   color:#BC944F;
-  line-height:1.6;
   cursor:pointer;
-  width:5em;
-  text-align:center;
 }
-.tab-inactive:hover {
+.tab-item-inactive div:hover {
   color:#BC944F;
   text-decoration:underline;
 }
