@@ -782,7 +782,7 @@
   function TilesSelect() {
     // remove half transparent version for IE6
    if (navigator.appName == 'Microsoft Internet Explorer' &&
-       navigator.appVersion == '4') {
+       navigator.appVersion.indexOf('MSIE 6.0')) {
       var sel = $('#select_tiles').get(0);
       alert(sel.length);
       for (var i = sel.length - 1; i >= 0; i--) {
