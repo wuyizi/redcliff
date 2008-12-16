@@ -784,7 +784,6 @@
    if (navigator.appName == 'Microsoft Internet Explorer' &&
        navigator.appVersion.indexOf('MSIE 6.0')) {
       var sel = $('#select_tiles').get(0);
-      alert(sel.length);
       for (var i = sel.length - 1; i >= 0; i--) {
         if (sel.options[i].value > 0.01 && sel.options[i].value < 0.99) {
           sel.remove(i);
