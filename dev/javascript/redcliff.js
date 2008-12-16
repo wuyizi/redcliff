@@ -572,7 +572,8 @@
   function LoadDone() {
     LOAD_STATES++;
     if (LOAD_STATES == 3) { // shan zhai!
-	  if (loadS2) loadS2();
+	  console.info("load done");
+	  makeShareButton();
       $('#loading').hide();
       $('#main').show();
 	  
@@ -580,6 +581,22 @@
     }
   };
 
+  function _un(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<'; case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
+  function makeShareButton() {
+	if (!google || !google.share || !google.share.SharingWidget) return;
+    var g = {
+      'linkText': '将此地图分享给朋友',
+	  'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
+      'title': '谷歌赤壁之战地图',
+      'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
+      'subject_template': _un('{FROM}邀请您来看看谷歌赤壁之战地图'),
+      'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
+      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的大混战时代',
+      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
+	};
+    new google.share.SharingWidget("share_button", g);
+  };
+  
   var Utils = {
     constructInfoWindowHtml : function(events) {
       var html = ['<div style="width:300px; font-size:12px;">'];
