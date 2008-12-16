@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=92"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=97"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -59,27 +59,9 @@
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=96" type="text/javascript"></script>
+<script src="http://www.google.cn/s2/sharing/js?hl=zh_CN" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=97" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
-
-<!-- Functions for S2 button -->
-<script>
-  function _un(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<'; case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
-  function loadS2(){var b=document.createElement('script');b.src='http://www.google.cn/s2/sharing/js?hl=zh_CN&jscallback=shareCallback';document.body.appendChild(b);};
-  var shareCallback=function(){
-    var g={
-      'linkText': '将此地图分享给朋友',
-	  'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
-      'title': '谷歌赤壁之战地图',
-      'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
-      'subject_template': _un('{FROM}邀请您来看看谷歌赤壁之战地图'),
-      'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
-      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的大混战时代',
-      'buttonStyle: 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
-	};
-    new google.share.SharingWidget("share_button", g);
-  };
-</script>
 
 ]]></Content>
 </Module>
