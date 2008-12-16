@@ -226,6 +226,7 @@
     this.element_ids = raw_event.element_ids;
     this.people = raw_event.people;
     this.time = raw_event.time;
+    this.time_ad = raw_event.ad;
     this.desc = raw_event.desc;
     this.point = new GLatLng(raw_event.popup.lat, raw_event.popup.lng);
   };
@@ -237,6 +238,7 @@
     this.element_ids = raw_event.element_ids;
     this.event_ids = raw_event.event_ids;
     this.time = raw_event.time;
+    this.time_ad = raw_event.ad;
     this.desc = raw_event.desc;
     this.pic = raw_event.pic;
     this.is_details_shown = false;
@@ -247,7 +249,7 @@
 
       var table = $('<table><tbody><tr></tr></tbody></table>');
       var row = table.children().children();
-      var time_cell = $('<td class="big-event-item-time">' + me.time + '</div>');
+      var time_cell = $('<td class="big-event-item-time" title="' + me.time_ad + '">' + me.time + '</div>');
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
@@ -314,7 +316,7 @@
   };
  
   var genEventItem = function(row, event) {
-    var time_cell = $('<td class="events-item-time">' + event.time + '</div>');
+    var time_cell = $('<td class="big-event-item-time" title="' + event.time_ad + '">' + event.time + '</div>');
     var link_cell = $('<td class="events-item-link"></td>');
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
@@ -583,7 +585,7 @@
 		html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
           html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
-          html.push('<div style="text-align:right; color:#AAA;">搜索主要人物：');
+          html.push('<div style="text-align:right; color:#AAA;">搜索主要人物: ');
             $.each(event.people, function(j, person) {
               html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&q=' + person + '">' + person + '</a>');
             });

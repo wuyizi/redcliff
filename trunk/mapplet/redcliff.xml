@@ -57,7 +57,7 @@
 
 <script src="http://redcliff.googlecode.com/svn/trunk/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/javascript/jquery.ui.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/javascript/redcliff.js?bpc=90" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/javascript/redcliff.js?bpc=91" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 ]]></Content>
