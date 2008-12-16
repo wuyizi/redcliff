@@ -762,7 +762,8 @@
     };
     $('#select_tiles').change(change_tiles);
   };
- 
+  
+  
   $(function(){
     G_MAP = new RedcliffMap();
     LoadLocation();
@@ -784,4 +785,7 @@
       G_MAP.clearOverlays();
     })
   });
+ 
 })();
+
+
