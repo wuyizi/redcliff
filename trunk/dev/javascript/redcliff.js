@@ -572,8 +572,10 @@
   function LoadDone() {
     LOAD_STATES++;
     if (LOAD_STATES == 3) { // shan zhai!
+	  if (loadS2) loadS2();
       $('#loading').hide();
       $('#main').show();
+	  
       _IG_AdjustIFrameHeight();
     }
   };
