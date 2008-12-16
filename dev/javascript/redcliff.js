@@ -751,8 +751,10 @@
       if ($('#checkbox_shu').attr('checked')) shu_selected = true;
       if ($('#checkbox_wei').attr('checked')) wei_selected = true;
       if ($('#checkbox_wu').attr('checked')) wu_selected = true;
+      alert(shu_selected);
       $.each(PEOPLE_ARRAY, function(index, character){
         if (character.kingdom == '蜀') {
+          alert(character.name);
           if (shu_selected) character.showNode();
           else character.hideNode();
         }   
@@ -784,7 +786,6 @@
   $(function(){
     G_MAP = new RedcliffMap();
     LoadLocation();
-    new CharacterFilter();
     new TilesSelect();
     $('#shift_event').click(function(){
       $('#characters_cnt').hide();
@@ -801,6 +802,7 @@
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
     })
+    new CharacterFilter();
   });
  
 })();
