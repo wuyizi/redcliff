@@ -58,7 +58,7 @@
         <div class="tab-item-active"><div class="tab-active">投票</div></div>
       </div>
       <div id="unused_bar"></div>
-      <iframe class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>
+      <!--<iframe class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>-->
     </div>
 
   </div>
