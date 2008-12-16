@@ -814,6 +814,7 @@
       return false;
     });
     $('#shift_people').click(function(){
+	alert(1);
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#characters_cnt');
 	  CURRENT_TAB.show();
