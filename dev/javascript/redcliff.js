@@ -747,6 +747,7 @@
       var shu_selected = false;
       var wei_selected = false;
       var wu_selected = false;
+      alert($('#checkbox_shu').attr('checked'));
       if ($('#checkbox_shu').attr('checked')) shu_selected = true;
       if ($('#checkbox_wei').attr('checked')) wei_selected = true;
       if ($('#checkbox_wu').attr('checked')) wu_selected = true;
