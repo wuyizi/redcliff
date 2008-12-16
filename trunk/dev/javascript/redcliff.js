@@ -820,7 +820,8 @@
       _IG_AdjustIFrameHeight();
       return false;
     });
-	$('#shift_vote').click(function(){
+    $('#shift_vote').click(function(){
+      alert(1);
 	  console.log(CURRENT_TAB);
       CURRENT_TAB.hide();
       CURRENT_TAB = $('#vote_cnt');
