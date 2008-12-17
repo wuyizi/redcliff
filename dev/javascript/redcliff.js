@@ -71,7 +71,7 @@
     location_url: BASE + 'data/location.json?bpc=4',
     element_url: BASE + 'data/element.json?bpc=7',
     event_url: BASE + 'data/event.json?bpc=5',
-    big_event_url: BASE + 'data/big_event.json?bpc=8',
+    big_event_url: BASE + 'data/big_event.json?bpc=9',
     people_url: BASE +'data/people.json?bpc=7',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
@@ -222,6 +222,7 @@
     this.pic = raw_event.pic;
     this.is_details_shown = false;
     this.details = null;
+	this.images = raw_event.images;
     this.center = new GLatLng(raw_event.center.lat, raw_event.center.lng);
     var genNode = function() {
       var node = $('<div class="big-event-item"></div>');
@@ -251,12 +252,14 @@
 
       me.details = $('<div class="big-event-detail" style="display:none;"></div>');
       me.details.append($('<p>' + me.desc + '</p>'));
-      /*
-      var img = $('<div></div>');
-      img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
-      img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
-      me.details.append(img);
-      */
+
+      var imgs = $('<div class="big-event-imgs"></div>');
+	  $.each(me.images, function(index, img_url) {
+        var img = $('<img src="' + img_url + '">');
+		imgs.append(img);
+      });
+      me.details.append(imgs);
+      
 
       var event_list = $('<table class="events-div"></table>');
       genEventList(event_list, me.event_ids);
