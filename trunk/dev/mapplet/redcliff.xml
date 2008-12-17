@@ -10,7 +10,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=3"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=5"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -18,13 +18,14 @@
 
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">  
-  <div class="dropdown-box">
+  <div class="top-div">
     <span>选择地图: </span>
-    <select id="select_tiles">
+    <select class="dropdown-box" id="select_tiles">
       <option value="1.0">历史地图</option>
       <option value="0.5">半透明层叠</option>
       <option value="0.0">现代地图</option>
     </select>
+	<div><a href='#' id="clear_button">清除地图上的标志</a></div>
   </div>
 
   <div class="tab-content" id="tabContent">
@@ -52,11 +53,8 @@
 
   </div>
   <div class="bottom-button-div">
-    <a href='#' id="clear_button">清除地图上的标志</a>
+    <a href="#" id="show_disclaimer">声明</a>
     <span id="share_button"></span>
-  </div>
-  <div class="bottom-button-div">
-    <a href="#" id="show_disclaimer">资料出处</a>
   </div>
   
 </div>
