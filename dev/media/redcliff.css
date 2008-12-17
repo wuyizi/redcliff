@@ -309,13 +309,21 @@ a#disclaimer_show {
 #disclaimer_box {
   display:block;
   position:absolute;
-  width:200px;
-  height:200px;
-  border:2px solid #E6DB9D;
-  background-color:#fff;
+  width:230px;
+  height:160px;
+  right:0px;
+  bottom:27px;
+  border-left:3px solid #E6DB9D;
+  border-top:3px solid #E6DB9D;
+  border-right:3px solid #BC944F;
+  border-bottom:3px solid #BC944F;
   z-index:300;
 }
-#disclaimer_box a {
+#disclaimer_box div{
+  border:3px solid #F6F3D7;
+  background-color:#FFFFFF;
+}
+#disclaimer_box div a {
   color:#915E00;
 }
 #disclaimer_close {
