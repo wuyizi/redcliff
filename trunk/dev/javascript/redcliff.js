@@ -593,7 +593,7 @@
   
   var Utils = {
     constructInfoWindowHtml : function(events) {
-      var html = ['<div style="width:300px; font-size:12px;">'];
+      var html = ['<div style="width:300px; font-size:12px; height:400px; overflow:auto; padding-right:5px;">'];
       $.each(events, function(i, event){
         html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
           html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
