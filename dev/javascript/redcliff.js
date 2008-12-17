@@ -1,7 +1,5 @@
 (function(){
 
-  google.load("jquery", "1.2.6");
-
   function Hash(){
     this.length = 0;
     this.items = new Array();
