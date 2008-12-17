@@ -68,11 +68,11 @@
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=3',
-    element_url: BASE + 'data/element.json?bpc=6',
-    event_url: BASE + 'data/event.json?bpc=4',
-    big_event_url: BASE + 'data/big_event.json?bpc=7',
-    people_url: BASE +'data/people.json?bpc=6',
+    location_url: BASE + 'data/location.json?bpc=4',
+    element_url: BASE + 'data/element.json?bpc=7',
+    event_url: BASE + 'data/event.json?bpc=5',
+    big_event_url: BASE + 'data/big_event.json?bpc=8',
+    people_url: BASE +'data/people.json?bpc=7',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
