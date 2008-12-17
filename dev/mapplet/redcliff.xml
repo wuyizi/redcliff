@@ -10,7 +10,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=12"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=13"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -55,7 +55,7 @@
     <a href='#' id="clear_button">清除地图上的标志</a>
     <span id="share_button"></span>
   </div>
-  <div class="bottom-button-div">
+  <div class="bottom-button-div2">
     <a href="#" id="disclaimer_show">声明</a>
     <div id="disclaimer_box" style="display:none;"><div>
 	  赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及<a target="_blank" href="http://zh.wikipedia.org/">维基百科</a>等网站，整理获得。
