@@ -10,7 +10,8 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<style>@CHARSET "UTF-8";
+<style>
+@CHARSET "UTF-8";
 body{
   font-size:13px;
   font-family:Arial,sans-serif;
@@ -347,7 +348,8 @@ a#disclaimer_show {
   position:absolute;
   bottom:5px;
   right:5px;
-}</style>
+}
+</style>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -431,7 +433,7 @@ share.SharingWidget[$$PROP_prototype].f=function(a,b,c){if(this.b==0){var d=GLOB
 share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","text/css");if(a.styleSheet)a.styleSheet.cssText=b;else{var c=GLOBAL_document[$$PROP_createTextNode](b);a[$$PROP_appendChild](c)}};share.SharingWidget[$$PROP_prototype].e=function(a,b){var c=GLOBAL_document.getElementsByTagName("head")[0];c?c[$$PROP_appendChild](b):a[$$PROP_appendChild](b)};share.ShareWidget=share.SharingWidget;share.SharingButton=share.SharingWidget;
  })();
 </script>
-<script type="text/javascript">﻿(function(){
+<script type="text/javascript">(function(){
 
   function Hash(){
     this.length = 0;
