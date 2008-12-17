@@ -61,6 +61,7 @@
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
   var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
   var LAIBA_BASE = '';
+  var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
@@ -72,7 +73,7 @@
     element_url: BASE + 'data/element.json?bpc=7',
     event_url: BASE + 'data/event.json?bpc=5',
     big_event_url: BASE + 'data/big_event.json?bpc=9',
-    people_url: BASE +'data/people.json?bpc=7',
+    people_url: BASE +'data/people.json?bpc=8',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
@@ -242,7 +243,7 @@
         if (me.is_details_shown) {
           me.hideDetails();
         } else {
-      me.showDetails();
+          me.showDetails();
         }
         G_MAP.updateOverlay('E', me.id);
         G_MAP.setCenter(me.center, 8);
@@ -408,7 +409,7 @@
     this.event = null;
     this.table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
     var img_node = $('<td class="character-img-div"></td>');
-    img_node.append('<img width=60 height=75 src="' + people.pic +'">');
+    img_node.append('<img width=60 height=75 src="' + (people.pic == 'null' ? NULL_PIC : people.pic) + '">');
     var intro_node = $('<td class="character-intro-div"></td>');
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
