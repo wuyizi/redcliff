@@ -84,6 +84,9 @@
 
   var G_MAP;
   
+  // Google Analytics Account
+  var UAACCT = "UA-3537915-2";
+  
   var C_POLYLINE_WEIGHT = 10
   
 
@@ -241,6 +244,7 @@
         }
         G_MAP.updateOverlay('E', me.id);
         G_MAP.setCenter(me.center, 8);
+        _IG_Analytics(UAACCT, '/click/eventLink/' + me.name);
         return false;
       });
       link_cell.append(event_link);
@@ -319,11 +323,13 @@
 
     show_detail.click(function(){
       me.showDetail();
+      _IG_Analytics(UAACCT, '/click/peopleShowDetailLink/' + me.name);
       return false;
     });
 
     hide_detail.click(function(){
       me.hideDetail();
+      _IG_Analytics(UAACCT, '/click/peopleHideDetailLink/' + me.name);
       return false;
     });
       
@@ -359,11 +365,13 @@
       me.showEvents();
       G_MAP.updateOverlay('P', people_id);
       G_MAP.setCenter(center, 7);
+      _IG_Analytics(UAACCT, '/click/peopleShowEventsLink/' + me.name);
       return false;
     });
 
     this.hide_events.click(function(){
       me.hideEvents();
+      _IG_Analytics(UAACCT, '/click/peopleHideEventsLink/' + me.name);
       return false;
     });
 
@@ -425,7 +433,8 @@
       } else {
         me.encapsulate();
         me.is_shown = false;
-      } 
+      }
+      _IG_Analytics(UAACCT, '/click/peopleLink/' + me.name); 
       return false;
     });
     parent_node.append(this.table);
@@ -746,6 +755,7 @@
         }
       });
       _IG_AdjustIFrameHeight();
+      _IG_Analytics(UAACCT, '/click/characterFilter');
     };
     $('#checkbox_shu').click(filter);
     $('#checkbox_wei').click(filter);
@@ -765,7 +775,9 @@
       }
     }
     var change_tiles = function() {
-      G_MAP.changeTiles($('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value);
+      var selVal = $('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value;
+      G_MAP.changeTiles(selVal);
+      _IG_Analytics(UAACCT, '/click/tilesSelect/' + selVal);
     };
     $('#select_tiles').change(change_tiles);
   };
@@ -796,6 +808,7 @@
       $('#' + tab + '_tab').click(function(){
         shiftTab(tab);
         _IG_AdjustIFrameHeight();
+        _IG_Analytics(UAACCT, '/view/tab/' + tab);
         return false;
       });
       tabs.push(tab);
@@ -815,6 +828,8 @@
       G_MAP.clearOverlays();
     })
     new CharacterFilter();
+
+    _IG_Analytics(UAACCT, "/view/load");
   });
  
 })();
