@@ -858,7 +858,7 @@
     boxdiv.style.height = '200px';
     boxdiv.style.border = '2px solid #E6DB9D';
     boxdiv.style.backgroundColor = '#fff';
-    boxdiv.innerHTML = '赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及维基百科等网站，整理获得。人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。<br><br>联系我们：<a href="mailto:redcliff@gmail.com">redcliff@ail.com</a>';
+    boxdiv.innerHTML = '赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及<a target="_blank" href="http://zh.wikipedia.org/">维基百科</a>等网站，整理获得。人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。<br><br>联系我们：<a href="mailto:redcliff@gmail.com">redcliff@gmail.com</a>';
     document.body.appendChild(boxdiv);
     var an = $('#show_disclaimer').get(0);
     MoveBox(an, boxdiv);
