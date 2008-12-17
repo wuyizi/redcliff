@@ -285,10 +285,6 @@ a#clear_button {
   float:right;
   color:BC944F;
 }
-a#show_disclaimer {
-  float:right;
-  color:BC944F;
-}
 #share_button {
   float:left;
   height:20px;
@@ -306,5 +302,25 @@ a#show_disclaimer {
   height:500px;
   margin:5px;
 }
-
-
+a#disclaimer_show {
+  float:right;
+  color:BC944F;
+}
+#disclaimer_box {
+  display:block;
+  position:absolute;
+  width:200px;
+  height:200px;
+  border:2px solid #E6DB9D;
+  background-color:#fff;
+  z-index:300;
+}
+#disclaimer_box a {
+  color:#915E00;
+}
+#disclaimer_close {
+  color:#915E00;
+  float:right;
+  text-decoration:underline;
+  cursor:pointer;
+}
