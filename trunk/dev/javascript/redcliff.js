@@ -824,6 +824,44 @@
 
     shiftTab(active_tab);
   };
+
+  function MoveBox(an, box) {
+    var cleft = 0;
+    var ctop = 0;
+    var obj = an;
+    while (obj.offsetParent) {
+      cleft += obj.offsetLeft;
+      ctop += obj.offsetTop;
+      obj = obj.offsetParent;
+    }
+    box.style.left = cleft + 'px';
+    ctop += an.offsetHeight - 220;
+    box.style.top = ctop + 'px';
+  }
+
+  function ShowDisclaimer() {
+    var boxdiv = document.getElementById('disclaimerBox');
+    if (boxdiv != null) {
+      if (boxdiv.style.display=='none') {
+      boxdiv.style.display='block';
+    } else
+      boxdiv.style.display='none';
+      return false;
+    }
+    boxdiv = document.createElement('div');
+    boxdiv.setAttribute('id', 'disclaimerBox');
+    boxdiv.style.display = 'block';
+    boxdiv.style.position = 'absolute';
+    boxdiv.style.width = '200px';
+    boxdiv.style.height = '200px';
+    boxdiv.style.border = '2px solid #E6DB9D';
+    boxdiv.style.backgroundColor = '#fff';
+    boxdiv.innerHTML = '赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及维基百科等网站，整理获得。人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。<br><br>联系我们：<a href="mailto:redcliff@gmail.com">redcliff@ail.com</a>';
+    document.body.appendChild(boxdiv);
+    var an = $('#show_disclaimer').get(0);
+    MoveBox(an, boxdiv);
+    return false;
+  }
   
   $(function(){
     G_MAP = new RedcliffMap();
@@ -834,7 +872,9 @@
 
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
-    })
+    });
+
+    $('#show_disclaimer').click(ShowDisclaimer);
     new CharacterFilter();
 
     _IG_Analytics(UAACCT, "/view/load");
