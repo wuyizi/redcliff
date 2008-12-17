@@ -310,7 +310,7 @@ a#disclaimer_show {
   display:block;
   position:absolute;
   width:230px;
-  height:160px;
+  height:170px;
   right:0px;
   bottom:27px;
   border-left:3px solid #E6DB9D;
@@ -323,7 +323,7 @@ a#disclaimer_show {
   border:3px solid #F6F3D7;
   background-color:#FFFFFF;
   height:154px;
-  padding:10px;
+  padding:5px;
 }
 #disclaimer_box div a {
   color:#915E00;
