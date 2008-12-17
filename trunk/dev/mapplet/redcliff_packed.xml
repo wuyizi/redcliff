@@ -2,7 +2,7 @@
 <Module>
 <ModulePrefs title="赤壁之战" 
              description="赤壁之战的历史地图"
-             author="googlecode"
+             author="Google Redcliff Team"
              author_email="redcliff@gmail.com">
   <Require feature="sharedmap"/>
   <Require feature="dynamic-height" />
@@ -34,14 +34,14 @@ table,tr,td,th,tbody {
 #main {
   padding-top:10px;
 }
-.dropdown-box {
+.top-div {
   text-align:right;
 }
-.dropdown-box span {
+.top-div span {
   color:#AAA;
   font-size:13px;
 }
-.dropdown-box select{
+.dropdown-box {
   border: 1px solid #E6DB9D;
   font-size:13px;
 }
@@ -144,6 +144,12 @@ table,tr,td,th,tbody {
 .big-event-detail p{
   color:#666;
   font-size:12px;
+}
+.big-event-imgs {
+  margin:10px;
+}
+.big-event-imgs img {
+  margin: 4px 0px;
 }
 #character_list {
 
@@ -287,15 +293,15 @@ a.events-div-hide{
   margin-top:20px;
   clear:both;
 }
-.bottom-button-div a#clear_button {
+a#clear_button {
   float:right;
   color:BC944F;
 }
-.bottom-button-div span#share_button {
+#share_button {
   float:left;
   height:20px;
 }
-.bottom-button-div span#share_button a{
+#share_button a{
   color:BC944F;
   padding:0px 18px 0px 0px;
   height:20px;
@@ -308,20 +314,50 @@ a.events-div-hide{
   height:500px;
   margin:5px;
 }
-
-
-</style>
+a#disclaimer_show {
+  float:right;
+  color:BC944F;
+}
+#disclaimer_box {
+  display:block;
+  position:absolute;
+  width:250px;
+  height:170px;
+  right:0px;
+  bottom:27px;
+  border-left:3px solid #E6DB9D;
+  border-top:3px solid #E6DB9D;
+  border-right:3px solid #BC944F;
+  border-bottom:3px solid #BC944F;
+  z-index:300;
+}
+#disclaimer_box div{
+  border:3px solid #F6F3D7;
+  background-color:#FFFFFF;
+  height:154px;
+  padding:5px;
+}
+#disclaimer_box div a {
+  color:#915E00;
+}
+#disclaimer_close {
+  color:#BC944F;
+  float:right;
+  cursor:pointer;
+  position:absolute;
+  bottom:5px;
+  right:5px;
+}</style>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
-<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://redcliff.googlecode.com/svn/trunk/dev/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
+<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://www.google.cn/staticcn/chibi/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
 
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">  
-
-  <div class="dropdown-box">
+  <div class="top-div">
     <span>选择地图: </span>
-    <select id="select_tiles">
+    <select class="dropdown-box" id="select_tiles">
       <option value="1.0">历史地图</option>
       <option value="0.5">半透明层叠</option>
       <option value="0.0">现代地图</option>
@@ -356,7 +392,17 @@ a.events-div-hide{
     <a href='#' id="clear_button">清除地图上的标志</a>
     <span id="share_button"></span>
   </div>
-  
+  <div class="bottom-button-div">
+    <a href="#" id="disclaimer_show">声明</a>
+    <div id="disclaimer_box" style="display:none;"><div>
+	  赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及<a target="_blank" href="http://zh.wikipedia.org/">维基百科</a>等网站，整理获得。
+	  人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。
+	  <br><br>
+	  联系我们: <a href="mailto:redcliff@gmail.com">redcliff@gmail.com</a>
+	  <br>
+	  <span id="disclaimer_close">关闭</span>
+	</div></div>
+  </div>
 </div>
 
 <div style="height:2em;"></div>
@@ -385,7 +431,7 @@ share.SharingWidget[$$PROP_prototype].f=function(a,b,c){if(this.b==0){var d=GLOB
 share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","text/css");if(a.styleSheet)a.styleSheet.cssText=b;else{var c=GLOBAL_document[$$PROP_createTextNode](b);a[$$PROP_appendChild](c)}};share.SharingWidget[$$PROP_prototype].e=function(a,b){var c=GLOBAL_document.getElementsByTagName("head")[0];c?c[$$PROP_appendChild](b):a[$$PROP_appendChild](b)};share.ShareWidget=share.SharingWidget;share.SharingButton=share.SharingWidget;
  })();
 </script>
-<script type="text/javascript">(function(){
+<script type="text/javascript">﻿(function(){
 
   function Hash(){
     this.length = 0;
@@ -445,9 +491,10 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_ELEMENT = new Array();
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
-  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
+  var BASE = 'http://redcliff.googlecode.com/svn/trunk/';
   var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
   var LAIBA_BASE = '';
+  var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
@@ -455,12 +502,12 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=3',
-    element_url: BASE + 'data/element.json?bpc=6',
-    event_url: BASE + 'data/event.json?bpc=4',
-    big_event_url: BASE + 'data/big_event.json?bpc=7',
-    people_url: BASE +'data/people.json?bpc=6',
-    tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
+    location_url: BASE + 'data/location.json?bpc=1217',
+    element_url: BASE + 'data/element.json?bpc=1217',
+    event_url: BASE + 'data/event.json?bpc=1217',
+    big_event_url: BASE + 'data/big_event.json?bpc=1217',
+    people_url: BASE +'data/people.json?bpc=1217',
+    tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
   var FLAGS = {
@@ -591,6 +638,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     this.name = raw_event.name;
     this.element_ids = raw_event.element_ids;
     this.people = raw_event.people;
+    this.search = raw_event.search;
     this.time = raw_event.time;
     this.time_ad = raw_event.ad;
     this.desc = raw_event.desc;
@@ -609,6 +657,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     this.pic = raw_event.pic;
     this.is_details_shown = false;
     this.details = null;
+	this.images = raw_event.images;
     this.center = new GLatLng(raw_event.center.lat, raw_event.center.lng);
     var genNode = function() {
       var node = $('<div class="big-event-item"></div>');
@@ -627,7 +676,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
         if (me.is_details_shown) {
           me.hideDetails();
         } else {
-      me.showDetails();
+          me.showDetails();
         }
         G_MAP.updateOverlay('E', me.id);
         G_MAP.setCenter(me.center, 8);
@@ -638,12 +687,14 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
 
       me.details = $('<div class="big-event-detail" style="display:none;"></div>');
       me.details.append($('<p>' + me.desc + '</p>'));
-      /*
-      var img = $('<div></div>');
-      img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
-      img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
-      me.details.append(img);
-      */
+
+      var imgs = $('<div class="big-event-imgs"></div>');
+	  $.each(me.images, function(index, img_url) {
+        var img = $('<img src="' + img_url + '">');
+		imgs.append(img);
+      });
+      me.details.append(imgs);
+      
 
       var event_list = $('<table class="events-div"></table>');
       genEventList(event_list, me.event_ids);
@@ -791,7 +842,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     this.event = null;
     this.table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
     var img_node = $('<td class="character-img-div"></td>');
-    img_node.append('<img width=60 height=75 src="' + people.pic +'">');
+    img_node.append('<img width=60 height=75 src="' + (people.pic == 'null' ? NULL_PIC : people.pic) + '">');
     var intro_node = $('<td class="character-intro-div"></td>');
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
@@ -962,12 +1013,12 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
 	// TODO: refine the text here !!!!
     var g = {
       'linkText': '将此地图分享给朋友',
-      'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
-      'title': '谷歌赤壁之战地图',
+      'url': 'http://ditu.google.cn/chibi/',
+      'title': '谷歌“赤壁之战”地图',
       'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
-      'subject_template': _un('{FROM}邀请您来看看谷歌赤壁之战地图'),
+      'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
-      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的大混战时代',
+      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前三足鼎立的时代！',
       'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
     };
     new google.share.SharingWidget("share_button", g);
@@ -981,9 +1032,9 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
           html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
           html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
-          html.push('<div style="text-align:right; color:#AAA;">搜索: ');
-            $.each(event.people, function(j, person) {
-              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(person) + '">' + person + '</a>');
+          html.push('<div style="text-align:right; color:#AAA;">相关搜索: ');
+            $.each(event.search, function(j, keyword) {
+              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
             });
           html.push('</div>');
         html.push('</div>');
@@ -1208,19 +1259,37 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
 
     shiftTab(active_tab);
   };
+
+  function Disclaimer() {
+	var is_show = false;
+    var box = $('#disclaimer_box');
+	$('#disclaimer_show').click(function(){
+       if (is_show) {
+		 box.hide();
+		 is_show = false;
+	   } else {
+		 box.show();
+		 is_show = true;
+	   }
+	   return false;
+    });
+	$('#disclaimer_close').click(function(){
+      box.hide();
+	  is_show = false;
+	  return false;
+	});
+  }
   
   $(function(){
     G_MAP = new RedcliffMap();
     LoadLocation();
     new TilesSelect();
-    
     new TabManager(['events', 'characters', 'vote'], 'characters');
-
+	new Disclaimer();
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
-    })
+    });
     new CharacterFilter();
-
     _IG_Analytics(UAACCT, "/view/load");
   });
  
