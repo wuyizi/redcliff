@@ -49,7 +49,7 @@
 {"id" : 47 , "type" : "point" , "event_ids" : [31] , "people" : ["诸葛亮" , "赵云"] , "pic" : "G" , "lat" : 25.790001 , "lng" : 113.049316 },
 {"id" : 48 , "type" : "point" , "event_ids" : [31] , "people" : ["诸葛亮"] , "pic" : "G" , "lat" : 28.207609 , "lng" : 112.994385 },
 {"id" : 49 , "type" : "point" , "event_ids" : [31] , "people" : ["诸葛亮"] , "pic" : "G" , "lat" : 26.224447 , "lng" : 111.618347 },
-{"id" : 50 , "type" : "point" , "event_ids" : [34 , 35] , "people" : ["周瑜" , "曹仁"] , "pic" : "RB" , "lat" : 30.347872 , "lng" : 112.197304 },
+{"id" : 50 , "type" : "point" , "event_ids" : [34 , 35] , "people" : ["周瑜"] , "pic" : "R" , "lat" : 30.347872 , "lng" : 112.197304 },
 {"id" : 51 , "type" : "point" , "event_ids" : [34] , "people" : ["刘备" , "刘琦"] , "pic" : "G" , "lat" : 30.125215 , "lng" : 112.171994 },
 {"id" : 52 , "type" : "point" , "event_ids" : [35 , 38 , 34] , "people" : ["刘备" , "孙权" , "鲁肃" , "孙夫人"] , "pic" : "GR" , "lat" : 32.167025 , "lng" : 119.427021 },
 {"id" : 53 , "type" : "point" , "event_ids" : [38] , "people" : ["周瑜"] , "pic" : "R" , "lat" : 29.402696 , "lng" : 113.108622 },
