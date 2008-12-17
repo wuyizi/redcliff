@@ -775,14 +775,15 @@
       $.each([active_tab, current_tab], function(index, tab){
         var tab_container = $('#' + tab + '_cnt');
         var tab_item = $('#' + tab + '_tab');
+		var tab_parent = tab_item.parent();
         if (tab == active_tab) {
           tab_container.show();
-          tab_item.removeClass('tab-item-inactive');
-          tab_item.addClass('tab-item-active');
+          tab_parent.removeClass('tab-inactive');
+          tab_parent.addClass('tab-active');
         } else {
           tab_container.hide();
-          tab_item.removeClass('tab-item-active');
-          tab_item.addClass('tab-item-inactive');
+          tab_parent.removeClass('tab-active');
+          tab_parent.addClass('tab-inactive');
         }
       });
       current_tab = active_tab;
