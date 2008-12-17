@@ -1,0 +1,6 @@
+XML_PATH = r'mapplet/redcliff.xml'
+REDCLIFF_JS_PATH = r'javascript/redcliff.js'
+
+CSS_PATH = r'media/redcliff.css'
+
+xml = open(XML_PATH, 'r')
