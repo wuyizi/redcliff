@@ -22,14 +22,14 @@ table,tr,td,th,tbody {
 #main {
   padding-top:10px;
 }
-.dropdown-box {
+.top-div {
   text-align:right;
 }
-.dropdown-box span {
+.top-div span {
   color:#AAA;
   font-size:13px;
 }
-.dropdown-box select{
+.dropdown-box {
   border: 1px solid #E6DB9D;
   font-size:13px;
 }
@@ -281,15 +281,19 @@ a.events-div-hide{
   margin-top:20px;
   clear:both;
 }
-.bottom-button-div a#clear_button {
+a#clear_button {
   float:right;
   color:BC944F;
 }
-.bottom-button-div span#share_button {
+a#show_disclaimer {
+  float:right;
+  color:BC944F;
+}
+#share_button {
   float:left;
   height:20px;
 }
-.bottom-button-div span#share_button a{
+#share_button a{
   color:BC944F;
   padding:0px 18px 0px 0px;
   height:20px;
