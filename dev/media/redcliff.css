@@ -133,6 +133,14 @@ table,tr,td,th,tbody {
   color:#666;
   font-size:12px;
 }
+.big-event-imgs {
+  margin:10px;
+  padding-right:30px;
+  text-align:center;
+}
+.big-event-imgs img {
+  margin 4px 0px;
+}
 #character_list {
 
 }
