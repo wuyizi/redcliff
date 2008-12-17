@@ -409,9 +409,13 @@
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
+    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
     var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
+    gicon_node.click(function(){
+      _IG_Analytics(UAACCT, '/click/searchIcon');
+      return true;
+    });
     title_node.append(flag_node);
     title_node.append(link_node);
     title_node.append(gicon_node);
@@ -592,7 +596,7 @@
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
           html.push('<div style="text-align:right; color:#AAA;">搜索: ');
             $.each(event.people, function(j, person) {
-              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&q=' + person + '">' + person + '</a>');
+              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(person) + '">' + person + '</a>');
             });
           html.push('</div>');
         html.push('</div>');
