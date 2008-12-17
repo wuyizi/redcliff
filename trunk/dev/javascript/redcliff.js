@@ -59,7 +59,9 @@
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
-  
+  var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
+  var LAIBA_BASE = '';
+
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
   
@@ -114,12 +116,12 @@
     
     var getArrowGroundOverlay = function(arrow_url, sw, ne) {
       var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
-      var arrow = new GGroundOverlay(BASE + 'images/arrow/'  + arrow_url + '.png', bound);
+      var arrow = new GGroundOverlay(CN_BASE + 'arrow/'  + arrow_url + '.png', bound);
       return arrow;
     }
     
     var getMarker = function(icon_url, point, id) {
-      var image = BASE + 'images/icon/' + icon_url + '.png';
+      var image = CN_BASE + 'icon/' + icon_url + '.png';
       var icon = new GIcon(G_DEFAULT_ICON, image);
       if (icon_url.length == 2)
         icon.iconSize = new GSize(45,32);
@@ -227,7 +229,7 @@
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
-      row.append('<td class="big-event-item-pic"><img src="' + BASE + 'images/icon/' + me.pic + '.gif"></td>');
+      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'icon/' + me.pic + '.gif"></td>');
       node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');
@@ -399,7 +401,7 @@
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
     var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + BASE + 'images/search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + BASE + 'images/icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     title_node.append(flag_node);
     title_node.append(link_node);
@@ -556,6 +558,7 @@
   function _un(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<'; case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
   function makeShareButton() {
     if (!google || !google.share || !google.share.SharingWidget) return;
+	// TODO: refine the text here !!!!
     var g = {
       'linkText': '将此地图分享给朋友',
       'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
