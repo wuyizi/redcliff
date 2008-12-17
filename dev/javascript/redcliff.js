@@ -580,12 +580,12 @@
 	// TODO: refine the text here !!!!
     var g = {
       'linkText': '将此地图分享给朋友',
-      'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
-      'title': '谷歌赤壁之战地图',
+      'url': 'http://ditu.google.cn/chibi/',
+      'title': '谷歌“赤壁之战”地图',
       'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
-      'subject_template': _un('{FROM}邀请您来看看谷歌赤壁之战地图'),
+      'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
-      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的大混战时代',
+      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前三足鼎立的时代！',
       'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
     };
     new google.share.SharingWidget("share_button", g);
@@ -827,58 +827,36 @@
     shiftTab(active_tab);
   };
 
-  function MoveBox(an, box) {
-    var cleft = 0;
-    var ctop = 0;
-    var obj = an;
-    while (obj.offsetParent) {
-      cleft += obj.offsetLeft;
-      ctop += obj.offsetTop;
-      obj = obj.offsetParent;
-    }
-    box.style.left = cleft + 'px';
-    ctop += an.offsetHeight - 220;
-    box.style.top = ctop + 'px';
-  }
-
-  function ShowDisclaimer() {
-    var boxdiv = document.getElementById('disclaimerBox');
-    if (boxdiv != null) {
-      if (boxdiv.style.display=='none') {
-      boxdiv.style.display='block';
-    } else
-      boxdiv.style.display='none';
-      return false;
-    }
-    boxdiv = document.createElement('div');
-    boxdiv.setAttribute('id', 'disclaimerBox');
-    boxdiv.style.display = 'block';
-    boxdiv.style.position = 'absolute';
-    boxdiv.style.width = '200px';
-    boxdiv.style.height = '200px';
-    boxdiv.style.border = '2px solid #E6DB9D';
-    boxdiv.style.backgroundColor = '#fff';
-    boxdiv.innerHTML = '赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及<a target="_blank" href="http://zh.wikipedia.org/">维基百科</a>等网站，整理获得。人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。<br><br>联系我们：<a href="mailto:redcliff@gmail.com">redcliff@gmail.com</a>';
-    document.body.appendChild(boxdiv);
-    var an = $('#show_disclaimer').get(0);
-    MoveBox(an, boxdiv);
-    return false;
+  function Disclaimer() {
+	var is_show = false;
+    var box = $('#disclaimer_box');
+	$('#disclaimer_show').click(function(){
+       if (is_show) {
+		 box.hide();
+		 is_show = false;
+	   } else {
+		 box.show();
+		 is_show = true;
+	   }
+	   return false;
+    });
+	$('#disclaimer-close').click(function(){
+      boxdiv.hide();
+	  is_show = false;
+	  return false;
+	});
   }
   
   $(function(){
     G_MAP = new RedcliffMap();
     LoadLocation();
     new TilesSelect();
-    
     new TabManager(['events', 'characters', 'vote'], 'characters');
-
+	new Disclaimer();
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
     });
-
-    $('#show_disclaimer').click(ShowDisclaimer);
     new CharacterFilter();
-
     _IG_Analytics(UAACCT, "/view/load");
   });
  
