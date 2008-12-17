@@ -46,7 +46,7 @@ table,tr,td,th,tbody {
   font-size:13px;
   z-index:150;
   width:5em;
-  line-height:1.6;
+  padding-top:2px;
   text-align:center;
 }
 .tab-item-active {
@@ -57,6 +57,7 @@ table,tr,td,th,tbody {
   border-bottom: 2px solid #F6F3D7;
   font-weight:bold;
   color:#000;
+  height:19px;
 }
 .tab-item-inactive {
   border-top: 1px solid #E6DB9D;
@@ -64,6 +65,7 @@ table,tr,td,th,tbody {
   border-right: 1px solid #E6DB9D;
   color:#BC944F;
   cursor:pointer;
+  height:21px;
 }
 .tab-item-inactive div:hover {
   color:#BC944F;
