@@ -18,7 +18,6 @@
 
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">  
-
   <div class="dropdown-box">
     <span>选择地图: </span>
     <select id="select_tiles">
@@ -55,6 +54,9 @@
   <div class="bottom-button-div">
     <a href='#' id="clear_button">清除地图上的标志</a>
     <span id="share_button"></span>
+  </div>
+  <div class="bottom-button-div">
+    <a href="#" id="show_disclaimer">资料出处</a>
   </div>
   
 </div>
