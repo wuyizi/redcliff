@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=121"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=122"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -48,7 +48,7 @@
     </div>
     <div id="vote_cnt" style="display:none;">
       <div id="unused_bar"></div>
-      <iframe class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>
+      <iframe frameborder=0 class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>
     </div>
 
   </div>
