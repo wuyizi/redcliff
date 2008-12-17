@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="赤壁之战" 
+             description="赤壁之战的历史地图"
+             author="googlecode"
+             author_email="redcliff@gmail.com">
+  <Require feature="sharedmap"/>
+  <Require feature="dynamic-height" />
+  <Require feature="analytics" /> 
+</ModulePrefs>
+<Content type="html"><![CDATA[
+
+<style>@CHARSET "UTF-8";
+body{
+  font-size:13px;
+  font-family:Arial,sans-serif;
+}
+div, p, span, h3, h4, ol{
+  margin:0;
+  padding:0;
+  border:0;
+  list-style: none;
+}
+h3 {
+  padding: 1em 0 0.5em;
+}
+table,tr,td,th,tbody {
+  position:relative;
+  margin:0px;
+  padding:0px;
+  border-collapse:collapse;
+}
+
+#main {
+  padding-top:10px;
+}
+.dropdown-box {
+  text-align:right;
+}
+.dropdown-box span {
+  color:#AAA;
+  font-size:13px;
+}
+.dropdown-box select{
+  border: 1px solid #E6DB9D;
+  font-size:13px;
+}
+.tab-head {
+  z-index:140;
+  position:absolute;
+  top:0px;
+  padding-left:10px;
+}
+
+.tab-active {
+  display:inline;
+  float:left;
+  margin-right:3px;
+  background-color:#F6F3D7;
+  border-top: 2px solid #E6DB9D;
+  border-left: 2px solid #E6DB9D;
+  border-right: 2px solid #E6DB9D;
+  border-bottom: 2px solid #F6F3D7;
+  z-index:150;
+}
+
+.tab-inactive {
+  display:inline;
+  float:left;
+  margin-right:3px;
+  border-top: 1px solid #E6DB9D;
+  border-left: 1px solid #E6DB9D;
+  border-right: 1px solid #E6DB9D;
+  z-index:150;
+}
+
+.tab-active div {
+  font-weight:bold;
+  font-size:13px;
+  color:#000;
+  line-height:1.6;
+  width:5em;
+  text-align:center;
+}
+.tab-inactive div {
+  font-size:13px;
+  color:#BC944F;
+  line-height:1.6;
+  cursor:pointer;
+  width:5em;
+  text-align:center;
+}
+.tab-item-inactive div:hover {
+  color:#BC944F;
+  text-decoration:underline;
+}
+.tab-content{
+  padding-top:22px;
+  position:relative;
+  top:15px;
+}
+.big-event-item {
+  border-bottom: #F6F3D7 solid 1px;
+  border-top: #E6DB9D solid 1px;
+  padding: 1em 0 1em 5px;
+}
+.big-event-item:hover{
+  /*background-color:#F9F7E4;*/
+}
+.big-event-item table{
+  width:100%;
+  table-layout:fixed;
+}
+.big-event-item table tbody tr {
+  vertical-align:middle;
+}
+.big-event-item-time {
+  font-size:12px;
+  width:100px;
+  white-space:nowrap;
+  vertical-align:middle;
+}
+.big-event-item-link{
+  margin-left:100px;
+  font-size:14px;
+  font-weight:bold;
+  width:100%;
+}
+.big-event-item-link a{
+  color:#915E00;
+}
+.big-event-item-link a:visited{
+  color:#915E00;
+}
+.big-event-item-pic {
+  width:64px;
+  text-align:center;
+}
+.big-event-detail {
+  margin:10px 0px;
+  padding-left:10px;
+  border-left:10px solid #F9F7E4;
+}
+.big-event-detail p{
+  color:#666;
+  font-size:12px;
+}
+#character_list {
+
+}
+#big_event_list {
+  clear:both;
+}
+.character-item{
+  border-bottom: #F6F3D7 solid 1px;
+  border-top: #E6DB9D solid 1px;
+  width:100%;
+}
+.character-item:hover{
+  /*background-color:#F9F7E4;*/
+}
+.character-img-div{
+  width:65px;
+  height:5.3em;
+  vertical-align:top;
+  padding:10px 10px 0px 0px;
+  /*float: left;*/
+}
+.character-intro-div{
+  /*margin-left: 75px;*/
+  vertical-align:top;
+  padding:10px 0px 0px 0px;
+}
+.character-title{
+  font-size:14px;
+}
+.character-title a{
+  font-weight:bold;
+  color:#915E00;
+}
+.character-title a:visited{
+  color:#915E00;
+}
+.character-title span{
+  margin-left:5px;
+  font-size:12px;
+}
+.character-title-img {
+  float:right;
+  width:25;
+  height:22px;
+  margin-top:-4px;
+  margin-right:8px;
+  background:0 -5px no-repeat;
+}
+.character-title a img {
+  position: relative;
+  top: 2px;
+  left: 3px;
+  float: none;
+}
+.character-digest-div{
+  font-size:12px;
+  margin-top:5px;
+  color:#666;
+}
+.character-digest-div-short {
+  position:absolute;
+  font-family:simsun;
+  line-height:1.2;
+}
+.character-digest-div-long {
+  font-family:simsun;
+  line-height:1.2;
+}
+.character-digest-div div a{
+  padding-left:2px;
+  color:#BC944F;
+  text-decoration:none;
+  white-space:nowrap;
+}
+#kingdom_checkbox {
+  background: #F6F3D7;
+  line-height: 2;
+  clear:both;
+  border-top:2px solid #E6DB9D;
+  padding-left:5px;
+}
+#kingdom_checkbox label{
+  font-size:12px;
+}
+#kingdom_checkbox input{
+  vertical-align:middle;
+}
+
+.events-div {
+  padding:5px 0px;
+  font-size:12px;
+}
+
+a.events-div-show{
+  color:#BC944F;
+  text-decoration:none;
+  font-size:12px;
+  padding-left:10px;
+  background:url('http://www.google.cn/staticcn/chibi/triangle-r.gif') no-repeat center left;
+}
+a.events-div-hide{
+  color:#BC944F;
+  text-decoration:none;
+  font-size:12px;
+  padding-left:10px;
+  background:url('http://www.google.cn/staticcn/chibi/triangle-d.gif') no-repeat center left;
+}
+.events-list {
+  
+}
+.events-item-time{
+  float:left;
+  width:100px;
+  font-size:12px;
+}
+.events-item-link{
+  margin-left:100px;
+  font-size:12px;
+}
+.events-item-link a {
+  color:#915E00;
+}
+.event_img {
+  margin: 10px 0px 10px 10px;
+  height: 75px;
+  width: 100px;
+}
+
+#unused_bar {
+  /* TODO */
+  background: #F6F3D7;
+  height: 0.7em;
+  clear:both;
+  border-top:2px solid #E6DB9D;
+  padding-left:5px;
+}
+
+.bottom-button-div {
+  font-size:13px;
+  margin-top:20px;
+  clear:both;
+}
+.bottom-button-div a#clear_button {
+  float:right;
+  color:BC944F;
+}
+.bottom-button-div span#share_button {
+  float:left;
+  height:20px;
+}
+.bottom-button-div span#share_button a{
+  color:BC944F;
+  padding:0px 18px 0px 0px;
+  height:20px;
+  background:url('http://www.google.cn/staticcn/chibi/pop.gif') no-repeat center right;
+}
+
+.vote-ifr {
+  border:0px;
+  width:100%;
+  height:500px;
+  margin:5px;
+}
+
+
+</style>
+<!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
+
+<!-- Show this gif when loading -->
+<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://redcliff.googlecode.com/svn/trunk/dev/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
+
+<!-- Hide first when loading -->
+<div id="main" style="z-index:10;display:none;">  
+
+  <div class="dropdown-box">
+    <span>选择地图: </span>
+    <select id="select_tiles">
+      <option value="1.0">历史地图</option>
+      <option value="0.5">半透明层叠</option>
+      <option value="0.0">现代地图</option>
+    </select>
+  </div>
+
+  <div class="tab-content" id="tabContent">
+    <div class="tab-head">
+	  <div class="tab-inactive"><div id="events_tab">历史事件</div></div>
+	  <div class="tab-active"><div id="characters_tab">主要人物</div></div>
+	  <div class="tab-inactive"><div id="vote_tab">投票</div></div>
+    </div>
+    <div id="events_cnt" style="display:none;">
+      <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
+      <div id="big_event_list" ></div>
+    </div>
+    <div id="characters_cnt">
+      <div id="kingdom_checkbox">
+        <label for="checkbox_wei">曹操军</label><input id="checkbox_wei" type="checkbox" checked>
+        <label for="checkbox_wu">孙权军</label><input id="checkbox_wu" type="checkbox" checked>
+        <label for="checkbox_shu">刘备军</label><input id="checkbox_shu" type="checkbox" checked>
+      </div>
+      <div id="character_list"></div>
+    </div>
+    <div id="vote_cnt" style="display:none;">
+      <div id="unused_bar"></div>
+      <iframe frameborder=0 class="vote-ifr" src="http://redcliffvote.appspot.com/"></iframe>
+    </div>
+
+  </div>
+  <div class="bottom-button-div">
+    <a href='#' id="clear_button">清除地图上的标志</a>
+    <span id="share_button"></span>
+  </div>
+  
+</div>
+
+<div style="height:2em;"></div>
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+	google.load("jquery", "1.2.6");
+</script>
+
+<script type="text/javascript">window.serverBase="http://www.google.ca";window.apiKey="";window.locale="zh_CN";window.js_messages={'Email':'\u7535\u5b50\u90ae\u4ef6','Please add your email address to the From: field':'\u8bf7\u5c06\u60a8\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740\u6dfb\u52a0\u5230\u201c\u5bc4\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5','Oops! A popup blocker is preventing the bookmarklet from opening. Try holding the Shift key and clicking on the bookmarklet again.':'\u7cdf\u7cd5\uff01\u5f39\u51fa\u7a97\u53e3\u963b\u6b62\u7a0b\u5e8f\u963b\u6b62\u4e66\u7b7e\u6253\u5f00\u3002\u8bf7\u5c1d\u8bd5\u6309\u4f4f Shift \u952e\u518d\u6b21\u70b9\u51fb\u4e66\u7b7e\u3002','Google - Email / Share':'Google - \u7535\u5b50\u90ae\u4ef6/\u5171\u4eab','Edit this shared item':'\u7f16\u8f91\u6b64\u5171\u4eab\u9879\u76ee','Please enter valid email addresses in the To: field':'\u8bf7\u5728\u201c\u6536\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5\u8f93\u5165\u6709\u6548\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740','Are you sure you want to remove this shared item?':'\u786e\u5b9e\u8981\u5220\u9664\u8be5\u5171\u4eab\u9879\u76ee\u5417\uff1f','Please enter a valid email address in the From: field':'\u8bf7\u5728\u201c\u5bc4\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5\u8f93\u5165\u6709\u6548\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740','Share':'\u5171\u4eab','Oops! We seem to be experiencing network problems. Please check your connection and try again.':'\u7cdf\u7cd5\uff01\u6211\u4eec\u4f3c\u4e4e\u9047\u5230\u4e86\u7f51\u7edc\u95ee\u9898\u3002\u8bf7\u68c0\u67e5\u60a8\u7684\u8fde\u63a5\u5e76\u91cd\u8bd5\u3002','%1 does not exist!':'%1 \u4e0d\u5b58\u5728\uff01','Add a comment...':'\u6dfb\u52a0\u8bc4\u8bba...','Please add recipients to the To: field':'\u8bf7\u5c06\u6536\u4ef6\u4eba\u6dfb\u52a0\u5230\u201c\u6536\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5'};(function() { 
+var GLOBAL_document=document,$$PROP_appendChild="appendChild",$$PROP_prototype="prototype",$$PROP_createTextNode="createTextNode",$$PROP_createElement="createElement";function replaceAll(a,b,c){if(b.length==0)return a;var d=a.indexOf(b);while(d>-1){a=a.replace(b,c);d=a.indexOf(b)}return a}var messages=window.js_messages;function formatMessage(a,b){a=getMsg(a);if(b&&b.length)for(var c=0;c<b.length;c++)a=replaceAll(a,"%"+(c+1),b[c]);return a}
+function getMsg(a){if(messages&&messages[a])return messages[a];return a};var win=window,getElid;getElid=GLOBAL_document.getElementById?function(a){return GLOBAL_document.getElementById(a)}:GLOBAL_document.all?function(a){return GLOBAL_document.all[a]}:function(){return undefined};elid=function(a){return typeof a=="string"?getElid(a):a};if(!win.google)win.google={};var google=win.google;if(!google.share)google.share={};share=google.share;google.sharing=share;var serverBase=win.serverBase,key=win.apiKey,locale=win.locale;
+share.SharingWidget=function(a,b){this.m=GLOBAL_document.location.href;this.o=1;this.l=this.d=null;this.a={};this.b=this.h=0;if(b){this.a=b;if(this.a.googleinternal==true)this.h=1;if(this.a.specifiedPageViewed==true&&this.a.url){var c=new Image;c.src=serverBase+"/s2/sharing/share?pub_action=vi&url ="+encodeURIComponent(this.a.url)+"&key="+key}if(this.a.defaultTab=="email")this.b=1}this.a.isEmbedded=true;var d=elid(a);if(d==null){var e=formatMessage("%1 does not exist!",[a]);alert(e)}else this.k(d)};
+var fullBase=serverBase+"/s2/sharing/resources/",BRANDED_WIDGET_HTML='<img src="'+fullBase+'static/images/email_share_button.png"/>',UNBRANDED_WIDGET_HTML=BRANDED_WIDGET_HTML.replace(".png","_unbranded.png"),LINK_ONLY_TEXT=[getMsg("Share"),getMsg("Email")],LINK_TITLE=[getMsg("Share"),getMsg("Email")],LINK_STYLE_CLASS=["google-share-l","google-email-l"],BUTTON_STYLE_CLASS=["google-share-b","google-email-b"],SHARE_BUTTON_STYLE_SUFFIX=";width:16px;height:16px;margin:-1px 0 0 1px;//margin:-2px 3px -1px -18px;//position:absolute;background:url("+
+fullBase+"static/images/icon_share.gif) no-repeat left center;} html>body span.google-share-b-icon{background-image:url("+fullBase+"static/images/icon_share.png);margin:-1px 3px 0px -19px;position:absolute;}",EMAIL_BUTTON_STYLE="a.google-email-b{font-family:arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;padding:1px 5px 1px 18px;margin:2px 0 0;font-size:10px;text-decoration:none;color:#03c;background:#fff url("+fullBase+"static/images/icon_email.gif) no-repeat 1px center;border:1px solid #999;} a.google-email-b:hover{border:1px solid #666;background-color:#eee;text-decoration:none;}",
+SHARE_LINK_AND_ICON_STYLE="a.google-share-l{height:16px;padding:2px 4px 0 18px;background:url("+fullBase+"static/images/icon_share.gif) no-repeat left center;} html>body a.google-share-l{background-image:url("+fullBase+"static/images/icon_share.png);}",EMAIL_LINK_AND_ICON_STYLE="a.google-email-l{height:16px;padding:2px 4px 0 18px;background:url("+fullBase+"static/images/icon_email.gif) no-repeat left center;}",LINK_AND_ICON_STYLE=[SHARE_LINK_AND_ICON_STYLE,EMAIL_LINK_AND_ICON_STYLE];
+share.SharingWidget[$$PROP_prototype].j=function(a){if(a==0){var b="";b=typeof opera=="undefined"&&navigator.userAgent.indexOf("WebKit")==-1&&navigator.product=="Gecko"?"float:none":"float:left";return"a.google-share-b{font-family:arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;padding:1px 3px 0 0;margin:0;font-size:10px;text-decoration:none;//padding:1px 3px 0 10px;//margin:0 0 0 10px;color:#03c;background:#fff;border:1px solid #999;} html>body a.google-share-b{margin:0 0 0 7px;padding:0 3px 0 10px;} a.google-share-b:hover{border:1px solid #666;background:#eee;text-decoration:none;} span.google-share-b-icon{"+
+b+SHARE_BUTTON_STYLE_SUFFIX}else return EMAIL_BUTTON_STYLE};
+share.SharingWidget[$$PROP_prototype].i=function(){if(this.d)return true;if(share.EmailWidget){this.d=new share.EmailWidget(this.a);return true}if(!this.l){var a=GLOBAL_document[$$PROP_createElement]("link");a.rel="stylesheet";a.href=fullBase+"static/html/ShareWidgetStyle.css";GLOBAL_document.getElementsByTagName("head")[0][$$PROP_appendChild](a);var b=GLOBAL_document[$$PROP_createElement]("script");b.src=serverBase+"/s2/sharing/js?script=socialsharing&key="+key+"&hl="+locale;GLOBAL_document.body[$$PROP_appendChild](b);
+this.l=b}return false};
+share.SharingWidget[$$PROP_prototype].c=function(a){a||(a=0);if(this.a.popup){if(this.d&&this.d.isVisible()){win.focus&&this.a.altWindow.focus();return}var b=0,c=0;if(win.outerWidth){b=win.screenX+(win.outerWidth-762)/2;c=win.screenY+(win.outerHeight-402)/2}else{b=win.screenLeft+(GLOBAL_document.body.clientWidth-742)/2;c=win.screenTop+(GLOBAL_document.body.clientHeight-402)/2}this.a.altWindow=win.open("","_blank","height=390px,width=740px,toolbar=no,directories=no,left="+b+",top="+c+",status=no,menubar=no,scrollbars=no,resizable=1");
+this.a.popup=false}if(this.i())this.d.display();else if(a>20){var d=getMsg("Oops!  We seem to be experiencing network problems.\nPlease check your connection and try again.");win.alert(d)}else{var e=this,f=Math.min(1<<a,1000);win.setTimeout(function(){e.c(a+1)},f)}};
+share.SharingWidget[$$PROP_prototype].k=function(a){this.n=a;if(a!=null)if(this.a.retain_div_contents){var b=this;a.onclick=function(){b.c()}}else{var c=GLOBAL_document[$$PROP_createElement]("style"),d=GLOBAL_document[$$PROP_createElement]("a");d.title=LINK_TITLE[this.b];d.href=this.a.link_href=="void"?"javascript:void(0);":"#";var b=this;share.display_now=function(){b.c()};d.onclick=function(){share.display_now();return false};var e=this.a.linkText?this.a.linkText:LINK_ONLY_TEXT[this.b];if(this.h==
+1){a.innerHTML=UNBRANDED_WIDGET_HTML;a.style.cursor="pointer";a.onclick=function(){b.c()}}else if(this.a.buttonStyle)if(this.a.buttonStyle=="link"){d[$$PROP_appendChild](GLOBAL_document[$$PROP_createTextNode](e));a[$$PROP_appendChild](d)}else if(this.a.buttonStyle=="linkAndIcon"){d[$$PROP_appendChild](GLOBAL_document[$$PROP_createTextNode](e));d.className=LINK_STYLE_CLASS[this.b];this.g(c,LINK_AND_ICON_STYLE[this.b]);this.e(a,c);a[$$PROP_appendChild](d)}else this.f(a,c,d);else this.f(a,c,d)}};
+share.SharingWidget[$$PROP_prototype].f=function(a,b,c){if(this.b==0){var d=GLOBAL_document[$$PROP_createElement]("span");d.className="google-share-b-icon";c[$$PROP_appendChild](d);c[$$PROP_appendChild](GLOBAL_document[$$PROP_createTextNode](LINK_ONLY_TEXT[0]))}else c[$$PROP_appendChild](GLOBAL_document[$$PROP_createTextNode](LINK_ONLY_TEXT[1]));c.className=BUTTON_STYLE_CLASS[this.b];this.g(b,this.j(this.b));this.e(a,b);a[$$PROP_appendChild](c)};
+share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","text/css");if(a.styleSheet)a.styleSheet.cssText=b;else{var c=GLOBAL_document[$$PROP_createTextNode](b);a[$$PROP_appendChild](c)}};share.SharingWidget[$$PROP_prototype].e=function(a,b){var c=GLOBAL_document.getElementsByTagName("head")[0];c?c[$$PROP_appendChild](b):a[$$PROP_appendChild](b)};share.ShareWidget=share.SharingWidget;share.SharingButton=share.SharingWidget;
+ })();
+</script>
+<script type="text/javascript">(function(){
+
+  function Hash(){
+    this.length = 0;
+    this.items = new Array();
+
+    for (var i = 0; i < arguments.length; i += 2) {
+      if (typeof(arguments[i + 1]) != 'undefined') {
+        this.items[arguments[i]] = arguments[i + 1];
+        this.length++;
+      }
+    }
+  };
+    
+  Hash.prototype = {
+    removeItem: function(in_key) {
+      var tmp_value;
+      if (typeof(this.items[in_key]) != 'undefined') {
+        this.length--;
+        tmp_value = this.items[in_key];
+        delete this.items[in_key];
+      }
+      return tmp_value;
+    },
+  
+    getItem: function(in_key) {
+      return this.items[in_key];
+    },
+  
+    setItem: function(in_key, in_value) {
+      if (typeof(in_value) != 'undefined') {
+        if (typeof(this.items[in_key]) == 'undefined') {
+          this.length++;
+        }
+        this.items[in_key] = in_value;
+      }
+      return in_value;
+    },
+  
+    hasItem: function(in_key) {
+      return typeof(this.items[in_key]) != 'undefined';
+    },
+      
+    getLength: function(){
+      return this.length;
+    }
+  };
+  
+  var LOCATION = new Hash();
+  var ELEMENT = new Hash();
+  var EVENT = new Hash();
+  var BIG_EVENT = new Hash();
+  var PEOPLE = new Hash();
+  var PEOPLE_ARRAY = new Array();
+  var CURRENT_EVENT_HASH = new Hash();
+  var CURRENT_ELEMENT_HASH = new Hash();
+  var CURRENT_EVENT = Array();
+  var CURRENT_ELEMENT = new Array();
+  var HIGH_LIGHT_ELEMENT = new Array();
+  var CURRENT_OVERLAY_ID = "";
+  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
+  var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
+  var LAIBA_BASE = '';
+
+  var CURRENT_BIG_EVENT = null;
+  var CURRENT_PEOPLE = null;
+  
+  var CURRENT_TAB = null;
+
+  var URL = {
+    location_url: BASE + 'data/location.json?bpc=3',
+    element_url: BASE + 'data/element.json?bpc=6',
+    event_url: BASE + 'data/event.json?bpc=4',
+    big_event_url: BASE + 'data/big_event.json?bpc=7',
+    people_url: BASE +'data/people.json?bpc=6',
+    tile_url: 'http://mt.google.cn/mt?v=cnsg1.1&hl=zh-CN&x={X}&y={Y}&z={Z}'
+  };
+
+  var FLAGS = {
+    '蜀': 'G',
+    '魏': 'B',
+    '吴': 'R'
+  };
+
+  var G_MAP;
+  
+  // Google Analytics Account
+  var UAACCT = "UA-3537915-2";
+  
+  var C_POLYLINE_WEIGHT = 10
+  
+
+  
+  function Location(raw_location) {
+    var me = this;
+    this.location = raw_location;
+    this.name = location.name;
+    this.point = new GLatLng(raw_location.lat, raw_location.lng);
+  };
+  
+  
+  function Element(raw_element) {
+    var me = this;
+    this.id = raw_element.id
+    this.element = raw_element;
+    this.type = raw_element.type;
+    
+    var getHiddenPolylineOverlay = function(points, weigth, id) {
+      var latlngs = new Array();
+      $.each(points, function(index, point){
+        latlngs.push(new GLatLng(point.lat, point.lng));
+      });
+      var polyline = new GPolygon(latlngs, "#000000", 10, 0.0);
+      GEvent.addListener(polyline, 'click', function(latlng) {
+        G_MAP.openInfoWindow("ELEMENT", id, latlng);
+      });
+      return polyline;
+    };
+    
+    var getArrowGroundOverlay = function(arrow_url, sw, ne) {
+      var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
+      var arrow = new GGroundOverlay(CN_BASE + 'arrow/'  + arrow_url + '.png', bound);
+      return arrow;
+    }
+    
+    var getMarker = function(icon_url, point, id) {
+      var image = CN_BASE + 'icon/' + icon_url + '.png';
+      var icon = new GIcon(G_DEFAULT_ICON, image);
+      if (icon_url.length == 2)
+        icon.iconSize = new GSize(45,32);
+      else
+        icon.iconSize = new GSize(25,32);
+      var marker = new GMarker(point, {icon:icon});
+      GEvent.addListener(marker, 'click', function() {
+        G_MAP.openInfoWindow("ELEMENT", id, point);
+      });
+      return marker;
+    }
+    if (this.type == 'point') {
+      this.point = new GLatLng(raw_element.lat, raw_element.lng);
+      this.marker = getMarker(raw_element.pic, this.point, this.id);
+    } else {
+      this.hidden_polyline = getHiddenPolylineOverlay(raw_element.hot_points, C_POLYLINE_WEIGHT, this.id);
+      this.arrow = getArrowGroundOverlay(raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
+      
+    } 
+    this.events = raw_element.event_ids;
+  };
+  
+  Element.prototype = {
+    drawOnMap: function() {
+      if (this.type == 'line') {
+        G_MAP.addOverlay(this.hidden_polyline);
+        G_MAP.addOverlay(this.arrow);
+      } else {
+        G_MAP.addOverlay(this.marker);
+      }
+    },
+    
+    removeFromMap: function() {
+      if (this.type == 'line') {
+        G_MAP.removeOverlay(this.hidden_polyline);
+        G_MAP.removeOverlay(this.arrow);
+      } else {
+        G_MAP.removeOverlay(this.marker);
+      }
+    }
+    
+    /*
+    highLight: function() {
+      G_MAP.removeOverlay(this.current_overlay);
+      G_MAP.addOverlay(this.highlight_overlay);
+      this.current_overlay = this.highlight_overlay;
+    },
+    
+    deHighLight: function() {
+      G_MAP.removeOverlay(this.current_overlay);
+      G_MAP.addOverlay(this.overlay);
+      this.current_overlay = this.overlay;
+    },
+    
+    adjustZoomLevel: function() {
+    }
+    */
+  };
+  
+  var encapsulateActiveEventOrPeople = function(people_id) {
+    if (CURRENT_BIG_EVENT != null) {
+      var big_event = BIG_EVENT.getItem(CURRENT_BIG_EVENT);
+      big_event.hideDetails();
+      CURRENT_BIG_EVENT = null;
+    }
+    if (CURRENT_PEOPLE != null && people_id && CURRENT_PEOPLE == people_id)
+    return;
+    if (CURRENT_PEOPLE != null) {
+      var people = PEOPLE.getItem(CURRENT_PEOPLE);
+      people.node.encapsulate();
+      CURRENT_PEOPLE = null;
+    }
+  }
+
+  function Event(raw_event) {
+    this.id = raw_event.id;
+    this.name = raw_event.name;
+    this.element_ids = raw_event.element_ids;
+    this.people = raw_event.people;
+    this.time = raw_event.time;
+    this.time_ad = raw_event.ad;
+    this.desc = raw_event.desc;
+    this.point = new GLatLng(raw_event.popup.lat, raw_event.popup.lng);
+  };
+  
+  function BigEvent(raw_event) {
+    var me = this;
+    this.id = raw_event.id
+    this.name = raw_event.name;
+    this.element_ids = raw_event.element_ids;
+    this.event_ids = raw_event.event_ids;
+    this.time = raw_event.time;
+    this.time_ad = raw_event.ad;
+    this.desc = raw_event.desc;
+    this.pic = raw_event.pic;
+    this.is_details_shown = false;
+    this.details = null;
+    this.center = new GLatLng(raw_event.center.lat, raw_event.center.lng);
+    var genNode = function() {
+      var node = $('<div class="big-event-item"></div>');
+
+      var table = $('<table><tbody><tr></tr></tbody></table>');
+      var row = table.children().children();
+      var time_cell = $('<td class="big-event-item-time" title="' + me.time_ad + '">' + me.time + '</div>');
+      var link_cell = $('<td class="big-event-item-link"></td>');
+      row.append(time_cell);
+      row.append(link_cell);
+      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'icon/' + me.pic + '.gif"></td>');
+      node.append(table);
+
+      var event_link = $('<a href=#>' + me.name + '</a>');
+      event_link.click(function(){
+        if (me.is_details_shown) {
+          me.hideDetails();
+        } else {
+      me.showDetails();
+        }
+        G_MAP.updateOverlay('E', me.id);
+        G_MAP.setCenter(me.center, 8);
+        _IG_Analytics(UAACCT, '/click/eventLink/' + me.name);
+        return false;
+      });
+      link_cell.append(event_link);
+
+      me.details = $('<div class="big-event-detail" style="display:none;"></div>');
+      me.details.append($('<p>' + me.desc + '</p>'));
+      /*
+      var img = $('<div></div>');
+      img.append($('<img class="event_img" src="' + BASE + 'images/pic1.jpg"></img>'));
+      img.append($('<img class="event_img" src="' + BASE + 'images/pic2.jpg"></img>'));
+      me.details.append(img);
+      */
+
+      var event_list = $('<table class="events-div"></table>');
+      genEventList(event_list, me.event_ids);
+      me.details.append(event_list);
+      node.append(me.details);
+      $('#big_event_list').append(node);
+      return node;
+    };
+   
+    this.node = genNode();
+    this.is_shown = true;
+  };
+
+  BigEvent.prototype = {
+    showDetails: function() {
+      encapsulateActiveEventOrPeople(null);
+      this.details.show();
+      _IG_AdjustIFrameHeight();
+      this.is_details_shown = true;
+      CURRENT_BIG_EVENT = this.id;
+    },
+
+    hideDetails: function() {
+      this.details.hide();
+      _IG_AdjustIFrameHeight();
+      this.is_details_shown = false;
+    }
+  };  
+
+  var genEventList = function(table, event_ids) {
+    var tbody = table.append('<tbody></tbody>').children();
+    $.each(event_ids, function(index, event_id){
+      var event = EVENT.getItem(event_id);
+      var row = $('<tr></tr>');
+      genEventItem(row, event);
+      tbody.append(row);
+    });
+  };
+ 
+  var genEventItem = function(row, event) {
+    var time_cell = $('<td class="events-item-time" title="' + event.time_ad + '">' + event.time + '</div>');
+    var link_cell = $('<td class="events-item-link"></td>');
+    var event_link = $('<a href=#>' + event.name + '</a>');
+    event_link.click(function(){
+      G_MAP.openInfoWindow("EVENT", event.id, event.point);
+      _IG_Analytics(UAACCT, '/click/eventItemLink/' + event.name);
+      return false;
+    });
+    link_cell.append(event_link);
+    row.append(time_cell);
+    row.append(link_cell);
+  };
+
+  function PeopleDigestNode(parent_node, desc, people_id) {
+    this.people_id = people_id;
+    var me = this;
+    var node = $('<div class="character-digest-div"></div>');
+    this.digest =  $('<div class="character-digest-div-short">' + desc.substring(0,65) + '...</div>');
+    this.detail = $('<div class="character-digest-div-long" style="display:none;">' + desc + '</div>');
+    var show_detail = $('<a href=#>[详细]</a>');
+    var hide_detail = $('<a href=#>[隐藏]</a>');
+
+    this.digest.append(show_detail);
+    this.detail.append(hide_detail);
+
+    show_detail.click(function(){
+      me.showDetail();
+      _IG_Analytics(UAACCT, '/click/peopleShowDetailLink/' + me.people_id);
+      return false;
+    });
+
+    hide_detail.click(function(){
+      me.hideDetail();
+      _IG_Analytics(UAACCT, '/click/peopleHideDetailLink/' + me.people_id);
+      return false;
+    });
+      
+    node.append(this.digest);
+    node.append(this.detail);
+    parent_node.append(node);
+  };
+
+  PeopleDigestNode.prototype = {
+    showDetail: function() {
+      encapsulateActiveEventOrPeople(this.people_id);
+      this.detail.slideDown('fast', _IG_AdjustIFrameHeight);
+      this.digest.fadeOut('fast');
+      CURRENT_PEOPLE = this.people_id;
+    },
+    hideDetail: function() {
+      this.detail.slideUp('fast', _IG_AdjustIFrameHeight);
+      this.digest.fadeIn('fast');
+    }
+  };
+  
+  function PeopleEventListNode(parent_node, event_ids, people_id, center) {
+    this.people_id = people_id;
+    var me = this;
+    var node = $('<div class="events-div"></div>');
+    this.show_events = $('<a class="events-div-show" href=#>历史事件</a>');
+    this.hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
+    this.event_list = $('<table class="events-list" style="display:none;"></table>');
+
+    genEventList(this.event_list, event_ids);
+
+    this.show_events.click(function(){
+      me.showEvents();
+      G_MAP.updateOverlay('P', people_id);
+      G_MAP.setCenter(center, 7);
+      _IG_Analytics(UAACCT, '/click/peopleShowEventsLink/' + me.people_id);
+      return false;
+    });
+
+    this.hide_events.click(function(){
+      me.hideEvents();
+      _IG_Analytics(UAACCT, '/click/peopleHideEventsLink/' + me.people_id);
+      return false;
+    });
+
+    node.append(this.show_events);
+    node.append(this.hide_events);
+    node.append(this.event_list);
+    parent_node.append(node);
+  };
+  
+  PeopleEventListNode.prototype = {
+    showEvents: function() {
+      encapsulateActiveEventOrPeople(this.people_id);
+      this.event_list.slideDown('fast', _IG_AdjustIFrameHeight);
+      this.hide_events.show();
+      this.show_events.hide();
+      CURRENT_PEOPLE = this.people_id;
+    },
+    hideEvents: function() {
+      this.event_list.slideUp('fast', _IG_AdjustIFrameHeight);
+      this.show_events.show();
+      this.hide_events.hide();
+    }
+  };
+
+  function PeopleNode(parent_node, people) {
+    this.people_id = people.id;
+    var me = this;
+    this.digest = null;
+    this.event = null;
+    this.table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
+    var img_node = $('<td class="character-img-div"></td>');
+    img_node.append('<img width=60 height=75 src="' + people.pic +'">');
+    var intro_node = $('<td class="character-intro-div"></td>');
+    var title_node = $('<div class="character-title"></div>');
+    var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
+
+    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+
+    gicon_node.click(function(){
+      _IG_Analytics(UAACCT, '/click/searchIcon');
+      return true;
+    });
+    title_node.append(flag_node);
+    title_node.append(link_node);
+    title_node.append(gicon_node);
+    intro_node.append(title_node);
+    this.digest = new PeopleDigestNode(intro_node, people.desc, people.id);
+
+    var row = this.table.children().children();
+    row.append(img_node);
+    row.append(intro_node);
+
+    var event_node = row.after('<tr><td></td><td></td></tr>').next().children(':last');
+    this.event = new PeopleEventListNode(event_node, people.event_ids, people.id, people.center);
+
+    link_node.click(function(){
+      if (!me.is_shown) {
+        me.extend();
+        G_MAP.updateOverlay('P', people.id);
+        G_MAP.setCenter(people.center, 7);
+        me.is_shown = true;
+      } else {
+        me.encapsulate();
+        me.is_shown = false;
+      }
+      _IG_Analytics(UAACCT, '/click/peopleLink/' + people.id); 
+      return false;
+    });
+    parent_node.append(this.table);
+    this.is_shown = false;
+  };
+
+  PeopleNode.prototype = {
+    extend: function() {
+      encapsulateActiveEventOrPeople(this.people_id);
+      this.event.showEvents();
+      this.digest.showDetail();
+      CURRENT_PEOPLE = this.people_id;
+    },
+    encapsulate: function() {
+      this.event.hideEvents();
+      this.digest.hideDetail();
+    },
+    hide: function() {
+      this.encapsulate();
+      this.table.hide();
+    },
+    show: function() {
+      this.table.show();
+    }
+  };
+
+
+  function People(raw_people) {
+    var me = this;
+    this.id = raw_people.name;
+    this.name = raw_people.name;
+    this.nick = raw_people.zi;
+    this.birth = raw_people.birth;
+    this.death = raw_people.death;
+    this.birthplace = raw_people.birthplace;
+    this.desc = raw_people.desc;
+    this.kingdom = raw_people.kindom;
+    this.event_ids = raw_people.event_ids;
+    this.element_ids = raw_people.element_ids;
+    this.pic = raw_people.pic;
+    this.digest = null;
+    this.event = null;
+    this.center = new GLatLng(raw_people.center.lat, raw_people.center.lng);
+    this.node = new PeopleNode($('#character_list'), this);
+    this.is_shown = true;
+  };
+
+  People.prototype = {
+    showNode: function() {
+      if (this.is_shown)
+        return;
+      this.node.show();
+      this.is_shown = true;
+    },
+    hideNode: function() {
+      if (!this.is_shown)
+        return;
+      this.node.hide();
+      this.is_shown = false;
+    }
+  };
+  
+  function LoadElement() {
+    _IG_FetchContent(URL.element_url, function(data) {
+      var json = eval(data);
+      $.each(json, function(index, element) {
+        ELEMENT.setItem(element.id, new Element(element));
+      });
+      LoadDone();
+    })
+  };
+  
+  function LoadEvent() {
+    _IG_FetchContent(URL.event_url, function(data) {
+      var json = eval(data);
+      $.each(json, function(index, event) {
+        EVENT.setItem(event.id, new Event(event));
+      });
+      LoadBigEvent();
+      LoadPeople();
+    });
+    
+  };
+  
+  function LoadPeople() {
+    _IG_FetchContent(URL.people_url, function(data) {
+      var json = eval(data);
+      $.each(json, function(index, raw_people) {
+        var people = new People(raw_people)
+        PEOPLE.setItem(people.name, people);
+        PEOPLE_ARRAY.push(people);
+      });
+      LoadDone();
+    });
+  };
+  
+  function LoadBigEvent() {
+    _IG_FetchContent(URL.big_event_url, function(data) {
+      var json = eval(data);
+      $.each(json, function(index, big_event) {
+        BIG_EVENT.setItem(big_event.id, new BigEvent(big_event));
+      });
+      LoadDone();
+    });
+  };
+  
+  function LoadLocation() {
+    _IG_FetchContent(URL.location_url, function(data) {
+      var json = eval(data);
+      $.each(json, function(index, location) {
+        LOCATION.setItem(location.name, new Location(location));
+      });
+      LoadElement();
+      LoadEvent();
+    });
+  };
+
+  var LOAD_STATES = 0;
+  function LoadDone() {
+    LOAD_STATES++;
+    if (LOAD_STATES == 3) { // shan zhai!
+      makeShareButton();
+      $('#loading').hide();
+      $('#main').show();
+      
+      _IG_AdjustIFrameHeight();
+    }
+  };
+
+  function _un(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<'; case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
+  function makeShareButton() {
+    if (!google || !google.share || !google.share.SharingWidget) return;
+	// TODO: refine the text here !!!!
+    var g = {
+      'linkText': '将此地图分享给朋友',
+      'url': 'http://ditu.google.cn/maps/mpl?t=p&moduleurl=http://redcliff.googlecode.com/svn/trunk/mapplet/redcliff.xml',
+      'title': '谷歌赤壁之战地图',
+      'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
+      'subject_template': _un('{FROM}邀请您来看看谷歌赤壁之战地图'),
+      'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
+      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的大混战时代',
+      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
+    };
+    new google.share.SharingWidget("share_button", g);
+  };
+  
+  var Utils = {
+    constructInfoWindowHtml : function(events) {
+      var html = ['<div style="width:300px; font-size:12px;">'];
+      $.each(events, function(i, event){
+        html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
+          html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
+          html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
+          html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
+          html.push('<div style="text-align:right; color:#AAA;">搜索: ');
+            $.each(event.people, function(j, person) {
+              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(person) + '">' + person + '</a>');
+            });
+          html.push('</div>');
+        html.push('</div>');
+      });
+      html.push('</div>');
+      return html.join('');
+    }
+  };
+
+  function RedcliffMap(node) {
+    var me = this;
+    this.gmap = new GMap2();
+    this.gmap.setCenter(new GLatLng(29.833, 113.618), 7, G_PHYSICAL_MAP);
+    this.tileLayerOverlay = new GTileLayerOverlay(
+      new GTileLayer(null, null, null, {
+        tileUrlTemplate: URL.tile_url,
+        isPng:true,
+        opacity:1.0
+      })
+    );
+    this.gmap.addOverlay(this.tileLayerOverlay); 
+  };
+  
+
+  RedcliffMap.prototype = {
+    changeTiles: function(opacity_val) {
+      // IE6 does not support opacity, so we remove the layer if opacity is 0
+      if (this.tileLayerOverlay != null) {
+        this.gmap.removeOverlay(this.tileLayerOverlay);
+      }
+      if (opacity_val < 0.01) {
+        this.tileLayerOverlay = null;
+      } else {
+        this.tileLayerOverlay = new GTileLayerOverlay(
+          new GTileLayer(null, null, null, {
+            tileUrlTemplate: URL.tile_url,
+            isPng:true,
+            opacity:opacity_val
+          })
+        );
+        this.gmap.addOverlay(this.tileLayerOverlay);
+      }
+    },
+    addOverlay: function(overlay) {
+      this.gmap.addOverlay(overlay);
+    },
+    removeOverlay: function(overlay) {
+      this.gmap.removeOverlay(overlay);
+    },
+    openInfoWindow: function(type, id, latlng) {
+      if (type == "EVENT") {
+        var event = EVENT.getItem(id);
+        var info_div = Utils.constructInfoWindowHtml([event]);
+        this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
+        //this.highLightOverlay(event.element_ids);
+      }
+      if (type == "ELEMENT") {
+        var element = ELEMENT.getItem(id);
+        var events = new Array();
+        $.each(element.events, function(index, event_id) {
+          if (CURRENT_EVENT_HASH.hasItem(event_id)) {
+            var event = EVENT.getItem(event_id);
+            events.push(event);
+          }
+        });
+        var info_div = Utils.constructInfoWindowHtml(events);
+        this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
+        //this.highLightOverlay(id);
+      }
+    },
+    highLightOverlay: function(element_ids) {
+      $.each(element_ids, function(index, element_id) {
+        if (CURRENT_ELEMENT_HASH.hasItem(element_id)) {
+          var element = ELEMENT.getItem(element_id);
+          element.highLight();
+          HIGH_LIGHT_ELEMENT.push(element_id);
+        }
+      });
+    },
+    
+    deHighLightOverlay: function() {
+      while (HIGH_LIGHT_ELEMENT.length > 0) {
+        var element_id = HIGH_LIGHT_ELEMENT.pop();
+        var element = ELEMENT.getItem(element_id);
+        //element.deHighLight();
+      }
+    },
+    
+    setCenter: function(center, level) {
+      this.gmap.panTo(center);
+    },
+
+    clearOverlays: function() {
+      this.gmap.closeInfoWindow();
+      while (CURRENT_ELEMENT.length > 0) {
+        var element_id = CURRENT_ELEMENT.pop();
+        var elem = ELEMENT.getItem(element_id);
+        CURRENT_ELEMENT_HASH.removeItem(element_id);
+        elem.removeFromMap();
+      }
+      
+      while (CURRENT_EVENT.length > 0) {
+        var event_id = CURRENT_EVENT.pop();
+        CURRENT_EVENT_HASH.removeItem(element_id);
+      }
+      CURRENT_OVERLAY_ID = "";
+    },
+
+    updateOverlay: function(type, id) {
+      if (type + '_' + id == CURRENT_OVERLAY_ID)
+        return;
+      CURRENT_OVERLAY_ID = type + '_' + id;
+      this.clearOverlays();
+      
+      var element_ids;
+      var event_ids;
+      if (type == 'E') {
+        var big_event = BIG_EVENT.getItem(id);
+        element_ids = big_event.element_ids;
+        event_ids = big_event.event_ids;
+      } else {
+        var people = PEOPLE.getItem(id);
+        element_ids = people.element_ids;
+        event_ids = people.event_ids;
+      }
+      
+      $.each(element_ids, function(index, element_id) {
+        var elem = ELEMENT.getItem(element_id);
+        elem.drawOnMap();
+        CURRENT_ELEMENT.push(element_id);
+        CURRENT_ELEMENT_HASH.setItem(element_id, "");
+      });
+
+      $.each(event_ids, function(index, event_id) {
+        CURRENT_EVENT.push(event_id);
+        CURRENT_EVENT_HASH.setItem(event_id, "");
+      });
+    }
+  };
+
+  function CharacterFilter() {
+    var filter = function() {
+      var shu_selected = false;
+      var wei_selected = false;
+      var wu_selected = false;
+      if ($('#checkbox_shu').attr('checked')) shu_selected = true;
+      if ($('#checkbox_wei').attr('checked')) wei_selected = true;
+      if ($('#checkbox_wu').attr('checked')) wu_selected = true;
+      $.each(PEOPLE_ARRAY, function(index, character){
+        if (character.kingdom == '蜀') {
+          if (shu_selected) character.showNode();
+          else character.hideNode();
+        }   
+        if (character.kingdom == '魏') {
+          if (wei_selected) character.showNode();
+          else character.hideNode();
+        }
+        if (character.kingdom == '吴') {
+          if (wu_selected) character.showNode();
+          else character.hideNode();
+        }
+      });
+      _IG_AdjustIFrameHeight();
+      _IG_Analytics(UAACCT, '/click/characterFilter');
+    };
+    $('#checkbox_shu').click(filter);
+    $('#checkbox_wei').click(filter);
+    $('#checkbox_wu').click(filter);  
+  };
+
+  // Add the handler for changing the tile option using the drop down.
+  function TilesSelect() {
+    // remove half transparent version for IE6
+   if (navigator.appName == 'Microsoft Internet Explorer' &&
+       (navigator.appVersion.indexOf('MSIE 6') > 0)) {
+      var sel = $('#select_tiles').get(0);
+      for (var i = sel.length - 1; i >= 0; i--) {
+        if (sel.options[i].value > 0.01 && sel.options[i].value < 0.99) {
+          sel.remove(i);
+        }
+      }
+    }
+    var change_tiles = function() {
+      var selVal = $('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value;
+      G_MAP.changeTiles(selVal);
+      _IG_Analytics(UAACCT, '/click/tilesSelect/' + selVal);
+    };
+    $('#select_tiles').change(change_tiles);
+  };
+  
+  function TabManager(in_tabs, active_tab) {
+    var tabs = new Array();
+    var current_tab = '';
+    var shiftTab = function(active_tab) {
+      if (active_tab == current_tab) return;
+      $.each([active_tab, current_tab], function(index, tab){
+        var tab_container = $('#' + tab + '_cnt');
+        var tab_item = $('#' + tab + '_tab');
+		var tab_parent = tab_item.parent();
+        if (tab == active_tab) {
+          tab_container.show();
+          tab_parent.removeClass('tab-inactive');
+          tab_parent.addClass('tab-active');
+        } else {
+          tab_container.hide();
+          tab_parent.removeClass('tab-active');
+          tab_parent.addClass('tab-inactive');
+        }
+      });
+      current_tab = active_tab;
+    };
+
+    $.each(in_tabs, function(index, tab){
+      $('#' + tab + '_tab').click(function(){
+        shiftTab(tab);
+        _IG_AdjustIFrameHeight();
+        _IG_Analytics(UAACCT, '/view/tab/' + tab);
+        return false;
+      });
+      tabs.push(tab);
+    });
+
+    shiftTab(active_tab);
+  };
+  
+  $(function(){
+    G_MAP = new RedcliffMap();
+    LoadLocation();
+    new TilesSelect();
+    
+    new TabManager(['events', 'characters', 'vote'], 'characters');
+
+    $('#clear_button').click(function(){
+      G_MAP.clearOverlays();
+    })
+    new CharacterFilter();
+
+    _IG_Analytics(UAACCT, "/view/load");
+  });
+ 
+})();
+
+
+</script>
+<!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
+
+]]></Content>
+</Module>
