@@ -10,7 +10,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=8"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=9"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -62,7 +62,7 @@
 	  人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。
 	  <br><br>
 	  联系我们: <a href="mailto:redcliff@gmail.com">redcliff@gmail.com</a>
-	  <br><br>
+	  <br>
 	  <span id="disclaimer_close">关闭</span>
 	</div></div>
   </div>
