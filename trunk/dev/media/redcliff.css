@@ -102,17 +102,6 @@ table,tr,td,th,tbody {
 .big-event-item table tbody tr {
   vertical-align:middle;
 }
-.big-event-title {
-  padding-left: 18px;
-  background: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/plus.gif') no-repeat left center;
-  cursor: pointer;
-}
-.expanded .big-event-title {
-  background-image: url('http://redcliff.googlecode.com/svn/trunk/dev/media/images/minus.gif') no-repeat left center;
-  padding-left: 18px;
-  cursor: pointer;
-}
-
 .big-event-item-time {
   font-size:12px;
   width:100px;
@@ -242,14 +231,14 @@ a.events-div-show{
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url(../images/triangle-r.gif) no-repeat center left;
+  background:url(expression(CN_BASE + 'triangle-r.gif')) no-repeat center left;
 }
 a.events-div-hide{
   color:#BC944F;
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url(../images/triangle-d.gif) no-repeat center left;
+  background:url(expression(CN_BASE + 'triangle-d.gif')) no-repeat center left;
 }
 .events-list {
   
@@ -298,7 +287,7 @@ a.events-div-hide{
   color:BC944F;
   padding:0px 18px 0px 0px;
   height:20px;
-  background:url(../images/pop.gif) no-repeat center right;
+  background:url(expression(CN_BASE + 'pop.gif')) no-repeat center right;
 }
 
 .vote-ifr {
