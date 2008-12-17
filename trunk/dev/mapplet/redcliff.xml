@@ -14,7 +14,7 @@
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
-<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://redcliff.googlecode.com/svn/trunk/dev/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
+<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://www.google.cn/staticcn/chibi/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
 
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">  
