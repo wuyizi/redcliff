@@ -309,7 +309,7 @@ a#disclaimer_show {
 #disclaimer_box {
   display:block;
   position:absolute;
-  width:230px;
+  width:250px;
   height:170px;
   right:0px;
   bottom:27px;
@@ -329,7 +329,7 @@ a#disclaimer_show {
   color:#915E00;
 }
 #disclaimer_close {
-  color:#915E00;
+  color:#BC944F;
   float:right;
   text-decoration:underline;
   cursor:pointer;

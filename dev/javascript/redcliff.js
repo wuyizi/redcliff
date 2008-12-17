@@ -841,7 +841,7 @@
 	   return false;
     });
 	$('#disclaimer_close').click(function(){
-      boxdiv.hide();
+      box.hide();
 	  is_show = false;
 	  return false;
 	});
