@@ -302,6 +302,7 @@
     var event_link = $('<a href=#>' + event.name + '</a>');
     event_link.click(function(){
       G_MAP.openInfoWindow("EVENT", event.id, event.point);
+      _IG_Analytics(UAACCT, '/click/eventItemLink/' + event.name);
       return false;
     });
     link_cell.append(event_link);
@@ -323,13 +324,13 @@
 
     show_detail.click(function(){
       me.showDetail();
-      _IG_Analytics(UAACCT, '/click/peopleShowDetailLink/' + me.name);
+      _IG_Analytics(UAACCT, '/click/peopleShowDetailLink/' + me.people_id);
       return false;
     });
 
     hide_detail.click(function(){
       me.hideDetail();
-      _IG_Analytics(UAACCT, '/click/peopleHideDetailLink/' + me.name);
+      _IG_Analytics(UAACCT, '/click/peopleHideDetailLink/' + me.people_id);
       return false;
     });
       
@@ -365,13 +366,13 @@
       me.showEvents();
       G_MAP.updateOverlay('P', people_id);
       G_MAP.setCenter(center, 7);
-      _IG_Analytics(UAACCT, '/click/peopleShowEventsLink/' + me.name);
+      _IG_Analytics(UAACCT, '/click/peopleShowEventsLink/' + me.people_id);
       return false;
     });
 
     this.hide_events.click(function(){
       me.hideEvents();
-      _IG_Analytics(UAACCT, '/click/peopleHideEventsLink/' + me.name);
+      _IG_Analytics(UAACCT, '/click/peopleHideEventsLink/' + me.people_id);
       return false;
     });
 
@@ -434,7 +435,7 @@
         me.encapsulate();
         me.is_shown = false;
       }
-      _IG_Analytics(UAACCT, '/click/peopleLink/' + me.name); 
+      _IG_Analytics(UAACCT, '/click/peopleLink/' + people.id); 
       return false;
     });
     parent_node.append(this.table);
