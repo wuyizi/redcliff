@@ -5,7 +5,8 @@
              author="googlecode"
              author_email="redcliff@gmail.com">
   <Require feature="sharedmap"/>
-  <Require feature="dynamic-height" /> 
+  <Require feature="dynamic-height" />
+  <Require feature="analytics" /> 
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
@@ -62,20 +63,8 @@
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/s2.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=122" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=124" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-  try {
-    var pageTracker = gat._getTracker("UA-3537915-2");
-    pageTracker._trackPageview();
-  } catch(err) {}
-</script>
 
 ]]></Content>
 </Module>
