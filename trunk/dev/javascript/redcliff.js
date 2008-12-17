@@ -840,7 +840,7 @@
 	   }
 	   return false;
     });
-	$('#disclaimer-close').click(function(){
+	$('#disclaimer_close').click(function(){
       boxdiv.hide();
 	  is_show = false;
 	  return false;
