@@ -58,9 +58,6 @@
   var CURRENT_ELEMENT = new Array();
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
-  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
-  var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
-  var LAIBA_BASE = '';
 
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
