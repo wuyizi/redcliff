@@ -404,7 +404,7 @@
     this.event = null;
     this.table = $('<table class="character-item"><tbody><tr></tr></tbody></table>');
     var img_node = $('<td class="character-img-div"></td>');
-    img_node.append('<img width=60 height=75 src="' + BASE + 'images/people/' + people.pic +'.png">');
+    img_node.append('<img width=60 height=75 src="' + people.pic +'">');
     var intro_node = $('<td class="character-intro-div"></td>');
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
