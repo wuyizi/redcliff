@@ -81,7 +81,7 @@ table,tr,td,th,tbody {
   padding: 1em 0 1em 5px;
 }
 .big-event-item:hover{
-  background-color:#F9F7E4;
+  /*background-color:#F9F7E4;*/
 }
 .big-event-item table{
   width:100%;
@@ -144,7 +144,7 @@ table,tr,td,th,tbody {
   width:100%;
 }
 .character-item:hover{
-  background-color:#F9F7E4;
+  /*background-color:#F9F7E4;*/
 }
 .character-img-div{
   width:65px;
@@ -280,11 +280,13 @@ a.events-div-hide{
 }
 .bottom-button-div span#share_button {
   float:left;
+  height:20px;
 }
 .bottom-button-div span#share_button a{
   color:BC944F;
-  padding:0px 18px 1px 0px;
-  background:url(../images/pop.gif) no-repeat center right;
+  padding:0px 18px 0px 0px;
+  height:20px;
+  background:url(../images/pop.gif) no-repeat right;
 }
 
 .vote-ifr {
