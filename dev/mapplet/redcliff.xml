@@ -25,7 +25,6 @@
       <option value="0.5">半透明层叠</option>
       <option value="0.0">现代地图</option>
     </select>
-	<div><a href='#' id="clear_button">清除地图上的标志</a></div>
   </div>
 
   <div class="tab-content" id="tabContent">
@@ -53,10 +52,12 @@
 
   </div>
   <div class="bottom-button-div">
-    <a href="#" id="show_disclaimer">声明</a>
+    <a href='#' id="clear_button">清除地图上的标志</a>
     <span id="share_button"></span>
   </div>
-  
+  <div class="bottom-button-div">
+    <a href="#" id="show_disclaimer">声明</a>
+  </div>
 </div>
 
 <div style="height:2em;"></div>
