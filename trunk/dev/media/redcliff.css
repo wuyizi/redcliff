@@ -39,41 +39,53 @@ table,tr,td,th,tbody {
   top:35px;
   padding-left:10px;
 }
-.tab-item {
+
+.tab-active {
   display:inline;
   float:left;
   margin-right:3px;
-  font-size:13px;
-  z-index:150;
-  width:5em;
-  padding-top:2px;
-  text-align:center;
-}
-.tab-item-active {
   background-color:#F6F3D7;
   border-top: 2px solid #E6DB9D;
   border-left: 2px solid #E6DB9D;
   border-right: 2px solid #E6DB9D;
   border-bottom: 2px solid #F6F3D7;
-  font-weight:bold;
-  color:#000;
-  height:19px;
+  z-index:150;
 }
-.tab-item-inactive {
+
+.tab-inactive {
+  display:inline;
+  float:left;
+  margin-right:3px;
   border-top: 1px solid #E6DB9D;
   border-left: 1px solid #E6DB9D;
   border-right: 1px solid #E6DB9D;
+  z-index:150;
+}
+
+.tab-active div {
+  font-weight:bold;
+  font-size:13px;
+  color:#000;
+  line-height:1.6;
+  width:5em;
+  text-align:center;
+}
+.tab-inactive div {
+  font-size:13px;
   color:#BC944F;
+  line-height:1.6;
   cursor:pointer;
-  height:21px;
+  width:5em;
+  text-align:center;
 }
 .tab-item-inactive div:hover {
   color:#BC944F;
   text-decoration:underline;
 }
 .tab-content{
-  padding-top:27px;
+  padding-top:22px;
   position:relative;
+  top:15px;
 }
 .big-event-item {
   border-bottom: #F6F3D7 solid 1px;

@@ -9,7 +9,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=123"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=124"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -29,9 +29,9 @@
 
   <div class="tab-content" id="tabContent">
     <div class="tab-head">
-	  <div class="tab-item tab-item-inactive" id="events_tab">历史事件</div>
-	  <div class="tab-item tab-item-active" id="characters_tab">主要人物</div>
-	  <div class="tab-item tab-item-inactive" id="vote_tab">投票</div>
+	  <div class="tab-inactive"><div id="events_tab">历史事件</div></div>
+	  <div class="tab-active"><div id="characters_tab">主要人物</div></div>
+	  <div class="tab-inactive"><div id="vote_tab">投票</div></div>
     </div>
     <div id="events_cnt" style="display:none;">
       <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
@@ -63,7 +63,7 @@
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.js" type="text/javascript"></script>
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/jquery.ui.js" type="text/javascript"></script>
 <script src="http://www.google.cn/s2/sharing/js?hl=zh_CN" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=118" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=119" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 <!-- Google Analytics -->
