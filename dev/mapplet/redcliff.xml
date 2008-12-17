@@ -27,13 +27,12 @@
     </select>
   </div>
 
-  <div class="tab-head">
-	<div class="tab-item tab-item-inactive" id="events_tab">历史事件</div>
-	<div class="tab-item tab-item-active" id="characters_tab">主要人物</div>
-	<div class="tab-item tab-item-inactive" id="vote_tab">投票</div>
-  </div>
-	  
   <div class="tab-content" id="tabContent">
+    <div class="tab-head">
+	  <div class="tab-item tab-item-inactive" id="events_tab">历史事件</div>
+	  <div class="tab-item tab-item-active" id="characters_tab">主要人物</div>
+	  <div class="tab-item tab-item-inactive" id="vote_tab">投票</div>
+    </div>
     <div id="events_cnt" style="display:none;">
       <div id="unused_bar"><!-- TODO may need to add some text in this bar --></div>
       <div id="big_event_list" ></div>
