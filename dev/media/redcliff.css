@@ -322,6 +322,8 @@ a#disclaimer_show {
 #disclaimer_box div{
   border:3px solid #F6F3D7;
   background-color:#FFFFFF;
+  height:154px;
+  padding:10px;
 }
 #disclaimer_box div a {
   color:#915E00;
