@@ -498,7 +498,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_ELEMENT = new Array();
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
-  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev_tc/';
+  var BASE = 'http://redcliff.googlecode.com/svn/trunk/';
   var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
@@ -509,11 +509,11 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=12191314',
-    element_url: BASE + 'data/element.json?bpc=12191328',
-    event_url: BASE + 'data/event.json?bpc=12191540',
-    big_event_url: BASE + 'data/big_event.json?bpc=12191303',
-    people_url: BASE +'data/people.json?bpc=12191540',
+    location_url: BASE + 'data_tc/location.json?bpc=12191314',
+    element_url: BASE + 'data_tc/element.json?bpc=12191328',
+    event_url: BASE + 'data_tc/event.json?bpc=12191540',
+    big_event_url: BASE + 'data_tc/big_event.json?bpc=12191303',
+    people_url: BASE +'data_tc/people.json?bpc=12191540',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
