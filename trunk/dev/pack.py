@@ -10,9 +10,9 @@ CSS_PATH = r'media/redcliff.css'
 # response file
 PACKED_XML_PATH = r'mapplet/redcliff_packed.xml'
 
-CSS_LINK = r'<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></link>'
+CSS_LINK = r'<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=12"></link>'
 
-REDCLIFF_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js" type="text/javascript"></script>'
+REDCLIFF_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=1004" type="text/javascript"></script>'
 
 S2_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/s2.js" type="text/javascript"></script>'
 
