@@ -71,9 +71,9 @@
   var URL = {
     location_url: BASE + 'data/location.json?bpc=12191314',
     element_url: BASE + 'data/element.json?bpc=12191328',
-    event_url: BASE + 'data/event.json?bpc=12191325',
+    event_url: BASE + 'data/event.json?bpc=12191540',
     big_event_url: BASE + 'data/big_event.json?bpc=12191303',
-    people_url: BASE +'data/people.json?bpc=12191530',
+    people_url: BASE +'data/people.json?bpc=12191540',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
