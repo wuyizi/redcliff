@@ -88,7 +88,7 @@
   var G_MAP;
   
   // Google Analytics Account
-  var UAACCT = "UA-3537915-2";
+  var UAACCT = "UA-6735343-1";
   
   var C_POLYLINE_WEIGHT = 10
   
