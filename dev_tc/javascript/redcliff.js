@@ -70,8 +70,8 @@
 
   var URL = {
     location_url: BASE + 'data/location.json?bpc=12191314',
-    element_url: BASE + 'data/element.json?bpc=12191205',
-    event_url: BASE + 'data/event.json?bpc=12191312',
+    element_url: BASE + 'data/element.json?bpc=12191327',
+    event_url: BASE + 'data/event.json?bpc=12191325',
     big_event_url: BASE + 'data/big_event.json?bpc=12191303',
     people_url: BASE +'data/people.json?bpc=12191239',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
@@ -580,9 +580,9 @@
 	// TODO: refine the text here !!!!
     var g = {
       'linkText': '將此地圖分享給朋友',
-      'url': 'http://ditu.google.cn/chibi/',
+      'url': 'http://maps.google.com.tw/chibi/',
       'title': 'Google 『赤壁之戰』 地圖',
-      'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
+      'image': 'http://maps.google.com.tw/intl/zh-TW_tw/images/maps_logo_beta_small.png',
       'subject_template': _un('{FROM}邀請您來看看 Google『赤壁之戰』地圖'),
       'comments_template': _un('您的朋友（{FROM}）覺得您可能對這篇文章感興趣，來看看吧：'),
       'description': '赤壁之戰地圖，Google團隊再現一千八百年前三足鼎立的時代！',
@@ -601,7 +601,7 @@
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
           html.push('<div style="text-align:right; color:#AAA;">相關搜尋: ');
             $.each(event.search, function(j, keyword) {
-              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
+              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.com.tw/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
             });
           html.push('</div>');
         html.push('</div>');
