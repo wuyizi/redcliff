@@ -70,7 +70,7 @@
 
   var URL = {
     location_url: BASE + 'data/location.json?bpc=1',
-    element_url: BASE + 'data/element.json?bpc=1',
+    element_url: BASE + 'data/element.json?bpc=12191205',
     event_url: BASE + 'data/event.json?bpc=1',
     big_event_url: BASE + 'data/big_event.json?bpc=1',
     people_url: BASE +'data/people.json?bpc=1',
