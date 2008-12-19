@@ -3,8 +3,8 @@
 <Module>
 <ModulePrefs title="赤壁之戰"
               description="赤壁之戰的歷史地圖"
-              author="googlecode"
-              author_email="redcliff@gmail.com">
+              author="Google Redcliff Team"
+              author_email="chibi.ditu@gmail.com">
    <Require feature="sharedmap"/>
    <Require feature="dynamic-height" />
    <Require feature="analytics" />
@@ -62,7 +62,7 @@
           本地圖為Google Inc.製作。赤壁之戰地圖中所使用的各種數據，為參考《後漢書》、《三國志》、《資治通鑑》、《三國郡縣表》等書籍資料，以及<a target="_blank" href= "http://http://zh.wikipedia.org/w/index.php?title=%E9%A6%96%E9%A1%B5&variant=zh-tw/">維基百科</a>等網站，整理獲得。
           人物肖像，事件相片等，為<a target="_blank" href="http://group.chinafilm.com/">中國電影集團</a>授權使用之電影《赤壁》劇照。
            <br><br>
-          聯繫我們: <a href="mailto:redcliff@gmail.com">redcliff@gmail.com</a>
+          聯繫我們: <a href="mailto:chibi.ditu@gmail.com">chibi.ditu@gmail.com</a>
            <br>
            <span id="disclaimer_close">關閉</span>
          </div></div>
