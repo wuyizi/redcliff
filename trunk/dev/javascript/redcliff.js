@@ -585,10 +585,10 @@
       'linkText': '将此地图分享给朋友',
       'url': 'http://ditu.google.cn/chibi/',
       'title': '谷歌“赤壁之战”地图',
-      'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
+      'image': 'http://laiba.tianya.cn/laiba/images/274/12296637030816325293/A/1/o.png',
       'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
-      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前三足鼎立的时代！',
+      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的三足鼎立时代！',
       'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
     };
     new google.share.SharingWidget("share_button", g);
