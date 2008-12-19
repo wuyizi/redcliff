@@ -1024,11 +1024,11 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       'linkText': '將此地圖分享給朋友',
       'url': 'http://maps.google.com.tw/chibi/',
       'title': 'Google 『赤壁之戰』 地圖',
-      'image': 'http://maps.google.com.tw/intl/zh-TW_tw/images/maps_logo_beta_small.png',
+      'image': CN_BASE + 'email_logo.png',
       'subject_template': _un('{FROM}邀請您來看看 Google『赤壁之戰』地圖'),
       'comments_template': _un('您的朋友（{FROM}）覺得您可能對這篇文章感興趣，來看看吧：'),
-      'description': '赤壁之戰地圖，Google團隊再現一千八百年前三足鼎立的時代！',
-      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
+      'description': '赤壁之戰地圖，Google團隊再現一千八百年前的三足鼎立時代！',
+      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true
     };
     new google.share.SharingWidget("share_button", g);
   };
