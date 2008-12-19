@@ -224,7 +224,7 @@
     this.pic = raw_event.pic;
     this.is_details_shown = false;
     this.details = null;
-	this.images = raw_event.images;
+    this.images = raw_event.images;
     this.center = new GLatLng(raw_event.center.lat, raw_event.center.lng);
     var genNode = function() {
       var node = $('<div class="big-event-item"></div>');
@@ -256,9 +256,9 @@
       me.details.append($('<p>' + me.desc + '</p>'));
 
       var imgs = $('<div class="big-event-imgs"></div>');
-	  $.each(me.images, function(index, img_url) {
+      $.each(me.images, function(index, img_url) {
         var img = $('<img src="' + img_url + '">');
-		imgs.append(img);
+        imgs.append(img);
       });
       me.details.append(imgs);
       
@@ -577,7 +577,7 @@
   function _un(str) {return str.replace(/&([^;]+);/g, function(s,entity) {switch (entity) {case 'amp':return '&';case 'lt':return '<'; case 'gt':return '>';case 'quot':return '"';default:if (entity.charAt(0) == '#') {var n=Number('0' + entity.substr(1));if (!isNaN(n)){return String.fromCharCode(n);}}return s;}});};
   function makeShareButton() {
     if (!google || !google.share || !google.share.SharingWidget) return;
-	// TODO: refine the text here !!!!
+    // TODO: refine the text here !!!!
     var g = {
       'linkText': '將此地圖分享給朋友',
       'url': 'http://maps.google.com.tw/chibi/',
@@ -592,22 +592,40 @@
   };
   
   var Utils = {
-    constructInfoWindowHtml : function(events) {
-      var html = ['<div style="width:300px; font-size:12px;">'];
-      $.each(events, function(i, event){
-        html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
-          html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
-          html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
-          html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
-          html.push('<div style="text-align:right; color:#AAA;">相關搜尋: ');
-            $.each(event.search, function(j, keyword) {
-              html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.com.tw/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
-            });
-          html.push('</div>');
+      
+    constructEventHtml : function(event, i) {
+      var html = [];
+      html.push('<div style="' + (i != 0 ? 'border-top:1px dashed #CCC; margin-top:5px;' : '') + '">');
+        html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
+        html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
+        html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
+        html.push('<div style="text-align:right; color:#AAA;">相關搜尋: ');
+        $.each(event.search, function(j, keyword) {
+          html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.com.tw/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
+        });
         html.push('</div>');
+      html.push('</div>');
+      return html.join('');
+    },
+
+    constructInfoWindowHtml : function(events) {
+      var html = ['<div style="width:320px; font-size:12px; padding-right:5px;">'];
+      $.each(events, function(i, event){
+        html.push(Utils.constructEventHtml(event, i));
       });
       html.push('</div>');
       return html.join('');
+    },
+
+    constructInfoWindowTabsHtml : function(events) {
+      var tabs = [];
+      $.each(events, function(i, event){
+        var html = ['<div style="width:320px; font-size:12px; padding-right:5px;">'];
+        html.push(Utils.constructEventHtml(event, 0));
+        html.push('</div>');
+        tabs.push(new GInfoWindowTab(INFOWIN_TAB_LABELS[i], html.join('')));
+      });
+      return tabs;
     }
   };
 
@@ -655,7 +673,7 @@
       if (type == "EVENT") {
         var event = EVENT.getItem(id);
         var info_div = Utils.constructInfoWindowHtml([event]);
-        this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
+        this.gmap.openInfoWindowHtml(latlng, info_div);
         //this.highLightOverlay(event.element_ids);
       }
       if (type == "ELEMENT") {
@@ -667,8 +685,13 @@
             events.push(event);
           }
         });
-        var info_div = Utils.constructInfoWindowHtml(events);
-        this.gmap.openInfoWindowHtml(latlng, info_div, {maxWidth: 100});
+        if (events.length > 1) {
+          var info_tabs = Utils.constructInfoWindowTabsHtml(events);
+          this.gmap.openInfoWindowTabsHtml(latlng, info_tabs);
+        } else {
+          var info_div = Utils.constructInfoWindowHtml(events);
+          this.gmap.openInfoWindowHtml(latlng, info_div);
+        }
         //this.highLightOverlay(id);
       }
     },
@@ -800,7 +823,7 @@
       $.each([active_tab, current_tab], function(index, tab){
         var tab_container = $('#' + tab + '_cnt');
         var tab_item = $('#' + tab + '_tab');
-		var tab_parent = tab_item.parent();
+        var tab_parent = tab_item.parent();
         if (tab == active_tab) {
           tab_container.show();
           tab_parent.removeClass('tab-inactive');
@@ -828,23 +851,23 @@
   };
 
   function Disclaimer() {
-	var is_show = false;
+    var is_show = false;
     var box = $('#disclaimer_box');
-	$('#disclaimer_show').click(function(){
+    $('#disclaimer_show').click(function(){
        if (is_show) {
-		 box.hide();
-		 is_show = false;
-	   } else {
-		 box.show();
-		 is_show = true;
-	   }
-	   return false;
+         box.hide();
+         is_show = false;
+       } else {
+         box.show();
+         is_show = true;
+       }
+       return false;
     });
-	$('#disclaimer_close').click(function(){
+    $('#disclaimer_close').click(function(){
       box.hide();
-	  is_show = false;
-	  return false;
-	});
+      is_show = false;
+      return false;
+    });
   }
   
   $(function(){
@@ -852,7 +875,7 @@
     LoadLocation();
     new TilesSelect();
     new TabManager(['events', 'characters', 'vote'], 'characters');
-	new Disclaimer();
+    new Disclaimer();
     $('#clear_button').click(function(){
       G_MAP.clearOverlays();
     });
