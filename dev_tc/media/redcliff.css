@@ -281,6 +281,11 @@ a.events-div-hide{
   margin-top:20px;
   clear:both;
 }
+.bottom-button-div2 {
+  font-size:13px;
+  margin-top:2px;
+  clear:both;
+}
 a#clear_button {
   float:right;
   color:BC944F;
@@ -309,8 +314,7 @@ a#disclaimer_show {
 #disclaimer_box {
   display:block;
   position:absolute;
-  width:250px;
-  height:170px;
+ 
   right:0px;
   bottom:27px;
   border-left:3px solid #E6DB9D;
@@ -323,7 +327,8 @@ a#disclaimer_show {
   border:3px solid #F6F3D7;
   background-color:#FFFFFF;
   height:154px;
-  padding:5px;
+  width:252px;
+  padding:8px;
 }
 #disclaimer_box div a {
   color:#915E00;
