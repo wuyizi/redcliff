@@ -83,6 +83,8 @@
     '吳': 'R'
   };
 
+  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六']; // add more if there are more overlap...
+
   var G_MAP;
   
   // Google Analytics Account
