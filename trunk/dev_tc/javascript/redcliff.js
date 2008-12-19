@@ -69,18 +69,18 @@
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=4',
-    element_url: BASE + 'data/element.json?bpc=9',
-    event_url: BASE + 'data/event.json?bpc=7',
-    big_event_url: BASE + 'data/big_event.json?bpc=10',
-    people_url: BASE +'data/people.json?bpc=9',
+    location_url: BASE + 'data/location.json?bpc=1',
+    element_url: BASE + 'data/element.json?bpc=1',
+    event_url: BASE + 'data/event.json?bpc=1',
+    big_event_url: BASE + 'data/big_event.json?bpc=1',
+    people_url: BASE +'data/people.json?bpc=1',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
   var FLAGS = {
     '蜀': 'G',
     '魏': 'B',
-    '吴': 'R'
+    '吳': 'R'
   };
 
   var G_MAP;
@@ -321,8 +321,8 @@
     var node = $('<div class="character-digest-div"></div>');
     this.digest =  $('<div class="character-digest-div-short">' + desc.substring(0,65) + '...</div>');
     this.detail = $('<div class="character-digest-div-long" style="display:none;">' + desc + '</div>');
-    var show_detail = $('<a href=#>[详细]</a>');
-    var hide_detail = $('<a href=#>[隐藏]</a>');
+    var show_detail = $('<a href=#>[詳細]</a>');
+    var hide_detail = $('<a href=#>[隱藏]</a>');
 
     this.digest.append(show_detail);
     this.detail.append(hide_detail);
@@ -361,8 +361,8 @@
     this.people_id = people_id;
     var me = this;
     var node = $('<div class="events-div"></div>');
-    this.show_events = $('<a class="events-div-show" href=#>历史事件</a>');
-    this.hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隐藏历史事件</a>');
+    this.show_events = $('<a class="events-div-show" href=#>歷史事件</a>');
+    this.hide_events = $('<a class="events-div-hide" style="display:none;" href=#>隱藏歷史事件</a>');
     this.event_list = $('<table class="events-list" style="display:none;"></table>');
 
     genEventList(this.event_list, event_ids);
@@ -414,7 +414,7 @@
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
+    var gicon_node = $('<a title="搜尋" target="_blank" href="http://www.google.com.tw/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
     var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     gicon_node.click(function(){
@@ -579,13 +579,13 @@
     if (!google || !google.share || !google.share.SharingWidget) return;
 	// TODO: refine the text here !!!!
     var g = {
-      'linkText': '将此地图分享给朋友',
+      'linkText': '將此地圖分享給朋友',
       'url': 'http://ditu.google.cn/chibi/',
-      'title': '谷歌“赤壁之战”地图',
+      'title': 'Google 『赤壁之戰』 地圖',
       'image': 'http://ditu.google.cn/intl/zh-CN_cn/images/maps_logo_beta_small.png',
-      'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
-      'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
-      'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前三足鼎立的时代！',
+      'subject_template': _un('{FROM}邀請您來看看 Google『赤壁之戰』地圖'),
+      'comments_template': _un('您的朋友（{FROM}）覺得您可能對這篇文章感興趣，來看看吧：'),
+      'description': '赤壁之戰地圖，Google團隊再現一千八百年前三足鼎立的時代！',
       'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true, 'noThumbnail': true
     };
     new google.share.SharingWidget("share_button", g);
@@ -599,7 +599,7 @@
           html.push('<div style="font-size:14px; font-weight:bold; padding-top:10px;">' + event.name + '</div>');
           html.push('<div style="color:#AAAAAA;">' + event.time + ' (' + event.time_ad + ')</div>');
           html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
-          html.push('<div style="text-align:right; color:#AAA;">相关搜索: ');
+          html.push('<div style="text-align:right; color:#AAA;">相關搜尋: ');
             $.each(event.search, function(j, keyword) {
               html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
             });
@@ -759,7 +759,7 @@
           if (wei_selected) character.showNode();
           else character.hideNode();
         }
-        if (character.kingdom == '吴') {
+        if (character.kingdom == '吳') {
           if (wu_selected) character.showNode();
           else character.hideNode();
         }
