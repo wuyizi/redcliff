@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="赤壁之战" 
+<ModulePrefs title="赤壁之战&emsp;&emsp;http://ditu.google.cn/chibi&emsp;" 
              description="赤壁之战的历史地图"
              author="Google Redcliff Team"
              author_email="chibi.ditu@gmail.com">
@@ -17,10 +17,12 @@
 <div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://www.google.cn/staticcn/chibi/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
 
 <!-- Hide first when loading -->
-<div id="main" style="z-index:10;display:none;">  
+<div id="main" style="z-index:10;display:none;">
+  <!--
   <div class="top-link">
     ditu.google.cn/chibi
   </div>
+  -->
   <div class="top-div">
     <span>选择地图: </span>
     <select class="dropdown-box" id="select_tiles">
