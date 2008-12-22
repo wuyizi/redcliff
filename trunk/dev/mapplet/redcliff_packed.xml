@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="赤壁之战" 
+<ModulePrefs title="赤壁之战  -  http://ditu.google.cn/chibi" 
              description="赤壁之战的历史地图"
              author="Google Redcliff Team"
-             author_email="redcliff@gmail.com">
+             author_email="chibi.ditu@gmail.com">
   <Require feature="sharedmap"/>
   <Require feature="dynamic-height" />
   <Require feature="analytics" /> 
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<style>
-@CHARSET "UTF-8";
+<style>@CHARSET "UTF-8";
 body{
   font-size:13px;
   font-family:Arial,sans-serif;
@@ -34,6 +33,13 @@ table,tr,td,th,tbody {
 
 #main {
   padding-top:10px;
+}
+.top-link {
+  text-align:left;
+  position:absolute;
+  padding-top:2px;
+  padding-left:5px;
+  color:#BC944F;  
 }
 .top-div {
   text-align:right;
@@ -294,6 +300,11 @@ a.events-div-hide{
   margin-top:20px;
   clear:both;
 }
+.bottom-button-div2 {
+  font-size:13px;
+  margin-top:2px;
+  clear:both;
+}
 a#clear_button {
   float:right;
   color:BC944F;
@@ -322,8 +333,7 @@ a#disclaimer_show {
 #disclaimer_box {
   display:block;
   position:absolute;
-  width:250px;
-  height:170px;
+ 
   right:0px;
   bottom:27px;
   border-left:3px solid #E6DB9D;
@@ -336,7 +346,8 @@ a#disclaimer_show {
   border:3px solid #F6F3D7;
   background-color:#FFFFFF;
   height:154px;
-  padding:5px;
+  width:252px;
+  padding:8px;
 }
 #disclaimer_box div a {
   color:#915E00;
@@ -356,7 +367,7 @@ a#disclaimer_show {
 <div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://www.google.cn/staticcn/chibi/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
 
 <!-- Hide first when loading -->
-<div id="main" style="z-index:10;display:none;">  
+<div id="main" style="z-index:10;display:none;">
   <div class="top-div">
     <span>选择地图: </span>
     <select class="dropdown-box" id="select_tiles">
@@ -394,13 +405,13 @@ a#disclaimer_show {
     <a href='#' id="clear_button">清除地图上的标志</a>
     <span id="share_button"></span>
   </div>
-  <div class="bottom-button-div">
+  <div class="bottom-button-div2">
     <a href="#" id="disclaimer_show">声明</a>
     <div id="disclaimer_box" style="display:none;"><div>
-        本地图为谷歌中国团队制作。赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及<a target="_blank" href="http://zh.wikipedia.org/">维基百科</a>等网站，整理获得。
+	  本地图为谷歌中国团队制作。赤壁之战地图中所使用的各种数据，为参考《后汉书》、《三国志》、《资治通鉴》、《三国郡县表》等书籍资料，以及<a target="_blank" href="http://zh.wikipedia.org/">维基百科</a>等网站，整理获得。
 	  人物肖像，事件相片等，为<a target="_blank" href="http://group.chinafilm.com/">中国电影集团</a>授权使用之电影《赤壁》剧照。
 	  <br><br>
-	  联系我们: <a href="mailto:redcliff@gmail.com">redcliff@gmail.com</a>
+	  联系我们: <a href="mailto:chibi.ditu@gmail.com">chibi.ditu@gmail.com</a>
 	  <br>
 	  <span id="disclaimer_close">关闭</span>
 	</div></div>
@@ -1322,6 +1333,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   });
  
 })();
+
 
 </script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
