@@ -10,7 +10,7 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=13"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?r=14"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
@@ -18,6 +18,9 @@
 
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">  
+  <div class="top-link">
+    ditu.google.cn/chibi
+  </div>
   <div class="top-div">
     <span>选择地图: </span>
     <select class="dropdown-box" id="select_tiles">
