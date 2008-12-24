@@ -70,10 +70,10 @@
 
   var URL = {
     location_url: BASE + 'data/location.json?bpc=4',
-    element_url: BASE + 'data/element.json?bpc=9',
-    event_url: BASE + 'data/event.json?bpc=7',
-    big_event_url: BASE + 'data/big_event.json?bpc=10',
-    people_url: BASE +'data/people.json?bpc=10',
+    element_url: BASE + 'data/element.json?bpc=10',
+    event_url: BASE + 'data/event.json?bpc=8',
+    big_event_url: BASE + 'data/big_event.json?bpc=11',
+    people_url: BASE +'data/people.json?bpc=11',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
