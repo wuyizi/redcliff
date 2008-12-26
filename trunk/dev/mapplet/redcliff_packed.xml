@@ -515,11 +515,11 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=1217',
-    element_url: BASE + 'data/element.json?bpc=1217',
-    event_url: BASE + 'data/event.json?bpc=1217',
-    big_event_url: BASE + 'data/big_event.json?bpc=1217',
-    people_url: BASE +'data/people.json?bpc=1218',
+    location_url: BASE + 'data/location.json?bpc=1226',
+    element_url: BASE + 'data/element.json?bpc=1226',
+    event_url: BASE + 'data/event.json?bpc=1226',
+    big_event_url: BASE + 'data/big_event.json?bpc=1226',
+    people_url: BASE +'data/people.json?bpc=1226',
     tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
   };
 
