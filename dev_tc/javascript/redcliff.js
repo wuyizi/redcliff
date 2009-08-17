@@ -59,7 +59,7 @@
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev_tc/';
-  var CN_BASE = 'http://www.google.cn/staticcn/chibi/';
+  var CN_BASE = 'http://www.unickway.org.cn/redcliff/images/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
@@ -74,7 +74,8 @@
     event_url: BASE + 'data/event.json?bpc=12191540',
     big_event_url: BASE + 'data/big_event.json?bpc=12191303',
     people_url: BASE +'data/people.json?bpc=12191540',
-    tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
+    //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
+    tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
   };
 
   var FLAGS = {
