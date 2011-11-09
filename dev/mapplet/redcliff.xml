@@ -79,7 +79,7 @@
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
-	google.load("jquery", "1.2.6");
+	google.load("jquery", "1.6.4");
 </script>
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/s2.js" type="text/javascript"></script>
