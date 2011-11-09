@@ -59,7 +59,7 @@
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
-  var CN_BASE = 'http://www.unickway.org.cn/redcliff/images/';
+  var CN_BASE = 'http://commondatastorage.googleapis.com/redcliff/images/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
@@ -124,12 +124,12 @@
     
     var getArrowGroundOverlay = function(arrow_url, sw, ne) {
       var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
-      var arrow = new GGroundOverlay(CN_BASE + 'arrow/'  + arrow_url + '.png', bound);
+      var arrow = new GGroundOverlay(CN_BASE + 'arrows/'  + arrow_url + '.png', bound);
       return arrow;
     }
     
     var getMarker = function(icon_url, point, id) {
-      var image = CN_BASE + 'icon/' + icon_url + '.png';
+      var image = CN_BASE + 'flags/' + icon_url + '.png';
       var icon = new GIcon(G_DEFAULT_ICON, image);
       if (icon_url.length == 2)
         icon.iconSize = new GSize(45,32);
@@ -239,7 +239,7 @@
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
-      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'icon/' + me.pic + '.gif"></td>');
+      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'flags/' + me.pic + '.gif"></td>');
       node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');
@@ -418,8 +418,8 @@
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'icons/search_icon.gif"></a>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     gicon_node.click(function(){
       _IG_Analytics(UAACCT, '/click/searchIcon');
@@ -586,7 +586,7 @@
       'linkText': '将此地图分享给朋友',
       'url': 'http://ditu.google.cn/chibi/',
       'title': '谷歌“赤壁之战”地图',
-      'image': CN_BASE + 'email_logo.png',
+      'image': CN_BASE + 'icons/email_logo.png',
       'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
       'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的三足鼎立时代！',

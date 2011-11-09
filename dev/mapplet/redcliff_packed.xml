@@ -256,14 +256,14 @@ a.events-div-show{
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url('http://www.unickway.org.cn/redcliff/images/triangle-r.gif') no-repeat center left;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/triangle-r.gif') no-repeat center left;
 }
 a.events-div-hide{
   color:#BC944F;
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url('http://www.unickway.org.cn/redcliff/images/triangle-d.gif') no-repeat center left;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/triangle-d.gif') no-repeat center left;
 }
 .events-list {
   
@@ -317,7 +317,7 @@ a#clear_button {
   color:BC944F;
   padding:0px 18px 0px 0px;
   height:20px;
-  background:url('http://www.unickway.org.cn/redcliff/images/pop.gif') no-repeat center right;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/pop.gif') no-repeat center right;
 }
 
 .vote-ifr {
@@ -364,10 +364,17 @@ a#disclaimer_show {
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
-<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;"><img src="http://www.unickway.org.cn/redcliff/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...</div>  
+<div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;">
+  <img src="http://commondatastorage.googleapis.com/redcliff/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...
+</div>  
 
 <!-- Hide first when loading -->
 <div id="main" style="z-index:10;display:none;">
+  <!--
+  <div class="top-link">
+    ditu.google.cn/chibi
+  </div>
+  -->
   <div class="top-div">
     <span>选择地图: </span>
     <select class="dropdown-box" id="select_tiles">
@@ -444,7 +451,7 @@ share.SharingWidget[$$PROP_prototype].f=function(a,b,c){if(this.b==0){var d=GLOB
 share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","text/css");if(a.styleSheet)a.styleSheet.cssText=b;else{var c=GLOBAL_document[$$PROP_createTextNode](b);a[$$PROP_appendChild](c)}};share.SharingWidget[$$PROP_prototype].e=function(a,b){var c=GLOBAL_document.getElementsByTagName("head")[0];c?c[$$PROP_appendChild](b):a[$$PROP_appendChild](b)};share.ShareWidget=share.SharingWidget;share.SharingButton=share.SharingWidget;
  })();
 </script>
-<script type="text/javascript">(function(){
+<script type="text/javascript">﻿(function(){
 
   function Hash(){
     this.length = 0;
@@ -504,8 +511,8 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_ELEMENT = new Array();
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
-  var BASE = 'http://redcliff.googlecode.com/svn/trunk/';
-  var CN_BASE = 'http://www.unickway.org.cn/redcliff/images/';
+  var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
+  var CN_BASE = 'http://commondatastorage.googleapis.com/redcliff/images/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
@@ -515,11 +522,11 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=1226',
-    element_url: BASE + 'data/element.json?bpc=1226',
-    event_url: BASE + 'data/event.json?bpc=1226',
-    big_event_url: BASE + 'data/big_event.json?bpc=1226',
-    people_url: BASE +'data/people.json?bpc=1226',
+    location_url: BASE + 'data/location.json?bpc=4',
+    element_url: BASE + 'data/element.json?bpc=10',
+    event_url: BASE + 'data/event.json?bpc=8',
+    big_event_url: BASE + 'data/big_event.json?bpc=12',
+    people_url: BASE +'data/people.json?bpc=11',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
     tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
   };
@@ -570,12 +577,12 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     
     var getArrowGroundOverlay = function(arrow_url, sw, ne) {
       var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
-      var arrow = new GGroundOverlay(CN_BASE + 'arrow/'  + arrow_url + '.png', bound);
+      var arrow = new GGroundOverlay(CN_BASE + 'arrows/'  + arrow_url + '.png', bound);
       return arrow;
     }
     
     var getMarker = function(icon_url, point, id) {
-      var image = CN_BASE + 'icon/' + icon_url + '.png';
+      var image = CN_BASE + 'flags/' + icon_url + '.png';
       var icon = new GIcon(G_DEFAULT_ICON, image);
       if (icon_url.length == 2)
         icon.iconSize = new GSize(45,32);
@@ -685,7 +692,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
-      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'icon/' + me.pic + '.gif"></td>');
+      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'flags/' + me.pic + '.gif"></td>');
       node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');
@@ -864,8 +871,8 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     var title_node = $('<div class="character-title"></div>');
     var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'icons/search_icon.gif"></a>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     gicon_node.click(function(){
       _IG_Analytics(UAACCT, '/click/searchIcon');
@@ -1032,7 +1039,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       'linkText': '将此地图分享给朋友',
       'url': 'http://ditu.google.cn/chibi/',
       'title': '谷歌“赤壁之战”地图',
-      'image': CN_BASE + 'email_logo.png',
+      'image': CN_BASE + 'icons/email_logo.png',
       'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
       'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的三足鼎立时代！',
