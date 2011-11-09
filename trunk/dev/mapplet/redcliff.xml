@@ -15,7 +15,7 @@
 
 <!-- Show this gif when loading -->
 <div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;">
-  <img src="http://commondatastorage.googleapis.com/redcliff/images/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...
+  <img src="http://commondatastorage.googleapis.com/redcliff/images/icons/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...
 </div>  
 
 <!-- Hide first when loading -->
