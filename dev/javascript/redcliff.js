@@ -60,6 +60,7 @@
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
   var CN_BASE = 'http://commondatastorage.googleapis.com/redcliff/images/';
+  var TILE_BASE = 'http://commondatastorage.googleapis.com/redcliff/tiles/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
@@ -75,7 +76,8 @@
     big_event_url: BASE + 'data/big_event.json?bpc=12',
     people_url: BASE +'data/people.json?bpc=11',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
-    tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
+    //tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
+    tile_url: TILE_BASE + 'z{Z}/redcliff-00{Z}-00{X}-00{Y}.jpg'
   };
 
   var FLAGS = {
@@ -632,18 +634,33 @@
       return tabs;
     }
   };
+  
+  function padNumber = function(num, roundTo) {
+    // E.g. padNumber(23, 10000) -> '0023'
+    return String(num + roundTo).substring(1);
+  };
+
+  
+  function getRedcliffTileLayer(opacity_val) {
+    var tileLayer = new GTileLayer(null, null, null, {
+      isPng: true,
+      opacity: opacity_val
+    });
+    tileLayer.getTileUrl = function(point, zoom) {
+      // E.g. 'z{Z}/redcliff-00{Z}-00{X}-00{Y}.jpg'
+      var z = padNumber(17 - zoom, 100);
+      return [TILE_BASE, 'z', z, '/redcliff-00', z,
+          '-', padNumber(point.x, 10000),
+          '-', padNumber(point.y, 10000), '.jpg'].join('');
+    };
+    return tileLayer;
+  };
 
   function RedcliffMap(node) {
     var me = this;
     this.gmap = new GMap2();
     this.gmap.setCenter(new GLatLng(29.833, 113.618), 7, G_PHYSICAL_MAP);
-    this.tileLayerOverlay = new GTileLayerOverlay(
-      new GTileLayer(null, null, null, {
-        tileUrlTemplate: URL.tile_url,
-        isPng:true,
-        opacity:1.0
-      })
-    );
+    this.tileLayerOverlay = new GTileLayerOverlay(getRedcliffTileLayer(1.0));
     this.gmap.addOverlay(this.tileLayerOverlay); 
   };
   
@@ -657,13 +674,7 @@
       if (opacity_val < 0.01) {
         this.tileLayerOverlay = null;
       } else {
-        this.tileLayerOverlay = new GTileLayerOverlay(
-          new GTileLayer(null, null, null, {
-            tileUrlTemplate: URL.tile_url,
-            isPng:true,
-            opacity:opacity_val
-          })
-        );
+        this.tileLayerOverlay = new GTileLayerOverlay(getRedcliffTileLayer(opacity_val));
         this.gmap.addOverlay(this.tileLayerOverlay);
       }
     },
