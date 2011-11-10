@@ -635,7 +635,7 @@
     }
   };
   
-  function padNumber = function(num, roundTo) {
+  function padNumber(num, roundTo) {
     // E.g. padNumber(23, 10000) -> '0023'
     return String(num + roundTo).substring(1);
   };
