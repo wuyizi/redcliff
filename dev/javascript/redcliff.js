@@ -77,7 +77,7 @@
     people_url: BASE +'data/people.json?bpc=11',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
     //tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
-    tile_url: TILE_BASE + 'z{Z}/redcliff-00{Z}-{X}-{Y}.jpg'
+    tile_url: TILE_BASE + 'z{V1_Z}/redcliff-00{V1_Z}-{X}-{Y}.jpg'
   };
 
   var FLAGS = {
