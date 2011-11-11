@@ -528,7 +528,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     element_url: BASE + 'data/element.json?bpc=10',
     event_url: BASE + 'data/event.json?bpc=8',
     big_event_url: BASE + 'data/big_event.json?bpc=13',
-    people_url: BASE +'data/people.json?bpc=12',
+    people_url: BASE +'data/people.json?bpc=13',
     tile_url: TILE_BASE + 'z{Z}/{Z}-{X}-{Y}.jpg'
   };
 
