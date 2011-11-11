@@ -74,7 +74,7 @@
     element_url: BASE + 'data/element.json?bpc=10',
     event_url: BASE + 'data/event.json?bpc=8',
     big_event_url: BASE + 'data/big_event.json?bpc=13',
-    people_url: BASE +'data/people.json?bpc=12',
+    people_url: BASE +'data/people.json?bpc=13',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
     //tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
     tile_url: TILE_BASE + 'z{Z}/{Z}-{X}-{Y}.jpg'

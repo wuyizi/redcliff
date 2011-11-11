@@ -954,7 +954,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
 
     big_event_url: BASE + 'data_tc/big_event.json?bpc=13',
 
-    people_url: BASE +'data_tc/people.json?bpc=12',
+    people_url: BASE +'data_tc/people.json?bpc=13',
 
     tile_url: TILE_BASE + 'z{Z}/{Z}-{X}-{Y}.jpg'
 
