@@ -516,7 +516,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CN_BASE = 'http://commondatastorage.googleapis.com/redcliff/images/';
   var TILE_BASE = 'http://commondatastorage.googleapis.com/redcliff/tiles/';
   var LAIBA_BASE = '';
-  var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
+  var NULL_PIC = 'http://commondatastorage.googleapis.com/redcliff/images/people/null.png';
 
   var CURRENT_BIG_EVENT = null;
   var CURRENT_PEOPLE = null;
@@ -527,8 +527,8 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     location_url: BASE + 'data/location.json?bpc=4',
     element_url: BASE + 'data/element.json?bpc=10',
     event_url: BASE + 'data/event.json?bpc=8',
-    big_event_url: BASE + 'data/big_event.json?bpc=12',
-    people_url: BASE +'data/people.json?bpc=11',
+    big_event_url: BASE + 'data/big_event.json?bpc=13',
+    people_url: BASE +'data/people.json?bpc=12',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
     //tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
     tile_url: TILE_BASE + 'z{Z}/{Z}-{X}-{Y}.jpg'
