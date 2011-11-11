@@ -821,7 +821,7 @@
       }
     }
     var change_tiles = function() {
-      var selVal = $('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value;
+      var selVal = $('#select_tiles').val();
       G_MAP.changeTiles(selVal);
       _IG_Analytics(UAACCT, '/click/tilesSelect/' + selVal);
     };
