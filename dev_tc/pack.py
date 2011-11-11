@@ -1,4 +1,4 @@
-# Please run this script under 'redcliff' or 'redcliff/dev'
+# Please run this script under 'redcliff' or 'redcliff/dev_tc'
 # It will output the packed xml to mapplet/redcliff_packed.xml
 
 # require file
@@ -10,11 +10,11 @@ CSS_PATH = r'media/redcliff.css'
 # response file
 PACKED_XML_PATH = r'mapplet/redcliff_packed.xml'
 
-CSS_LINK = r'<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></link>'
+CSS_LINK = r'<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev_tc/media/redcliff.css"></link>'
 
-REDCLIFF_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js" type="text/javascript"></script>'
+REDCLIFF_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev_tc/javascript/redcliff.js" type="text/javascript"></script>'
 
-S2_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/s2.js" type="text/javascript"></script>'
+S2_JS_LINK = r'<script src="http://redcliff.googlecode.com/svn/trunk/dev_tc/javascript/s2.js" type="text/javascript"></script>'
 
 xml = open(XML_PATH, 'r')
 redcliff_js = open(REDCLIFF_JS_PATH, 'r')

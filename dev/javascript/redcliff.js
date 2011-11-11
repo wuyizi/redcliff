@@ -86,7 +86,8 @@
     '吴': 'R'
   };
 
-  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六']; // add more if there are more overlap...
+  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六'];
+  // add more if there are more overlap...
 
 
   var G_MAP;
@@ -148,7 +149,8 @@
       this.marker = getMarker(raw_element.pic, this.point, this.id);
     } else {
       this.hidden_polyline = getHiddenPolylineOverlay(raw_element.hot_points, C_POLYLINE_WEIGHT, this.id);
-      this.arrow = getArrowGroundOverlay(raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
+      this.arrow = getArrowGroundOverlay(
+          raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
       
     } 
     this.events = raw_element.event_ids;
@@ -418,10 +420,15 @@
     img_node.append('<img width=60 height=75 src="' + (people.pic == 'null' ? NULL_PIC : people.pic) + '">');
     var intro_node = $('<td class="character-intro-div"></td>');
     var title_node = $('<div class="character-title"></div>');
-    var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
+    var link_node = $('<a href="#">' + people.name + '</a>' +
+        (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'icons/search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+    var gicon_node = $('<a title="搜索" target="_blank" ' +
+        'href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' +
+        encodeURIComponent(people.name) + '"><img border=0 src="' +
+        CN_BASE + 'icons/search_icon.gif"></a>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' +
+        CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     gicon_node.click(function(){
       _IG_Analytics(UAACCT, '/click/searchIcon');
@@ -592,7 +599,11 @@
       'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
       'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的三足鼎立时代！',
-      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true
+      'buttonStyle': 'link',
+      'tabs': 'email,email',
+      'popup': true,
+      'nopreview': true,
+      'noaddto': true
     };
     new google.share.SharingWidget("share_button", g);
   };
@@ -607,7 +618,9 @@
         html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
         html.push('<div style="text-align:right; color:#AAA;">相关搜索: ');
         $.each(event.search, function(j, keyword) {
-          html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
+          html.push('<a style="color:#915E00;margin-left:3px;" ' +
+              'target=_blank href="http://www.google.com.hk/search?ie=utf8&hl=zh-CN&source=redcliff&q=' +
+              encodeURIComponent(keyword) + '">' + keyword + '</a>');
         });
         html.push('</div>');
       html.push('</div>');
