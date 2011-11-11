@@ -22,6 +22,13 @@ table,tr,td,th,tbody {
 #main {
   padding-top:10px;
 }
+.top-link {
+  text-align:left;
+  position:absolute;
+  padding-top:2px;
+  padding-left:5px;
+  color:#BC944F;  
+}
 .top-div {
   text-align:right;
 }
@@ -237,14 +244,14 @@ a.events-div-show{
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url('http://www.unickway.org.cn/redcliff/images/triangle-r.gif') no-repeat center left;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/icons/triangle-r.gif') no-repeat center left;
 }
 a.events-div-hide{
   color:#BC944F;
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url('http://www.unickway.org.cn/redcliff/images/triangle-d.gif') no-repeat center left;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/icons/triangle-d.gif') no-repeat center left;
 }
 .events-list {
   
@@ -298,7 +305,7 @@ a#clear_button {
   color:BC944F;
   padding:0px 18px 0px 0px;
   height:20px;
-  background:url('http://www.unickway.org.cn/redcliff/images/pop.gif') no-repeat center right;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/icons/pop.gif') no-repeat center right;
 }
 
 .vote-ifr {

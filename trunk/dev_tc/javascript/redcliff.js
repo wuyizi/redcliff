@@ -59,7 +59,8 @@
   var HIGH_LIGHT_ELEMENT = new Array();
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev_tc/';
-  var CN_BASE = 'http://www.unickway.org.cn/redcliff/images/';
+  var CN_BASE = 'http://commondatastorage.googleapis.com/redcliff/images/';
+  var TILE_BASE = 'http://commondatastorage.googleapis.com/redcliff/tiles/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
@@ -69,13 +70,14 @@
   var CURRENT_TAB = null;
 
   var URL = {
-    location_url: BASE + 'data/location.json?bpc=12191314',
-    element_url: BASE + 'data/element.json?bpc=12191328',
-    event_url: BASE + 'data/event.json?bpc=12191540',
-    big_event_url: BASE + 'data/big_event.json?bpc=12191303',
-    people_url: BASE +'data/people.json?bpc=12191540',
+    location_url: BASE + 'data/location.json?bpc=4',
+    element_url: BASE + 'data/element.json?bpc=10',
+    event_url: BASE + 'data/event.json?bpc=8',
+    big_event_url: BASE + 'data/big_event.json?bpc=12',
+    people_url: BASE +'data/people.json?bpc=11',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
-    tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
+    //tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
+    tile_url: TILE_BASE + 'z{Z}/{Z}-{X}-{Y}.jpg'
   };
 
   var FLAGS = {
@@ -84,12 +86,14 @@
     '吳': 'R'
   };
 
-  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六']; // add more if there are more overlap...
+  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六'];
+  // add more if there are more overlap...
+
 
   var G_MAP;
   
   // Google Analytics Account
-  var UAACCT = "UA-6735343-1";
+  var UAACCT = "UA-3537915-2";
   
   var C_POLYLINE_WEIGHT = 10
   
@@ -123,12 +127,12 @@
     
     var getArrowGroundOverlay = function(arrow_url, sw, ne) {
       var bound = new GLatLngBounds(new GLatLng(ne.lat, ne.lng), new GLatLng(sw.lat, sw.lng));
-      var arrow = new GGroundOverlay(CN_BASE + 'arrow/'  + arrow_url + '.png', bound);
+      var arrow = new GGroundOverlay(CN_BASE + 'arrows/'  + arrow_url + '.png', bound);
       return arrow;
     }
     
     var getMarker = function(icon_url, point, id) {
-      var image = CN_BASE + 'icon/' + icon_url + '.png';
+      var image = CN_BASE + 'flags/' + icon_url + '.png';
       var icon = new GIcon(G_DEFAULT_ICON, image);
       if (icon_url.length == 2)
         icon.iconSize = new GSize(45,32);
@@ -145,7 +149,8 @@
       this.marker = getMarker(raw_element.pic, this.point, this.id);
     } else {
       this.hidden_polyline = getHiddenPolylineOverlay(raw_element.hot_points, C_POLYLINE_WEIGHT, this.id);
-      this.arrow = getArrowGroundOverlay(raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
+      this.arrow = getArrowGroundOverlay(
+          raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
       
     } 
     this.events = raw_element.event_ids;
@@ -238,7 +243,7 @@
       var link_cell = $('<td class="big-event-item-link"></td>');
       row.append(time_cell);
       row.append(link_cell);
-      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'icon/' + me.pic + '.gif"></td>');
+      row.append('<td class="big-event-item-pic"><img src="' + CN_BASE + 'flags/' + me.pic + '.gif"></td>');
       node.append(table);
 
       var event_link = $('<a href=#>' + me.name + '</a>');
@@ -415,10 +420,15 @@
     img_node.append('<img width=60 height=75 src="' + (people.pic == 'null' ? NULL_PIC : people.pic) + '">');
     var intro_node = $('<td class="character-intro-div"></td>');
     var title_node = $('<div class="character-title"></div>');
-    var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
+    var link_node = $('<a href="#">' + people.name + '</a>' +
+        (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜尋" target="_blank" href="http://www.google.com.tw/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'icon/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+    var gicon_node = $('<a title="搜尋" target="_blank" ' +
+        'href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' +
+        encodeURIComponent(people.name) + '"><img border=0 src="' +
+        CN_BASE + 'icons/search_icon.gif"></a>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' +
+        CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     gicon_node.click(function(){
       _IG_Analytics(UAACCT, '/click/searchIcon');
@@ -589,7 +599,11 @@
       'subject_template': _un('{FROM}邀請您來看看 Google『赤壁之戰』地圖'),
       'comments_template': _un('您的朋友（{FROM}）覺得您可能對這篇文章感興趣，來看看吧：'),
       'description': '赤壁之戰地圖，Google團隊再現一千八百年前的三足鼎立時代！',
-      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true
+      'buttonStyle': 'link',
+      'tabs': 'email,email',
+      'popup': true,
+      'nopreview': true,
+      'noaddto': true
     };
     new google.share.SharingWidget("share_button", g);
   };
@@ -604,7 +618,9 @@
         html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
         html.push('<div style="text-align:right; color:#AAA;">相關搜尋: ');
         $.each(event.search, function(j, keyword) {
-          html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.com.tw/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
+          html.push('<a style="color:#915E00;margin-left:3px;" ' +
+              'target=_blank href="http://www.google.com.hk/search?ie=utf8&hl=zh-CN&source=redcliff&q=' +
+              encodeURIComponent(keyword) + '">' + keyword + '</a>');
         });
         html.push('</div>');
       html.push('</div>');
@@ -631,18 +647,26 @@
       return tabs;
     }
   };
+  
+  function getRedcliffTileLayer(opacity_val) {
+    var tileLayer = new GTileLayer(null, null, null, {
+      tileUrlTemplate: URL.tile_url,
+      isPng: true,
+      opacity: opacity_val
+    });
+    return tileLayer;
+  };
 
   function RedcliffMap(node) {
     var me = this;
     this.gmap = new GMap2();
     this.gmap.setCenter(new GLatLng(29.833, 113.618), 7, G_PHYSICAL_MAP);
     this.tileLayerOverlay = new GTileLayerOverlay(
-      new GTileLayer(null, null, null, {
-        tileUrlTemplate: URL.tile_url,
-        isPng:true,
-        opacity:1.0
-      })
-    );
+        new GTileLayer(null, null, null, {
+          tileUrlTemplate: URL.tile_url,
+          isPng: true,
+          opacity: 1.0
+        }));
     this.gmap.addOverlay(this.tileLayerOverlay); 
   };
   
@@ -657,12 +681,11 @@
         this.tileLayerOverlay = null;
       } else {
         this.tileLayerOverlay = new GTileLayerOverlay(
-          new GTileLayer(null, null, null, {
-            tileUrlTemplate: URL.tile_url,
-            isPng:true,
-            opacity:opacity_val
-          })
-        );
+            new GTileLayer(null, null, null, {
+              tileUrlTemplate: URL.tile_url,
+              isPng: true,
+              opacity: opacity_val
+            }));
         this.gmap.addOverlay(this.tileLayerOverlay);
       }
     },
@@ -811,7 +834,7 @@
       }
     }
     var change_tiles = function() {
-      var selVal = $('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value;
+      var selVal = $('#select_tiles').val();
       G_MAP.changeTiles(selVal);
       _IG_Analytics(UAACCT, '/click/tilesSelect/' + selVal);
     };
@@ -887,5 +910,3 @@
   });
  
 })();
-
-

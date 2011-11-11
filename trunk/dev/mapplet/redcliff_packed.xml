@@ -256,14 +256,14 @@ a.events-div-show{
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url('http://commondatastorage.googleapis.com/redcliff/images/triangle-r.gif') no-repeat center left;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/icons/triangle-r.gif') no-repeat center left;
 }
 a.events-div-hide{
   color:#BC944F;
   text-decoration:none;
   font-size:12px;
   padding-left:10px;
-  background:url('http://commondatastorage.googleapis.com/redcliff/images/triangle-d.gif') no-repeat center left;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/icons/triangle-d.gif') no-repeat center left;
 }
 .events-list {
   
@@ -317,7 +317,7 @@ a#clear_button {
   color:BC944F;
   padding:0px 18px 0px 0px;
   height:20px;
-  background:url('http://commondatastorage.googleapis.com/redcliff/images/pop.gif') no-repeat center right;
+  background:url('http://commondatastorage.googleapis.com/redcliff/images/icons/pop.gif') no-repeat center right;
 }
 
 .vote-ifr {
@@ -365,7 +365,8 @@ a#disclaimer_show {
 
 <!-- Show this gif when loading -->
 <div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;">
-  <img src="http://commondatastorage.googleapis.com/redcliff/images/icons/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...
+  <img src="http://commondatastorage.googleapis.com/redcliff/images/icons/pie_32.gif"><br><br>
+  &nbsp;&nbsp;正在加载 ...
 </div>  
 
 <!-- Hide first when loading -->
@@ -429,7 +430,7 @@ a#disclaimer_show {
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
-	google.load("jquery", "1.2.6");
+	google.load("jquery", "1.6.4");
 </script>
 
 <script type="text/javascript">window.serverBase="http://www.google.ca";window.apiKey="";window.locale="zh_CN";window.js_messages={'Email':'\u7535\u5b50\u90ae\u4ef6','Please add your email address to the From: field':'\u8bf7\u5c06\u60a8\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740\u6dfb\u52a0\u5230\u201c\u5bc4\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5','Oops! A popup blocker is preventing the bookmarklet from opening. Try holding the Shift key and clicking on the bookmarklet again.':'\u7cdf\u7cd5\uff01\u5f39\u51fa\u7a97\u53e3\u963b\u6b62\u7a0b\u5e8f\u963b\u6b62\u4e66\u7b7e\u6253\u5f00\u3002\u8bf7\u5c1d\u8bd5\u6309\u4f4f Shift \u952e\u518d\u6b21\u70b9\u51fb\u4e66\u7b7e\u3002','Google - Email / Share':'Google - \u7535\u5b50\u90ae\u4ef6/\u5171\u4eab','Edit this shared item':'\u7f16\u8f91\u6b64\u5171\u4eab\u9879\u76ee','Please enter valid email addresses in the To: field':'\u8bf7\u5728\u201c\u6536\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5\u8f93\u5165\u6709\u6548\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740','Are you sure you want to remove this shared item?':'\u786e\u5b9e\u8981\u5220\u9664\u8be5\u5171\u4eab\u9879\u76ee\u5417\uff1f','Please enter a valid email address in the From: field':'\u8bf7\u5728\u201c\u5bc4\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5\u8f93\u5165\u6709\u6548\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740','Share':'\u5171\u4eab','Oops! We seem to be experiencing network problems. Please check your connection and try again.':'\u7cdf\u7cd5\uff01\u6211\u4eec\u4f3c\u4e4e\u9047\u5230\u4e86\u7f51\u7edc\u95ee\u9898\u3002\u8bf7\u68c0\u67e5\u60a8\u7684\u8fde\u63a5\u5e76\u91cd\u8bd5\u3002','%1 does not exist!':'%1 \u4e0d\u5b58\u5728\uff01','Add a comment...':'\u6dfb\u52a0\u8bc4\u8bba...','Please add recipients to the To: field':'\u8bf7\u5c06\u6536\u4ef6\u4eba\u6dfb\u52a0\u5230\u201c\u6536\u4ef6\u4eba\uff1a\u201d\u5b57\u6bb5'};(function() { 
@@ -513,6 +514,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
   var CURRENT_OVERLAY_ID = "";
   var BASE = 'http://redcliff.googlecode.com/svn/trunk/dev/';
   var CN_BASE = 'http://commondatastorage.googleapis.com/redcliff/images/';
+  var TILE_BASE = 'http://commondatastorage.googleapis.com/redcliff/tiles/';
   var LAIBA_BASE = '';
   var NULL_PIC = 'http://laiba.tianya.cn/laiba/images/274/12295005600705035805/A/1/o.png';
 
@@ -528,7 +530,8 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     big_event_url: BASE + 'data/big_event.json?bpc=12',
     people_url: BASE +'data/people.json?bpc=11',
     //tile_url: 'http://mt.google.cn/mt?v=cnsg1.2&hl=zh-CN&x={X}&y={Y}&z={Z}'
-    tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
+    //tile_url: 'http://www.unickway.org.cn/redcliff/tiles/show.php?z={Z}&x={X}&y={Y}'
+    tile_url: TILE_BASE + 'z{Z}/{Z}-{X}-{Y}.jpg'
   };
 
   var FLAGS = {
@@ -537,7 +540,8 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     '吴': 'R'
   };
 
-  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六']; // add more if there are more overlap...
+  var INFOWIN_TAB_LABELS = ['事件一', '事件二', '事件三', '事件四', '事件五', '事件六'];
+  // add more if there are more overlap...
 
 
   var G_MAP;
@@ -599,7 +603,8 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       this.marker = getMarker(raw_element.pic, this.point, this.id);
     } else {
       this.hidden_polyline = getHiddenPolylineOverlay(raw_element.hot_points, C_POLYLINE_WEIGHT, this.id);
-      this.arrow = getArrowGroundOverlay(raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
+      this.arrow = getArrowGroundOverlay(
+          raw_element.arrow, raw_element.arrow_points[0], raw_element.arrow_points[1]);
       
     } 
     this.events = raw_element.event_ids;
@@ -869,10 +874,15 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
     img_node.append('<img width=60 height=75 src="' + (people.pic == 'null' ? NULL_PIC : people.pic) + '">');
     var intro_node = $('<td class="character-intro-div"></td>');
     var title_node = $('<div class="character-title"></div>');
-    var link_node = $('<a href="#">' + people.name + '</a>' + (people.nick ? '<span>字' + people.nick + '</span>' : ''));
+    var link_node = $('<a href="#">' + people.name + '</a>' +
+        (people.nick ? '<span>字' + people.nick + '</span>' : ''));
 
-    var gicon_node = $('<a title="搜索" target="_blank" href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(people.name) + '"><img border=0 src="' + CN_BASE + 'icons/search_icon.gif"></a>');
-    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' + CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
+    var gicon_node = $('<a title="搜索" target="_blank" ' +
+        'href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' +
+        encodeURIComponent(people.name) + '"><img border=0 src="' +
+        CN_BASE + 'icons/search_icon.gif"></a>');
+    var flag_node = $('<div class="character-title-img" style="background-image:url(\'' +
+        CN_BASE + 'flags/' + FLAGS[people.kingdom] + '.gif\')"></div>');
 
     gicon_node.click(function(){
       _IG_Analytics(UAACCT, '/click/searchIcon');
@@ -1043,7 +1053,11 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       'subject_template': _un('{FROM}邀请您来看看谷歌“赤壁之战”地图'),
       'comments_template': _un('您的朋友（{FROM}）觉得您可能对这篇文章感兴趣，来看看吧：'),
       'description': '赤壁之战地图，谷歌团队倾情奉献，再现一千八百年前的三足鼎立时代！',
-      'buttonStyle': 'link', 'tabs': 'email,email', 'popup': true, 'nopreview': true, 'noaddto': true
+      'buttonStyle': 'link',
+      'tabs': 'email,email',
+      'popup': true,
+      'nopreview': true,
+      'noaddto': true
     };
     new google.share.SharingWidget("share_button", g);
   };
@@ -1058,7 +1072,9 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
         html.push('<div style="color:#666666; padding:5px 0px;">' + event.desc + '</div>');
         html.push('<div style="text-align:right; color:#AAA;">相关搜索: ');
         $.each(event.search, function(j, keyword) {
-          html.push('<a style="color:#915E00;margin-left:3px;" target=_blank href="http://www.google.cn/search?ie=utf8&source=redcliff&q=' + encodeURIComponent(keyword) + '">' + keyword + '</a>');
+          html.push('<a style="color:#915E00;margin-left:3px;" ' +
+              'target=_blank href="http://www.google.com.hk/search?ie=utf8&hl=zh-CN&source=redcliff&q=' +
+              encodeURIComponent(keyword) + '">' + keyword + '</a>');
         });
         html.push('</div>');
       html.push('</div>');
@@ -1085,18 +1101,26 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       return tabs;
     }
   };
+  
+  function getRedcliffTileLayer(opacity_val) {
+    var tileLayer = new GTileLayer(null, null, null, {
+      tileUrlTemplate: URL.tile_url,
+      isPng: true,
+      opacity: opacity_val
+    });
+    return tileLayer;
+  };
 
   function RedcliffMap(node) {
     var me = this;
     this.gmap = new GMap2();
     this.gmap.setCenter(new GLatLng(29.833, 113.618), 7, G_PHYSICAL_MAP);
     this.tileLayerOverlay = new GTileLayerOverlay(
-      new GTileLayer(null, null, null, {
-        tileUrlTemplate: URL.tile_url,
-        isPng:true,
-        opacity:1.0
-      })
-    );
+        new GTileLayer(null, null, null, {
+          tileUrlTemplate: URL.tile_url,
+          isPng: true,
+          opacity: 1.0
+        }));
     this.gmap.addOverlay(this.tileLayerOverlay); 
   };
   
@@ -1111,12 +1135,11 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
         this.tileLayerOverlay = null;
       } else {
         this.tileLayerOverlay = new GTileLayerOverlay(
-          new GTileLayer(null, null, null, {
-            tileUrlTemplate: URL.tile_url,
-            isPng:true,
-            opacity:opacity_val
-          })
-        );
+            new GTileLayer(null, null, null, {
+              tileUrlTemplate: URL.tile_url,
+              isPng: true,
+              opacity: opacity_val
+            }));
         this.gmap.addOverlay(this.tileLayerOverlay);
       }
     },
@@ -1265,7 +1288,7 @@ share.SharingWidget[$$PROP_prototype].g=function(a,b){a.setAttribute("type","tex
       }
     }
     var change_tiles = function() {
-      var selVal = $('#select_tiles').attr('options')[$('#select_tiles').attr('options').selectedIndex].value;
+      var selVal = $('#select_tiles').val();
       G_MAP.changeTiles(selVal);
       _IG_Analytics(UAACCT, '/click/tilesSelect/' + selVal);
     };

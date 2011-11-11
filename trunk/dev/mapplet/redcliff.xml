@@ -10,12 +10,13 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
-<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css?bpc=2014"></link>
+<link rel="stylesheet" type="text/css" href="http://redcliff.googlecode.com/svn/trunk/dev/media/redcliff.css"></link>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the css file. -->
 
 <!-- Show this gif when loading -->
 <div id="loading" style="color:#AAA;text-align:center;margin-top:40px;font-size:12px;">
-  <img src="http://commondatastorage.googleapis.com/redcliff/images/icons/pie_32.gif"><br><br>&nbsp;&nbsp;正在加载 ...
+  <img src="http://commondatastorage.googleapis.com/redcliff/images/icons/pie_32.gif"><br><br>
+  &nbsp;&nbsp;正在加载 ...
 </div>  
 
 <!-- Hide first when loading -->
@@ -83,7 +84,7 @@
 </script>
 
 <script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/s2.js" type="text/javascript"></script>
-<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js?bpc=2017" type="text/javascript"></script>
+<script src="http://redcliff.googlecode.com/svn/trunk/dev/javascript/redcliff.js" type="text/javascript"></script>
 <!-- NOTE: Add "?bpc=<radnom>" to by pass the cache for the js file. -->
 
 ]]></Content>
